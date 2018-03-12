@@ -59,7 +59,9 @@ public class CrimeCase {
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() { return Collections.unmodifiableSet(tags.toSet()); }
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags.toSet());
+    }
     /**
      * Deletes (@code toDelete) tag
      */

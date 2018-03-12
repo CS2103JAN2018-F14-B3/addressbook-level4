@@ -1,5 +1,8 @@
 package seedu.address.model.crimecase;
 
+/**
+ * Represents a CrimeCase's status in the Investigapptor.
+ */
 public class Status {
 
     private String status;
@@ -16,11 +19,12 @@ public class Status {
      * Toggles status depending on current status
      *
      */
-    public void ToggleCase() {
-        if (this.status.equals("open"))
+    public void toggleCase() {
+        if (this.status.equals("open")) {
             this.status = "close";
-        else
+        } else {
             this.status = "open";
+        }
     }
 
     @Override
