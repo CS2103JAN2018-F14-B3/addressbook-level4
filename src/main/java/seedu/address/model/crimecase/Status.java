@@ -14,7 +14,7 @@ public class Status {
 
     /**
      * Toggles status depending on current status
-     * 
+     *
      */
     public void ToggleCase() {
         if (this.status.equals("open"))
