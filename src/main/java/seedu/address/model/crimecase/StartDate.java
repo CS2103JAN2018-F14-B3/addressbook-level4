@@ -14,15 +14,15 @@ public class StartDate {
 
     public static final String DATE_VALIDATION_REGEX = "([0-9]{2})/([0-9]{2})/([0-9]{4})";
 
+    private static final int DOB_DAY_INDEX = 0;
+    private static final int DOB_MONTH_INDEX = 1;
+    private static final int DOB_YEAR_INDEX = 2;
+
     public final String date;
 
     private final String day;
     private final String month;
     private final String year;
-
-    private final int DOB_DAY_INDEX = 0;
-    private final int DOB_MONTH_INDEX = 1;
-    private final int DOB_YEAR_INDEX = 2;
 
     /**
      * Constructs a {@code Name}.
