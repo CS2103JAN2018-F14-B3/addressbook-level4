@@ -3,10 +3,6 @@ package seedu.address.model.crimecase;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.beans.DesignMode;
-
-import seedu.address.model.person.Name;
-
 /**
  * Represents a Crime Case's description in the Investigator Application.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
