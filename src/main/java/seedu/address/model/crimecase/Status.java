@@ -2,7 +2,7 @@ package seedu.address.model.crimecase;
 
 public class Status {
 
-    public String status;
+    private String status;
 
     /**
      * Constructs a {@code Status}.
@@ -13,11 +13,14 @@ public class Status {
     }
 
     /**
-     * Sets status to "close"
-     *
+     * Toggles status depending on current status
+     * 
      */
-    public void closeCase() {
-        this.status = "close";
+    public void ToggleCase() {
+        if (this.status.equals("open"))
+            this.status = "close";
+        else
+            this.status = "open";
     }
 
     @Override

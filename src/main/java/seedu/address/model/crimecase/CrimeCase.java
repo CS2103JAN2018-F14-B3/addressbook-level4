@@ -1,7 +1,5 @@
 package seedu.address.model.crimecase;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
@@ -10,6 +8,10 @@ import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
+/**
+ * Represents a Crime Case in the Investigapptor.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class CrimeCase {
 
     private final CaseName name;
@@ -33,15 +35,25 @@ public class CrimeCase {
         this.tags = new UniqueTagList(tags);
     }
 
-    public CaseName getCaseName() { return name; }
+    public CaseName getCaseName() {
+        return name;
+    }
 
-    public Description getDescription() { return description; }
+    public Description getDescription() {
+        return description;
+    }
 
-    public Person getCurrentInvestigator() { return currentInvestigator; }
+    public Person getCurrentInvestigator() {
+        return currentInvestigator;
+    }
 
-    public StartDate getStartDate() { return startDate; }
+    public StartDate getStartDate() {
+        return startDate;
+    }
 
-    public Status getStatus() { return status; }
+    public Status getStatus() {
+        return status;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

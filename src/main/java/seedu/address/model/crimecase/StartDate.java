@@ -3,18 +3,22 @@ package seedu.address.model.crimecase;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a CrimeCase's Start date in the Investigapptor.
+ * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
+ */
 public class StartDate {
+
+    public final String date;
+
+    private static String day;
+    private static String month;
+    private static String year;
 
     public static final String MESSAGE_DATE_CONSTRAINTS =
             "Input date must follow DD/MM/YYYY format, and it should not be blank";
 
     public static final String DATE_VALIDATION_REGEX= "([0-9]{2})/([0-9]{2})/([0-9]{4})";
-
-    public final String date;
-
-    public static String day;
-    public static String month;
-    public static String year;
 
     private static final int DOB_DAY_INDEX = 0;
     private static final int DOB_MONTH_INDEX = 1;
