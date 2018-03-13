@@ -12,7 +12,7 @@ public class CaseName {
     public static final String MESSAGE_CASE_NAME_CONSTRAINTS =
             "Crime case names should be alphanumeric, separated by underscores and not be blank";
 
-    public static final String CASE_NAME_VALIDATION_REGEX = "^[a-zA-Z0-9_]+$";
+    public static final String CASE_NAME_VALIDATION_REGEX = "^[a-z][A-Z][0-9]\\S+";
 
     public final String crimeCaseName;
 
