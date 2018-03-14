@@ -6,7 +6,7 @@ import static seedu.investigapptor.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.investigapptor.logic.commands.AddCommand;
+import seedu.investigapptor.logic.commands.AddInvestCommand;
 import seedu.investigapptor.logic.commands.ClearCommand;
 import seedu.investigapptor.logic.commands.Command;
 import seedu.investigapptor.logic.commands.DeleteCommand;
@@ -48,9 +48,9 @@ public class InvestigapptorParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-        case AddCommand.COMMAND_ALIAS:
-            return new AddCommandParser().parse(arguments);
+        case AddInvestCommand.COMMAND_WORD:
+        case AddInvestCommand.COMMAND_ALIAS:
+            return new AddInvestCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
         case EditCommand.COMMAND_ALIAS:
