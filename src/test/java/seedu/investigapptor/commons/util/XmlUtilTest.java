@@ -15,11 +15,11 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.investigapptor.model.Investigapptor;
-import seedu.investigapptor.storage.XmlAdaptedPerson;
+import seedu.investigapptor.storage.XmlAdaptedInvestigator;
 import seedu.investigapptor.storage.XmlAdaptedTag;
 import seedu.investigapptor.storage.XmlSerializableInvestigapptor;
 import seedu.investigapptor.testutil.InvestigapptorBuilder;
-import seedu.investigapptor.testutil.PersonBuilder;
+import seedu.investigapptor.testutil.InvestigatorBuilder;
 import seedu.investigapptor.testutil.TestUtil;
 
 public class XmlUtilTest {
@@ -72,33 +72,33 @@ public class XmlUtilTest {
     public void getDataFromFile_validFile_validResult() throws Exception {
         Investigapptor dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableInvestigapptor.class)
                                         .toModelType();
-        assertEquals(9, dataFromFile.getPersonList().size());
+        assertEquals(9, dataFromFile.getInvestigatorList().size());
         assertEquals(0, dataFromFile.getTagList().size());
     }
 
     @Test
     public void xmlAdaptedPersonFromFile_fileWithMissingPersonField_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                MISSING_PERSON_FIELD_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
+        XmlAdaptedInvestigator actualPerson = XmlUtil.getDataFromFile(
+                MISSING_PERSON_FIELD_FILE, XmlAdaptedInvestigatorWithRootElement.class);
+        XmlAdaptedInvestigator expectedPerson = new XmlAdaptedInvestigator(
                 null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         assertEquals(expectedPerson, actualPerson);
     }
 
     @Test
     public void xmlAdaptedPersonFromFile_fileWithInvalidPersonField_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                INVALID_PERSON_FIELD_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
+        XmlAdaptedInvestigator actualPerson = XmlUtil.getDataFromFile(
+                INVALID_PERSON_FIELD_FILE, XmlAdaptedInvestigatorWithRootElement.class);
+        XmlAdaptedInvestigator expectedPerson = new XmlAdaptedInvestigator(
                 VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         assertEquals(expectedPerson, actualPerson);
     }
 
     @Test
     public void xmlAdaptedPersonFromFile_fileWithValidPerson_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                VALID_PERSON_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
+        XmlAdaptedInvestigator actualPerson = XmlUtil.getDataFromFile(
+                VALID_PERSON_FILE, XmlAdaptedInvestigatorWithRootElement.class);
+        XmlAdaptedInvestigator expectedPerson = new XmlAdaptedInvestigator(
                 VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         assertEquals(expectedPerson, actualPerson);
     }
@@ -132,7 +132,7 @@ public class XmlUtilTest {
 
         InvestigapptorBuilder builder = new InvestigapptorBuilder(new Investigapptor());
         dataToWrite = new XmlSerializableInvestigapptor(
-                builder.withPerson(new PersonBuilder().build()).withTag("Friends").build());
+                builder.withInvestigator(new InvestigatorBuilder().build()).withTag("Friends").build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
         dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableInvestigapptor.class);
@@ -140,9 +140,10 @@ public class XmlUtilTest {
     }
 
     /**
-     * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to {@code XmlAdaptedPerson}
+     * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to
+     * {@code XmlAdaptedInvestigator}
      * objects.
      */
     @XmlRootElement(name = "person")
-    private static class XmlAdaptedPersonWithRootElement extends XmlAdaptedPerson {}
+    private static class XmlAdaptedInvestigatorWithRootElement extends XmlAdaptedInvestigator {}
 }

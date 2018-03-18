@@ -26,7 +26,16 @@ public class Investigator extends Person {
      */
     public Investigator(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         super(name, phone, email, address, tags);
-        crimeCases = new UniqueCrimeCaseList();
+        this.crimeCases = new UniqueCrimeCaseList();
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Investigator(Name name, Phone phone, Email email, Address address, ObservableList<CrimeCase> crimeCases,
+                        Set<Tag> tags) {
+        super(name, phone, email, address, tags);
+        this.crimeCases = new UniqueCrimeCaseList(crimeCases);
     }
 
     public void addCrimeCase(CrimeCase caseToAdd) throws DuplicateCrimeCaseException {

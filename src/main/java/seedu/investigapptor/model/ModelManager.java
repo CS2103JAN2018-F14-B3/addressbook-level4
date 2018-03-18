@@ -14,9 +14,9 @@ import seedu.investigapptor.commons.core.LogsCenter;
 import seedu.investigapptor.commons.events.model.InvestigapptorChangedEvent;
 import seedu.investigapptor.model.crimecase.CrimeCase;
 import seedu.investigapptor.model.crimecase.exceptions.DuplicateCrimeCaseException;
-import seedu.investigapptor.model.person.Person;
 import seedu.investigapptor.model.person.exceptions.DuplicatePersonException;
 import seedu.investigapptor.model.person.exceptions.PersonNotFoundException;
+import seedu.investigapptor.model.person.investigator.Investigator;
 import seedu.investigapptor.model.tag.Tag;
 import seedu.investigapptor.model.tag.exceptions.TagNotFoundException;
 
@@ -28,7 +28,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final Investigapptor investigapptor;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Investigator> filteredInvestigators;
     private final FilteredList<CrimeCase> filteredCrimeCases;
     /**
      * Initializes a ModelManager with the given investigapptor and userPrefs.
@@ -40,7 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
         logger.fine("Initializing with investigapptor book: " + investigapptor + " and user prefs " + userPrefs);
 
         this.investigapptor = new Investigapptor(investigapptor);
-        filteredPersons = new FilteredList<>(this.investigapptor.getPersonList());
+        filteredInvestigators = new FilteredList<>(this.investigapptor.getInvestigatorList());
         filteredCrimeCases = new FilteredList<>(this.investigapptor.getCrimeCaseList());
     }
 
@@ -65,24 +65,24 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public synchronized void deletePerson(Person target) throws PersonNotFoundException {
-        investigapptor.removePerson(target);
+    public synchronized void deleteInvestigator(Investigator target) throws PersonNotFoundException {
+        investigapptor.removeInvestigator(target);
         indicateInvestigapptorChanged();
     }
 
     @Override
-    public synchronized void addPerson(Person person) throws DuplicatePersonException {
-        investigapptor.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public synchronized void addInvestigator(Investigator investigator) throws DuplicatePersonException {
+        investigapptor.addInvestigator(investigator);
+        updateFilteredInvestigatorList(PREDICATE_SHOW_ALL_INVESTIGATORS);
         indicateInvestigapptorChanged();
     }
 
     @Override
-    public void updatePerson(Person target, Person editedPerson)
+    public void updateInvestigator(Investigator target, Investigator editedInvestigator)
             throws DuplicatePersonException, PersonNotFoundException {
-        requireAllNonNull(target, editedPerson);
+        requireAllNonNull(target, editedInvestigator);
 
-        investigapptor.updatePerson(target, editedPerson);
+        investigapptor.updateInvestigator(target, editedInvestigator);
         indicateInvestigapptorChanged();
     }
 
@@ -96,21 +96,21 @@ public class ModelManager extends ComponentManager implements Model {
     public void deleteTag(Tag toDelete) throws TagNotFoundException {
         investigapptor.deleteTag(toDelete);
     }
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Investigator List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code investigapptor}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return FXCollections.unmodifiableObservableList(filteredPersons);
+    public ObservableList<Investigator> getFilteredInvestigatorList() {
+        return FXCollections.unmodifiableObservableList(filteredInvestigators);
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredInvestigatorList(Predicate<Investigator> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredInvestigators.setPredicate(predicate);
     }
 
     //=========== Filtered Cases List Accessors =============================================================
@@ -145,7 +145,7 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return investigapptor.equals(other.investigapptor)
-                && filteredPersons.equals(other.filteredPersons)
+                && filteredInvestigators.equals(other.filteredInvestigators)
                 && filteredCrimeCases.equals(other.filteredCrimeCases);
     }
 

@@ -18,7 +18,9 @@ import seedu.investigapptor.model.ReadOnlyInvestigapptor;
 public class XmlSerializableInvestigapptor {
 
     @XmlElement
-    private List<XmlAdaptedPerson> persons;
+    private List<XmlAdaptedInvestigator> investigators;
+    @XmlElement
+    private List<XmlAdaptedCrimeCase> crimeCases;
     @XmlElement
     private List<XmlAdaptedTag> tags;
 
@@ -27,7 +29,8 @@ public class XmlSerializableInvestigapptor {
      * This empty constructor is required for marshalling.
      */
     public XmlSerializableInvestigapptor() {
-        persons = new ArrayList<>();
+        investigators = new ArrayList<>();
+        crimeCases = new ArrayList<>();
         tags = new ArrayList<>();
     }
 
@@ -36,7 +39,9 @@ public class XmlSerializableInvestigapptor {
      */
     public XmlSerializableInvestigapptor(ReadOnlyInvestigapptor src) {
         this();
-        persons.addAll(src.getPersonList().stream().map(XmlAdaptedPerson::new).collect(Collectors.toList()));
+        investigators.addAll(src.getInvestigatorList().stream()
+                .map(XmlAdaptedInvestigator::new).collect(Collectors.toList()));
+        crimeCases.addAll(src.getCrimeCaseList().stream().map(XmlAdaptedCrimeCase::new).collect(Collectors.toList()));
         tags.addAll(src.getTagList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));
     }
 
@@ -44,15 +49,18 @@ public class XmlSerializableInvestigapptor {
      * Converts this investigapptor into the model's {@code Investigapptor} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     * {@code XmlAdaptedPerson} or {@code XmlAdaptedTag}.
+     * {@code XmlAdaptedInvestigator} or {@code XmlAdaptedTag}.
      */
     public Investigapptor toModelType() throws IllegalValueException {
         Investigapptor investigapptor = new Investigapptor();
         for (XmlAdaptedTag t : tags) {
             investigapptor.addTag(t.toModelType());
         }
-        for (XmlAdaptedPerson p : persons) {
-            investigapptor.addPerson(p.toModelType());
+        for (XmlAdaptedInvestigator i : investigators) {
+            investigapptor.addInvestigator(i.toModelType());
+        }
+        for (XmlAdaptedCrimeCase c : crimeCases) {
+            investigapptor.addCrimeCase(c.toModelType());
         }
         return investigapptor;
     }
@@ -67,7 +75,7 @@ public class XmlSerializableInvestigapptor {
             return false;
         }
 
-        XmlSerializableInvestigapptor otherAb = (XmlSerializableInvestigapptor) other;
-        return persons.equals(otherAb.persons) && tags.equals(otherAb.tags);
+        XmlSerializableInvestigapptor otherIa = (XmlSerializableInvestigapptor) other;
+        return investigators.equals(otherIa.investigators) && tags.equals(otherIa.tags);
     }
 }

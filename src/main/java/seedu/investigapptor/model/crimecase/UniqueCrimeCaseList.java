@@ -5,13 +5,13 @@ import static seedu.investigapptor.commons.util.CollectionUtil.requireAllNonNull
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.investigapptor.commons.util.CollectionUtil;
 import seedu.investigapptor.model.crimecase.exceptions.DuplicateCrimeCaseException;
-
 
 /**
  * A list of CrimeCases that enforces uniqueness between its elements and does not allow nulls.
@@ -31,6 +31,17 @@ public class UniqueCrimeCaseList implements Iterable<CrimeCase> {
     }
 
     /**
+     * Creates a UniqueTagList using given tags.
+     * Enforces no nulls.
+     */
+    public UniqueCrimeCaseList(ObservableList<CrimeCase> crimeCases) {
+        requireAllNonNull(crimeCases);
+        internalList.addAll(crimeCases);
+
+        assert CollectionUtil.elementsAreUnique(internalList);
+    }
+
+    /**
      * Returns all tags in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
@@ -42,9 +53,9 @@ public class UniqueCrimeCaseList implements Iterable<CrimeCase> {
     /**
      * Replaces the CrimeCases in this list with those in the argument tag list.
      */
-    public void setCrimeCases(Set<CrimeCase> tags) {
-        requireAllNonNull(tags);
-        internalList.setAll(tags);
+    public void setCrimeCases(List<CrimeCase> crimeCases) {
+        requireAllNonNull(crimeCases);
+        internalList.setAll(crimeCases);
         assert CollectionUtil.elementsAreUnique(internalList);
     }
 
