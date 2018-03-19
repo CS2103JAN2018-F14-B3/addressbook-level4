@@ -30,7 +30,7 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#registering-an-investigator-code-registerinvestigator-code">3.2. Registering an investigator: <code>registerInvestigator</code></a></li>
-<li><a href="#adding-a-case-code-addcase-code">3.3. Adding a case: <code>addCase</code></a></li>
+<li><a href="#adding-a-case-code-add-code">3.3. Adding a case: <code>add</code></a></li>
 <li><a href="#listing-all-investigators-code-listinvestigator-code">3.4. Listing all investigators : <code>listInvestigator</code></a></li>
 <li><a href="#listing-all-cases-code-listcase-code">3.5. Listing all cases : <code>listCase</code></a></li>
 <li><a href="#editing-an-investigator-code-editinvestigator-code">3.6. Editing an investigator : <code>editInvestigator</code></a></li>
@@ -208,11 +208,11 @@ An investigator can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-case-code-addcase-code"><a class="link" href="#adding-a-case-code-addcase-code">3.3. Adding a case: <code>addCase</code></a></h3>
+<h3 id="adding-a-case-code-add-code"><a class="link" href="#adding-a-case-code-add-code">3.3. Adding a case: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a case to the application<br>
-Format: <code>addCase n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-Alias: <code>aC</code></p>
+Format: <code>add [n/CASE_NAME] [d/DESCRIPTION] [i/INDEX] [s/START_DATE] [t/TAG]&#8230;&#8203;</code><br>
+Alias: <code>a</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -232,13 +232,13 @@ A case can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>addCase n/Geylang Rape d/Rape at geylang i/John Doe s/12/05/1994 t/Rape t/prostitution</code></p>
+<p><code>add n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994 t/Rape t/prostitution</code></p>
 </li>
 <li>
-<p><code>addCase n/Bedok Riot i/Tan Ah Kow s/12/05/2017 d/Riot at bedok 85 t/Rape t/prostitution</code></p>
+<p><code>add n/Bedok Riot i/3 s/12/05/2017 d/Riot at bedok 85 t/Rape t/prostitution</code></p>
 </li>
 <li>
-<p><code>aC n/Geylang Rape d/Rape at geylang i/John Doe s/12/05/1994</code></p>
+<p><code>a n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code></p>
 </li>
 </ul>
 </div>
@@ -838,7 +838,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-19 04:02:31 UTC
+Last updated 2018-03-19 04:05:25 UTC
 </div>
 </div>
 </body>
