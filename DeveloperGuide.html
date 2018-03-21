@@ -83,7 +83,11 @@
 </li>
 <li><a href="#product-scope">Appendix B: Product Scope</a></li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
+<li><a href="#use-cases">Appendix D: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-display-help-2">D.1. Use case: Display Help</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
 <li><a href="#product-survey">Appendix G: Product Survey</a></li>
@@ -2249,6 +2253,12 @@ to their search input.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">investigator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create a backup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to restore to past states</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">investigator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add case witnesses</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">classify witnesses under certain cases</p></td>
 </tr>
@@ -2524,8 +2534,40 @@ to their search input.</p>
 </li>
 </ol>
 </div>
+<div class="sect2">
+<h3 id="use-case-display-help-2"><a class="link" href="#use-case-display-help-2">D.1. Use case: Display Help</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User types in the new backup&#8217;s name</p>
+</li>
+<li>
+<p>Success message appears</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Backup&#8217;s name is not alphanumerical</p>
+<div class="paragraph">
+<p>Use case resumes at step 1</p>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
 </div>
 </div>
 </div>
@@ -2741,7 +2783,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-19 15:11:18 UTC
+Last updated 2018-03-21 09:33:14 UTC
 </div>
 </div>
 </body>
