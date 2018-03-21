@@ -19,6 +19,7 @@ import seedu.investigapptor.logic.commands.HistoryCommand;
 import seedu.investigapptor.logic.commands.ListCommand;
 import seedu.investigapptor.logic.commands.RedoCommand;
 import seedu.investigapptor.logic.commands.RegisterInvestigatorCommand;
+import seedu.investigapptor.logic.commands.RemoveCaseCommand;
 import seedu.investigapptor.logic.commands.SelectInvestigatorCommand;
 import seedu.investigapptor.logic.commands.UndoCommand;
 import seedu.investigapptor.logic.parser.exceptions.ParseException;
@@ -69,6 +70,10 @@ public class InvestigapptorParser {
         case DeleteInvestigatorCommand.COMMAND_WORD:
         case DeleteInvestigatorCommand.COMMAND_ALIAS:
             return new DeleteInvestigatorCommandParser().parse(arguments);
+
+        case RemoveCaseCommand.COMMAND_WORD:
+        case RemoveCaseCommand.COMMAND_ALIAS:
+            return new RemoveCaseCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
         case ClearCommand.COMMAND_ALIAS:
