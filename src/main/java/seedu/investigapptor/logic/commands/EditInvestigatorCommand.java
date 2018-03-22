@@ -33,7 +33,7 @@ import seedu.investigapptor.model.tag.Tag;
  */
 public class EditInvestigatorCommand extends UndoableCommand {
 
-    public static final String COMMAND_WORD = "editInvestigator";
+    public static final String COMMAND_WORD = "editInv";
     public static final String COMMAND_ALIAS = "eI";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the investigator identified "

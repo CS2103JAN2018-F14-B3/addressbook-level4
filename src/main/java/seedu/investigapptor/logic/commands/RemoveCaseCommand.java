@@ -16,8 +16,8 @@ import seedu.investigapptor.model.crimecase.exceptions.CrimeCaseNotFoundExceptio
  */
 public class RemoveCaseCommand extends UndoableCommand {
 
-    public static final String COMMAND_WORD = "remove";
-    public static final String COMMAND_ALIAS = "rem";
+    public static final String COMMAND_WORD = "deleteCase";
+    public static final String COMMAND_ALIAS = "dC";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the case identified by the index number used in the last listing of cases.\n"
