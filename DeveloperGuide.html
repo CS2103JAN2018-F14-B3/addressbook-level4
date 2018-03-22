@@ -51,6 +51,8 @@
 <li><a href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">4.5. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#investigator-class">4.7. Investigator Class</a></li>
+<li><a href="#creating-backup">4.8. Creating Backup</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1088,6 +1090,154 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="investigator-class"><a class="link" href="#investigator-class">4.7. Investigator Class</a></h3>
+<div class="paragraph">
+<p>The <code>Investigator</code> package is a extended from the <code>Person</code> package, allowing it to handle the basic functions of a <code>Person</code> package while
+having additional properties required for an investigator. The additional properties are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Rank</code></p>
+<div class="paragraph">
+<p>Stores the rank of the investigator</p>
+</div>
+</li>
+<li>
+<p><code>UniqueCrimeCaseList</code></p>
+<div class="paragraph">
+<p>Stores and manages all the CrimeCases which the investigator is in charge of.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="model"><a class="link" href="#model">4.7.1. Model</a></h4>
+<div class="paragraph">
+<p>Currently the <code>Investigator</code> is upcasted and stored in the <code>Investigapptor</code> 's <code>UniquePersonList</code>.
+This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
+functions.</p>
+</div>
+<div class="paragraph">
+<p>The code below is from the <code>syncWithMasterTagList</code> function. It shows that
+both Investigator and Person type are both return into the <code>UniquePersonList</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>if (person instanceof Investigator) {
+    Set&lt;CrimeCase&gt; cases = new HashSet&lt;&gt;();
+    Investigator inv = (Investigator) person;
+    inv.getCrimeCases().forEach(crimeCase -&gt; cases.add(crimeCase));
+    return new Investigator(person.getName(), person.getPhone(), person.getEmail(),
+            person.getAddress(), ((Investigator) person).getRank(), correctTagReferences, cases);
+}
+return new Person(
+        person.getName(), person.getPhone(), person.getEmail(), person.getAddress(), correctTagReferences);</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storage"><a class="link" href="#storage">4.7.2. Storage</a></h4>
+<div class="paragraph">
+<p>As Investigator has addition properties compared to Person, <code>XmlAdaptedInvestigator</code> is created to convert
+the <code>Investigator</code> into correct XML format. We had to also change the method of storing the in <code>Investigapptor</code>
+the different classes have to be converted and stored in the correct format. To accomplish this,
+two new methods were added which each return a person only list and a investigator only list to store them
+separately</p>
+</div>
+<div class="paragraph">
+<p>This function will return only <code>Investigator</code> in the list</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public ObservableList&lt;Investigator&gt; investigatorList() {
+    Iterator irt = iterator();
+    ObservableList&lt;Investigator&gt; investigators = FXCollections.observableArrayList();
+    while (irt.hasNext()) {
+        Object element = irt.next();
+        if (element instanceof Investigator) {
+            investigators.add((Investigator) element);
+        }
+    }
+    return investigators;
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function will only return <code>Person</code> in the list</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public ObservableList&lt;Person&gt; personOnlyList() {
+    Iterator irt = iterator();
+    ObservableList&lt;Person&gt; persons = FXCollections.observableArrayList();
+    while (irt.hasNext()) {
+        Object element = irt.next();
+        if (!(element instanceof Investigator)) {
+            persons.add((Person) element);
+        }
+    }
+    return persons;
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As more type of people are added, more function to differentiate the UniquePersonList.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-backup"><a class="link" href="#creating-backup">4.8. Creating Backup</a></h3>
+<div class="paragraph">
+<p>As investigators may want to save the current state of the application before progressing, they can do this
+by using the backup command and typing in a name for the backup.</p>
+</div>
+<div class="paragraph">
+<p>eg: backup 3rdMarch</p>
+</div>
+<div class="paragraph">
+<p>The data is saved whenever an <code>InvestigapptorChangeedEvent</code> is raised in the Model component</p>
+</div>
+<div class="paragraph">
+<p>This method is commonly called after adding, editing of deleting any information</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>private void indicateInvestigapptorChanged() {
+        raise(new InvestigapptorChangedEvent(investigapptor));
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The event contains information which will be passed to Storage component to start the saving sequence.
+In order to create our own backup xml, additional information such as filename has to be passed in.
+Hence a new event <code>InvestigapptorBackupEvent</code> is create for this specific.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public void backUpInvestigapptor(String fileName) {
+    raise(new InvestigapptorBackupEvent(investigapptor, fileName));
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>backupInvestigapptor</code> is call when the investigator uses the backup command and event is raised, The
+<code>Storage</code> package will handle the event and create a new backup.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
+    try {
+        backupInvestigapptor(event.data, event.fileName);
+    } catch (IOException e) {
+        raise(new DataSavingExceptionEvent(e));
+    }
+}</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2436,6 +2586,12 @@ on his or her expertise</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">investigator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save the information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to review them in the future</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">investigator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create a backup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">to restore to past states</p></td>
 </tr>
@@ -2966,7 +3122,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 14:22:41 UTC
+Last updated 2018-03-22 15:46:30 UTC
 </div>
 </div>
 </body>
