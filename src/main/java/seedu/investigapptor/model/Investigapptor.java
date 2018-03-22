@@ -282,6 +282,7 @@ public class Investigapptor implements ReadOnlyInvestigapptor {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Investigapptor // instanceof handles nulls
+                && this.cases.equals(((Investigapptor) other).cases)
                 && this.persons.equals(((Investigapptor) other).persons)
                 && this.tags.equalsOrderInsensitive(((Investigapptor) other).tags));
     }
@@ -289,6 +290,6 @@ public class Investigapptor implements ReadOnlyInvestigapptor {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(persons, tags);
+        return Objects.hash(cases, persons, tags);
     }
 }

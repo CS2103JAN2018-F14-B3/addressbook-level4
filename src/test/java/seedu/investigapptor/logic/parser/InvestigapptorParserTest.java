@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static seedu.investigapptor.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.investigapptor.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.investigapptor.testutil.TypicalIndexes.INDEX_FIRST_CASE;
 import static seedu.investigapptor.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -27,6 +28,7 @@ import seedu.investigapptor.logic.commands.HistoryCommand;
 import seedu.investigapptor.logic.commands.ListCommand;
 import seedu.investigapptor.logic.commands.RedoCommand;
 import seedu.investigapptor.logic.commands.RegisterInvestigatorCommand;
+import seedu.investigapptor.logic.commands.RemoveCaseCommand;
 import seedu.investigapptor.logic.commands.SelectInvestigatorCommand;
 import seedu.investigapptor.logic.commands.UndoCommand;
 import seedu.investigapptor.logic.parser.exceptions.ParseException;
@@ -109,6 +111,20 @@ public class InvestigapptorParserTest {
         DeleteInvestigatorCommand command = (DeleteInvestigatorCommand) parser.parseCommand(
                 DeleteInvestigatorCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteInvestigatorCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_remove() throws Exception {
+        RemoveCaseCommand command = (RemoveCaseCommand) parser.parseCommand(
+                RemoveCaseCommand.COMMAND_WORD + " " + INDEX_FIRST_CASE.getOneBased());
+        assertEquals(new RemoveCaseCommand(INDEX_FIRST_CASE), command);
+    }
+
+    @Test
+    public void parseCommand_removeAlias() throws Exception {
+        RemoveCaseCommand command = (RemoveCaseCommand) parser.parseCommand(
+                RemoveCaseCommand.COMMAND_ALIAS + " " + INDEX_FIRST_CASE.getOneBased());
+        assertEquals(new RemoveCaseCommand(INDEX_FIRST_CASE), command);
     }
 
     @Test
