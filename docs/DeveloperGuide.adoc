@@ -235,6 +235,102 @@ Classes used by multiple components are in the `seedu.investigapptorbook.commons
 This section describes some noteworthy details on how certain features are implemented.
 
 // tag::undoredo[]
+=== Password feature
+==== Reason for implementation
+As Investigapptor is a computer software that will likely to be installed on a shared computer,
+a password prompt is necessary in order to deter non-authorized users of the Investigapptor from
+gaining access into the application.
+
+==== Current Implementation
+To be updated
+
+=== Listing feature
+==== Reason for implementation
+Investigapptor allows for separate tab listing of cases and investigators on the user interface as it
+would provide visual aid for them in deciding which investigator to assign to which case. As an investigator who would
+want to list and view all currently registered investigators or assigned cases, the listing
+command would automatically swap between the 2 tabs respectively upon the listing input, bringing
+convenience to the investigator ultimately.
+
+==== Current Implementation
+The investigators/cases tabs are created with a `PersonListPanel`
+and `CrimeCaseListPanel` respectively, which are the main classes
+in charge of displaying the details of the investigators or crime cases.
+The list investigators/cases command would then display the respective
+tabs depending on the list argument.
+
+A `PersonListPanel` constructor is created with a constructor:
+[source,java]
+----
+public class PersonListPanel extends UiPart<Region> {
+    @Override
+    public PersonListPanel(ObservableList<Person> personList) {
+    /// PersonListPanel code
+    }
+}
+----
+The `PersonListPanel` is then initialised in the MainWindow class
+by taking in an unmodifiable list of Person as follows:
+[source,java]
+----
+    personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+----
+A `CrimeCaseListPanel` constructor is created with a constructor:
+[source,java]
+----
+public class CrimeCaseListPanel extends UiPart<Region> {
+    @Override
+    public CrimeCaseListPanel(ObservableList<CrimeCase> crimeCaseList) {
+    /// CrimeCaseListPanel code
+    }
+}
+----
+The `CrimeCaseListPanel` is then initialised in the MainWindow class by taking in
+an unmodifiable list of CrimeCase as follows:
+[source,java]
+----
+    crimeCaseListPanel = new CrimeCaseListPanel(logic.getFilteredCrimeCaseList());
+
+----
+
+The list investigators/cases command is handled in the logic component
+by a `ListCommand` object which takes in a list type as follows:
+[source,java]
+----
+ListCommand(String listType);
+----
+Depending on the `listType` input, a different list would be returned
+to the `model` component and trigger for a `SwapTabEvent`
+
+In the case of an 'investigators' `listType` input, the `model` gets
+updated as shown below
+[source, java]
+----
+model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            EventsCenter.getInstance().post(new SwapTabEvent(0));
+----
+
+In the case of an 'cases' `listType` input, the `model` gets
+updated as shown below
+[source, java]
+----
+model.updateFilteredCrimeCaseList(PREDICATE_SHOW_ALL_CASES);
+            EventsCenter.getInstance().post(new SwapTabEvent(1));
+----
+
+==== Alternatives Considered
+===== Aspect: Design of list
+* **Alternative 1 (Current Choice)**: Have the same `ListCommand` object
+for listing of investigators and cases.
+** Pros: Easier to code and requires less `Class` files.
+** Cons: Users have to type an extra space whenever they want to list something.
+
+* **Alternative 2 **: Separate into `ListInvestigators` and `ListCases`
+for listing of investigators and cases.
+** Pros: More object oriented style and can be treated as separate entities.
+** Cons: Requires much more modifications when other types of listing come into
+play in future versions (i.e `Witness`, `Evidence`).
+
 === Undo/Redo feature
 ==== Current Implementation
 
@@ -388,6 +484,112 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 === Configuration
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+
+=== Investigator Class
+
+The `Investigator` package is a extended from the `Person` package, allowing it to handle the basic functions of a `Person` package while
+having additional properties required for an investigator. The additional properties are:
+
+* `Rank`
++
+Stores the rank of the investigator
+
+* `UniqueCrimeCaseList`
++
+Stores and manages all the CrimeCases which the investigator is in charge of.
+
+==== Model
+
+Currently the `Investigator` is upcasted and stored in the `Investigapptor` 's `UniquePersonList`.
+This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
+functions.
+
+The code below is from the `syncWithMasterTagList` function. It shows that
+both Investigator and Person type are both return into the `UniquePersonList`.
+
+        if (person instanceof Investigator) {
+            Set<CrimeCase> cases = new HashSet<>();
+            Investigator inv = (Investigator) person;
+            inv.getCrimeCases().forEach(crimeCase -> cases.add(crimeCase));
+            return new Investigator(person.getName(), person.getPhone(), person.getEmail(),
+                    person.getAddress(), ((Investigator) person).getRank(), correctTagReferences, cases);
+        }
+        return new Person(
+                person.getName(), person.getPhone(), person.getEmail(), person.getAddress(), correctTagReferences);
+
+==== Storage
+
+As Investigator has addition properties compared to Person, `XmlAdaptedInvestigator` is created to convert
+the `Investigator` into correct XML format. We had to also change the method of storing the in `Investigapptor`
+the different classes have to be converted and stored in the correct format. To accomplish this,
+two new methods were added which each return a person only list and a investigator only list to store them
+separately
+
+This function will return only `Investigator` in the list
+
+    public ObservableList<Investigator> investigatorList() {
+        Iterator irt = iterator();
+        ObservableList<Investigator> investigators = FXCollections.observableArrayList();
+        while (irt.hasNext()) {
+            Object element = irt.next();
+            if (element instanceof Investigator) {
+                investigators.add((Investigator) element);
+            }
+        }
+        return investigators;
+    }
+
+This function will only return `Person` in the list
+
+    public ObservableList<Person> personOnlyList() {
+        Iterator irt = iterator();
+        ObservableList<Person> persons = FXCollections.observableArrayList();
+        while (irt.hasNext()) {
+            Object element = irt.next();
+            if (!(element instanceof Investigator)) {
+                persons.add((Person) element);
+            }
+        }
+        return persons;
+    }
+
+As more type of people are added, more function to differentiate the UniquePersonList.
+
+=== Creating Backup
+
+As investigators may want to save the current state of the application before progressing, they can do this
+by using the backup command and typing in a name for the backup.
+
+eg: backup 3rdMarch
+
+The data is saved whenever an `InvestigapptorChangeedEvent` is raised in the Model component
+
+This method is commonly called after adding, editing of deleting any information
+
+    private void indicateInvestigapptorChanged() {
+            raise(new InvestigapptorChangedEvent(investigapptor));
+        }
+
+The event contains information which will be passed to Storage component to start the saving sequence.
+In order to create our own backup xml, additional information such as filename has to be passed in.
+Hence a new event `InvestigapptorBackupEvent` is create for this specific.
+
+    public void backUpInvestigapptor(String fileName) {
+        raise(new InvestigapptorBackupEvent(investigapptor, fileName));
+    }
+
+`backupInvestigapptor` is call when the investigator uses the backup command and event is raised, The
+`Storage` package will handle the event and create a new backup.
+
+    public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
+        try {
+            backupInvestigapptor(event.data, event.fileName);
+        } catch (IOException e) {
+            raise(new DataSavingExceptionEvent(e));
+        }
+    }
+
 
 == Documentation
 
@@ -816,10 +1018,11 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 to their search input.
 
 * *Quentin Khoo*
-** *Major enhancement*: Support notifying investigators when they get assigned a case
-*** This would allow for investigators to be aware when they get assigned a case to solve.
-** *Minor enhancement*: Add command aliases for most commands
-*** These aliases can be used in place of the full commands for the investigator's convenience.
+** *Major enhancement*: Support access control by implementing a password prompt upon starting the application
+*** This would deter non-authorised users from accessing the application
+** *Minor enhancement*: Add UI support for listing investigators and crime cases
+*** This would provide convenience for the investigator in deciding which investigator to assign to which case depending
+on his or her expertise
 
 [appendix]
 == User Stories
@@ -881,6 +1084,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |investigator |find a case by name |locate details of case without having to go through the entire list
 
+|`* * *` |investigator |have a password for the application |deter non authorized users from accessing the application
+
 |`* *` |investigator |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone unauthorized from seeing them by accident
 
 |`* *` |investigator |automatically assign an investigator to a case |not have to manually assign an investigator
@@ -892,6 +1097,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |investigator |add a suspect |add suspects to a case
 
 |`*` |investigator |add evidence |add evidence to a case
+
+|`*` |investigator |save the information |to review them in the future
 
 |`*` |investigator |create a backup |to restore to past states
 
