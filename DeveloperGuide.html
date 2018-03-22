@@ -48,11 +48,13 @@
 <li><a href="#password-feature">4.1. Password feature</a></li>
 <li><a href="#listing-feature">4.2. Listing feature</a></li>
 <li><a href="#undo-redo-feature">4.3. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
-<li><a href="#investigator-class">4.7. Investigator Class</a></li>
-<li><a href="#creating-backup">4.8. Creating Backup</a></li>
+<li><a href="#find-investigators-according-to-its-tags-feature">4.4. Find investigators according to its tags feature</a></li>
+<li><a href="#calendar-graph-feature">4.5. Calendar/graph feature</a></li>
+<li><a href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+<li><a href="#investigator-class">4.9. Investigator Class</a></li>
+<li><a href="#creating-backup">4.10. Creating Backup</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1043,20 +1045,120 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></h3>
+<h3 id="find-investigators-according-to-its-tags-feature"><a class="link" href="#find-investigators-according-to-its-tags-feature">4.4. Find investigators according to its tags feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">4.4.1. Reason for Implementation</a></h4>
+<div class="paragraph">
+<p>The purpose of having tags associated to an investigator is to store certain information such as the team he is in
+and the level of his experience. One of the aims of Investigapptor is to provide ease in managing and retrieving information that is required.
+Hence, this implementation is in line with the aim where investigators that belongs to a certain team/category can be
+filtered out efficiently.</p>
+</div>
+<div class="paragraph">
+<p>Without this implementation, it is inefficient as the user may have to browse through <strong>all</strong> the listed investigators to find an investigator that belongs
+to a certain team/category.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.2. Current Implementation</a></h4>
+<div class="paragraph">
+<p>A command called <code>findInvestTags</code> was created under the logic component with the java class <code>FindInvestTagsCommand.java</code>. Additionally,
+a parser, <code>FindInvestTagsCommandParser.java</code> was being used to parse the arguments required for the command to work. This command
+will display the investigator(s) whose tags that matches with <strong>ANY</strong> of the arguments stated in the command.</p>
+</div>
+<div class="paragraph">
+<p>Under the main commands parser, <code>InvestigapptorParser.java</code>, a case scenario for <code>findInvestTags</code> alongside with its alias was being implemented.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">case</span> FindInvestTagsCommand.COMMAND_WORD:
+<span class="keyword">case</span> FindInvestTagsCommand.COMMAND_ALIAS:
+    <span class="keyword">return</span> <span class="keyword">new</span> FindInvestTagsCommandParser().parse(arguments);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The parser, <code>FindInvestTagsCommandParser()</code> will be invoked to parse the arguments specified by the user input with the following implementation.
+The comparison is done in lowercase to prevent any comparison errors due to case sensitivity.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindInvestTagsCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        <span class="predefined-type">String</span> trimmedArgs = args.trim();
+        <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, FindInvestTagsCommand.MESSAGE_USAGE));
+        }
+
+        <span class="predefined-type">String</span><span class="type">[]</span> nameKeywords = trimmedArgs.toLowerCase().split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s+</span><span class="delimiter">&quot;</span></span>);
+
+        <span class="keyword">return</span> <span class="keyword">new</span> FindInvestTagsCommand(<span class="keyword">new</span> TagContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(nameKeywords)));
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While parsing the arguments, a <code>TagContainsKeywordsPredicate</code> object was created to test whether any keywords
+matches with any tags of the investigator(s). The comparison was implemented in the following code segment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> test(Person person) {
+    <span class="keyword">return</span> keywords.stream().anyMatch(person.getTagsRaw()::contains);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the parsing the arguments, a <code>FindInvestTagsCommand</code> object will be constructed with the <code>TagContainsKeywordPredicate</code>
+object as the attribute and returned to <code>InvestigapptorParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>findInvestTags</code> command will then be executed and the observable list <code>filteredPersonList</code> will be updated with the investigators
+whose tags matches the predicate keywords. The following segment shows the execution code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="directive">public</span> CommandResult execute() {
+    model.updateFilteredPersonList(predicate);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result of the number of people listed will be shown under the <code>ResultDisplay</code> UI, and the investigators found
+in the <code>filteredPersonList</code> will be displayed under the <code>InvestigatorListPanel</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-graph-feature"><a class="link" href="#calendar-graph-feature">4.5. Calendar/graph feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">4.5.1. Reason for implementation</a></h4>
+<div class="paragraph">
+<p>Hand-over of cases is critical in investigation processes and such information has to be documented down.
+By having a calendar/graph for each case and investigator, it can provide a chronological flow of the investigators
+that has handled the case.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.2. Current implementation</a></h4>
+<div class="paragraph">
+<p>Usage of CalendarFX (To be updated - coming in v2.0)</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1087,13 +1189,13 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="investigator-class"><a class="link" href="#investigator-class">4.7. Investigator Class</a></h3>
+<h3 id="investigator-class"><a class="link" href="#investigator-class">4.9. Investigator Class</a></h3>
 <div class="paragraph">
 <p>The <code>Investigator</code> package is a extended from the <code>Person</code> package, allowing it to handle the basic functions of a <code>Person</code> package while
 having additional properties required for an investigator. The additional properties are:</p>
@@ -1115,7 +1217,7 @@ having additional properties required for an investigator. The additional proper
 </ul>
 </div>
 <div class="sect3">
-<h4 id="model"><a class="link" href="#model">4.7.1. Model</a></h4>
+<h4 id="model"><a class="link" href="#model">4.9.1. Model</a></h4>
 <div class="paragraph">
 <p>Currently the <code>Investigator</code> is upcasted and stored in the <code>Investigapptor</code> 's <code>UniquePersonList</code>.
 This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
@@ -1140,7 +1242,7 @@ return new Person(
 </div>
 </div>
 <div class="sect3">
-<h4 id="storage"><a class="link" href="#storage">4.7.2. Storage</a></h4>
+<h4 id="storage"><a class="link" href="#storage">4.9.2. Storage</a></h4>
 <div class="paragraph">
 <p>As Investigator has addition properties compared to Person, <code>XmlAdaptedInvestigator</code> is created to convert
 the <code>Investigator</code> into correct XML format. We had to also change the method of storing the in <code>Investigapptor</code>
@@ -1190,7 +1292,7 @@ separately</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-backup"><a class="link" href="#creating-backup">4.8. Creating Backup</a></h3>
+<h3 id="creating-backup"><a class="link" href="#creating-backup">4.10. Creating Backup</a></h3>
 <div class="paragraph">
 <p>As investigators may want to save the current state of the application before progressing, they can do this
 by using the backup command and typing in a name for the backup.</p>
@@ -2308,11 +2410,11 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major Enhancement</strong>: Support for evidence package (Add, Delete, Update, View, Search)</p>
+<p><strong>Major Enhancement</strong>: Support for calendar and graph</p>
 <div class="ulist">
 <ul>
 <li>
-<p>This feature allows cases to store evidences details related to the case.</p>
+<p>This feature allows an overview of the chronological flow of each case handover and number of cases handled by each investigator</p>
 </li>
 </ul>
 </div>
@@ -3122,7 +3224,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 15:46:30 UTC
+Last updated 2018-03-22 16:03:58 UTC
 </div>
 </div>
 </body>
