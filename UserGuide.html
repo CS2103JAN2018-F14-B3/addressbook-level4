@@ -29,18 +29,18 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#registering-an-investigator-code-registerinvestigator-code">3.2. Registering an investigator: <code>registerInvestigator</code></a></li>
-<li><a href="#adding-a-case-code-add-code">3.3. Adding a case: <code>add</code></a></li>
+<li><a href="#registering-an-investigator-code-addinv-code">3.2. Registering an investigator: <code>addInv</code></a></li>
+<li><a href="#adding-a-case-code-addcase-since-v1-1-code">3.3. Adding a case: <code>addCase [Since v1.1]</code></a></li>
 <li><a href="#listing-all-investigators-code-list-investigators-since-v1-2-code">3.4. Listing all investigators : <code>list investigators [Since v1.2]</code></a></li>
 <li><a href="#listing-all-cases-code-list-cases-since-v1-2-code">3.5. Listing all cases : <code>list cases [Since v1.2]</code></a></li>
-<li><a href="#editing-an-investigator-code-editinvestigator-code">3.6. Editing an investigator : <code>editInvestigator</code></a></li>
-<li><a href="#editing-a-case-code-editcase-code">3.7. Editing a case : <code>editCase</code></a></li>
-<li><a href="#locating-investigators-by-name-code-findinvestigator-code">3.8. Locating investigators by name: <code>findInvestigator</code></a></li>
-<li><a href="#locating-cases-by-name-code-findcase-code">3.9. Locating cases by name: <code>findCase</code></a></li>
+<li><a href="#editing-an-investigator-code-editinv-code">3.6. Editing an investigator : <code>editInv</code></a></li>
+<li><a href="#editing-a-case-code-editcase-coming-in-v1-4-code">3.7. Editing a case : <code>editCase [Coming in v1.4]</code></a></li>
+<li><a href="#locating-investigators-by-name-code-find-code">3.8. Locating investigators by name: <code>find</code></a></li>
+<li><a href="#locating-cases-by-name-code-findcase-coming-in-v1-3-code">3.9. Locating cases by name: <code>findCase [Coming in v1.3]</code></a></li>
 <li><a href="#locating-investigators-by-category-team-code-findinvesttags-code-code-since-v1-2-code">3.10. Locating investigators by category/team: <code>findInvestTags</code> <code>[Since v1.2]</code></a></li>
 <li><a href="#locating-cases-by-category-code-findcasetags-code-code-coming-in-v1-3-code">3.11. Locating cases by category: <code>findCaseTags</code> <code>[Coming in v1.3]</code></a></li>
-<li><a href="#deleting-an-investigator-code-deleteinvestigator-code">3.12. Deleting an investigator : <code>deleteInvestigator</code></a></li>
-<li><a href="#deleting-a-case-code-deletecase-code">3.13. Deleting a case : <code>deleteCase</code></a></li>
+<li><a href="#deleting-an-investigator-code-deleteinv-code">3.12. Deleting an investigator : <code>deleteInv</code></a></li>
+<li><a href="#deleting-a-case-code-deletecase-since-v1-2-code">3.13. Deleting a case : <code>deleteCase [Since v1.2]</code></a></li>
 <li><a href="#selecting-an-investigator-code-selectinvestigator-code">3.14. Selecting an investigator : <code>selectInvestigator</code></a></li>
 <li><a href="#selecting-a-case-code-selectcase-code">3.15. Selecting a case : <code>selectCase</code></a></li>
 <li><a href="#update-password-code-update-password-coming-in-v2-0-code">3.16. Update password : <code>update password [Coming in v2.0]</code></a></li>
@@ -176,11 +176,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="registering-an-investigator-code-registerinvestigator-code"><a class="link" href="#registering-an-investigator-code-registerinvestigator-code">3.2. Registering an investigator: <code>registerInvestigator</code></a></h3>
+<h3 id="registering-an-investigator-code-addinv-code"><a class="link" href="#registering-an-investigator-code-addinv-code">3.2. Registering an investigator: <code>addInv</code></a></h3>
 <div class="paragraph">
 <p>Registers an investigator to the application<br>
-Format: <code>registerInvestigator n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-Alias: <code>regInvest</code></p>
+Format: <code>addInv n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+Alias: <code>aI</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -201,23 +201,23 @@ An investigator can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>registerInvestigator n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/newcomer</code></p>
+<p><code>addInv n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/newcomer</code></p>
 </li>
 <li>
-<p><code>registerInvestigator n/Betsy Crowe t/teamA e/betsycrowe@example.com a/Tampines Street, Block 145 p/1234567</code></p>
+<p><code>addInv n/Betsy Crowe t/teamA e/betsycrowe@example.com a/Tampines Street, Block 145 p/1234567</code></p>
 </li>
 <li>
-<p><code>regInvest n/Lim Choo t/teamC e/choochoo@example.com a/Bedok Street, Block 789 p/1234567</code></p>
+<p><code>aI n/Lim Choo t/teamC e/choochoo@example.com a/Bedok Street, Block 789 p/1234567</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-case-code-add-code"><a class="link" href="#adding-a-case-code-add-code">3.3. Adding a case: <code>add</code></a></h3>
+<h3 id="adding-a-case-code-addcase-since-v1-1-code"><a class="link" href="#adding-a-case-code-addcase-since-v1-1-code">3.3. Adding a case: <code>addCase [Since v1.1]</code></a></h3>
 <div class="paragraph">
 <p>Adds a case to the application<br>
-Format: <code>add [n/CASE_NAME] [d/DESCRIPTION] [i/INDEX] [s/START_DATE] [t/TAG]&#8230;&#8203;</code><br>
-Alias: <code>a</code></p>
+Format: <code>addCase [n/CASE_NAME] [d/DESCRIPTION] [i/INDEX] [s/START_DATE] [t/TAG]&#8230;&#8203;</code><br>
+Alias: <code>aC</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -237,13 +237,13 @@ A case can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994 t/Rape t/prostitution</code></p>
+<p><code>addCase n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994 t/Rape t/prostitution</code></p>
 </li>
 <li>
-<p><code>add n/Bedok Riot i/3 s/12/05/2017 d/Riot at bedok 85 t/Rape t/prostitution</code></p>
+<p><code>addCase n/Bedok Riot i/3 s/12/05/2017 d/Riot at bedok 85 t/Rape t/prostitution</code></p>
 </li>
 <li>
-<p><code>a n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code></p>
+<p><code>aC n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code></p>
 </li>
 </ul>
 </div>
@@ -252,23 +252,23 @@ A case can have any number of tags (including 0)
 <h3 id="listing-all-investigators-code-list-investigators-since-v1-2-code"><a class="link" href="#listing-all-investigators-code-list-investigators-since-v1-2-code">3.4. Listing all investigators : <code>list investigators [Since v1.2]</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all investigators in the Investigapptor.<br>
-Format: <code>list</code><br>
-Alias: <code>lI</code></p>
+Format: <code>list investigators</code><br>
+Alias: <code>l investigators</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="listing-all-cases-code-list-cases-since-v1-2-code"><a class="link" href="#listing-all-cases-code-list-cases-since-v1-2-code">3.5. Listing all cases : <code>list cases [Since v1.2]</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all cases in the Investigapptor.<br>
-Format: <code>listCase</code><br>
-Alias: <code>lC</code></p>
+Format: <code>list cases</code><br>
+Alias: <code>l cases</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-investigator-code-editinvestigator-code"><a class="link" href="#editing-an-investigator-code-editinvestigator-code">3.6. Editing an investigator : <code>editInvestigator</code></a></h3>
+<h3 id="editing-an-investigator-code-editinv-code"><a class="link" href="#editing-an-investigator-code-editinv-code">3.6. Editing an investigator : <code>editInv</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing investigator in the Investigapptor.<br>
-Format: <code>editInvestigator INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+Format: <code>editInv INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 Alias: <code>eI</code></p>
 </div>
 <div class="sidebarblock">
@@ -300,7 +300,7 @@ Alias: <code>eI</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editInvestigator 1 p/91234567 e/johndoe@example.com</code><br>
+<p><code>editInv 1 p/91234567 e/johndoe@example.com</code><br>
 Edits the phone number and email address of the 1st investigator to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
@@ -311,7 +311,7 @@ Edits the name of the 2nd investigator to be <code>Betsy Crower</code> and clear
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-case-code-editcase-code"><a class="link" href="#editing-a-case-code-editcase-code">3.7. Editing a case : <code>editCase</code></a></h3>
+<h3 id="editing-a-case-code-editcase-coming-in-v1-4-code"><a class="link" href="#editing-a-case-code-editcase-coming-in-v1-4-code">3.7. Editing a case : <code>editCase [Coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing case in the Investigapptor.<br>
 Format: <code>editCase INDEX [n/NAME] [d/DESCRIPTION] [i/INVESTIGATOR] [sd/STARTDATE] [s/STATUS] [t/TAG]&#8230;&#8203;</code><br>
@@ -357,7 +357,7 @@ Edits the investigator of the 2nd case to be <code>Betsy Crower</code> and clear
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-investigators-by-name-code-findinvestigator-code"><a class="link" href="#locating-investigators-by-name-code-findinvestigator-code">3.8. Locating investigators by name: <code>findInvestigator</code></a></h3>
+<h3 id="locating-investigators-by-name-code-find-code"><a class="link" href="#locating-investigators-by-name-code-find-code">3.8. Locating investigators by name: <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds investigators whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
@@ -392,7 +392,7 @@ Alias: <code>fI</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findInvestigator John</code><br>
+<p><code>find John</code><br>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
@@ -403,10 +403,10 @@ Returns any investigators having names <code>Betsy</code>, <code>Tim</code>, or 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-cases-by-name-code-findcase-code"><a class="link" href="#locating-cases-by-name-code-findcase-code">3.9. Locating cases by name: <code>findCase</code></a></h3>
+<h3 id="locating-cases-by-name-code-findcase-coming-in-v1-3-code"><a class="link" href="#locating-cases-by-name-code-findcase-coming-in-v1-3-code">3.9. Locating cases by name: <code>findCase [Coming in v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Finds cases whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+Format: <code>findCase KEYWORD [MORE_KEYWORDS]</code><br>
 Alias: <code>fC</code></p>
 </div>
 <div class="sidebarblock">
@@ -501,10 +501,10 @@ Returns investigator(s) having tags <code>teamc</code>, <code>newbie</code>, OR 
 
 </div>
 <div class="sect2">
-<h3 id="deleting-an-investigator-code-deleteinvestigator-code"><a class="link" href="#deleting-an-investigator-code-deleteinvestigator-code">3.12. Deleting an investigator : <code>deleteInvestigator</code></a></h3>
+<h3 id="deleting-an-investigator-code-deleteinv-code"><a class="link" href="#deleting-an-investigator-code-deleteinv-code">3.12. Deleting an investigator : <code>deleteInv</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
-Format: <code>deleteInvestigator INDEX</code><br>
+Format: <code>deleteInv INDEX</code><br>
 Alias: <code>dI</code></p>
 </div>
 <div class="sidebarblock">
@@ -530,20 +530,20 @@ Alias: <code>dI</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listInvestigator</code><br>
-<code>deleteInvestigator 2</code><br>
+<p><code>list investigator</code><br>
+<code>deleteInv 2</code><br>
 Deletes the 2nd investigator in the address book.</p>
 </li>
 <li>
-<p><code>findInvestigator Betsy</code><br>
+<p><code>find Betsy</code><br>
 <code>dI 1</code><br>
-Deletes the 1st investigator in the results of the <code>findInvestigator</code> command.</p>
+Deletes the 1st investigator in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-case-code-deletecase-code"><a class="link" href="#deleting-a-case-code-deletecase-code">3.13. Deleting a case : <code>deleteCase</code></a></h3>
+<h3 id="deleting-a-case-code-deletecase-since-v1-2-code"><a class="link" href="#deleting-a-case-code-deletecase-since-v1-2-code">3.13. Deleting a case : <code>deleteCase [Since v1.2]</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified case from the address book.<br>
 Format: <code>deleteCase INDEX</code><br>
@@ -572,7 +572,7 @@ Alias: <code>dC</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listCase</code><br>
+<p><code>list case</code><br>
 <code>deleteCase 2</code><br>
 Deletes the 2nd case in the address book.</p>
 </li>
@@ -619,7 +619,7 @@ Alias: <code>selectInvest</code></p>
 Selects the 2nd person in the results of the <code>list</code> command.</p>
 </li>
 <li>
-<p><code>findInvestigator Betsy</code><br>
+<p><code>find Betsy</code><br>
 <code>selectInvest 1</code><br>
 Selects the 1st person in the results of the <code>find</code> command.</p>
 </li>
@@ -660,9 +660,9 @@ Alias: <code>sC</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listCase</code><br>
+<p><code>list case</code><br>
 <code>selectCase 2</code><br>
-Selects the 2nd case in the results of the <code>listCase</code> command.</p>
+Selects the 2nd case in the results of the <code>list case</code> command.</p>
 </li>
 <li>
 <p><code>findCase murder</code><br>
@@ -671,7 +671,7 @@ Selects the 1st case in the results of the <code>findCase</code> command.</p>
 </li>
 <li>
 <p><code>sC 3</code><br>
-Selects the 3rd case in the listed panel listCase.</p>
+Selects the 3rd case in the listed panel list case.</p>
 </li>
 </ul>
 </div>
@@ -907,7 +907,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 19:18:08 UTC
+Last updated 2018-03-23 02:22:26 UTC
 </div>
 </div>
 </body>
