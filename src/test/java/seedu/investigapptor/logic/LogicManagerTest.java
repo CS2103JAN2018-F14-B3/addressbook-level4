@@ -34,7 +34,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "deleteInvestigator 9";
+        String deleteCommand = "deleteInv 9";
         assertCommandException(deleteCommand, MESSAGE_INVALID_INVESTIGATOR_DISPLAYED_INDEX);
         assertHistoryCorrect(deleteCommand);
     }

@@ -249,8 +249,9 @@ public class Investigapptor implements ReadOnlyInvestigapptor {
 
     @Override
     public String toString() {
-        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() + " tags";
-        // TODO: refine later
+        return  cases.asObservableList().size() + " cases, "
+                + persons.asObservableList().size() + " persons, "
+                + tags.asObservableList().size() + " tags";
     }
 
     @Override
