@@ -16,7 +16,7 @@ import seedu.investigapptor.model.person.exceptions.PersonNotFoundException;
  */
 public class DeleteInvestigatorCommand extends UndoableCommand {
 
-    public static final String COMMAND_WORD = "deleteInvestigator";
+    public static final String COMMAND_WORD = "deleteInv";
     public static final String COMMAND_ALIAS = "dI";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
