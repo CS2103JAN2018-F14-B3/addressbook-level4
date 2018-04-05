@@ -14,7 +14,6 @@ import seedu.investigapptor.logic.commands.Command;
 import seedu.investigapptor.logic.commands.DeleteCaseCommand;
 import seedu.investigapptor.logic.commands.DeleteInvestigatorCommand;
 import seedu.investigapptor.logic.commands.EditCaseCommand;
-import seedu.investigapptor.logic.commands.EditInvestigatorCommand;
 import seedu.investigapptor.logic.commands.ExitCommand;
 import seedu.investigapptor.logic.commands.FindCaseCommand;
 import seedu.investigapptor.logic.commands.FindCaseTagsCommand;
