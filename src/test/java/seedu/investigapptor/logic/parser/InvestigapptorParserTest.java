@@ -18,8 +18,6 @@ import org.junit.rules.ExpectedException;
 import seedu.investigapptor.logic.commands.AddCaseCommand;
 import seedu.investigapptor.logic.commands.ClearCommand;
 import seedu.investigapptor.logic.commands.DeleteInvestigatorCommand;
-import seedu.investigapptor.logic.commands.EditInvestigatorCommand;
-import seedu.investigapptor.logic.commands.EditInvestigatorCommand.EditPersonDescriptor;
 import seedu.investigapptor.logic.commands.ExitCommand;
 import seedu.investigapptor.logic.commands.FindCaseCommand;
 import seedu.investigapptor.logic.commands.FindInvestigatorCommand;
@@ -39,23 +37,17 @@ import seedu.investigapptor.model.UserPrefs;
 import seedu.investigapptor.model.crimecase.CaseNameContainsKeywordsPredicate;
 import seedu.investigapptor.model.crimecase.CrimeCase;
 import seedu.investigapptor.model.person.NameContainsKeywordsPredicate;
-import seedu.investigapptor.model.person.Person;
 import seedu.investigapptor.model.person.investigator.Investigator;
 import seedu.investigapptor.testutil.CrimeCaseBuilder;
 import seedu.investigapptor.testutil.CrimeCaseUtil;
-import seedu.investigapptor.testutil.EditPersonDescriptorBuilder;
 import seedu.investigapptor.testutil.InvestigatorBuilder;
 import seedu.investigapptor.testutil.InvestigatorUtil;
-import seedu.investigapptor.testutil.PersonBuilder;
-import seedu.investigapptor.testutil.PersonUtil;
 
 public class InvestigapptorParserTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-
-    private final InvestigapptorParser parser = new InvestigapptorParser();
     private Model model = new ModelManager(new Investigapptor(), new UserPrefs());
-
+    private final InvestigapptorParser parser = new InvestigapptorParser();
     @Test
     public void parseCommand_add() throws Exception {
         Investigator investigator = new InvestigatorBuilder().build();
