@@ -72,9 +72,9 @@ public class InvestigapptorParser {
         case EditCaseCommand.COMMAND_ALIAS:
             return new EditCaseCommandParser().parse(arguments);
 
-        case EditInvestigatorCommand.COMMAND_WORD:
-        case EditInvestigatorCommand.COMMAND_ALIAS:
-            return new EditInvestigatorCommandParser().parse(arguments);
+        //case EditInvestigatorCommand.COMMAND_WORD:
+        //case EditInvestigatorCommand.COMMAND_ALIAS:
+        //    return new EditInvestigatorCommandParser().parse(arguments);
 
         case SelectInvestigatorCommand.COMMAND_WORD:
         case SelectInvestigatorCommand.COMMAND_ALIAS:
