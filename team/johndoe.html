@@ -166,7 +166,8 @@ Alias: <code>u</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the investigapptor&#8217;s content (<code>addinvestigator</code>, <code>deleteinvestigator</code>, <code>editinvestigator</code>,
+ <code>addcase</code>, <code>deletecase</code>, <code>editcase</code>, <code>close</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -178,21 +179,21 @@ Alias: <code>u</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>deletecase 1</code><br>
+<code>listcases</code><br>
+<code>undo</code> (reverses the <code>deletecase 1</code> command)<br></p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
+<p><code>selectcase 1</code><br>
+<code>listcases</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>deletecase 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> (reverses the <code>deletecase 1</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -210,21 +211,21 @@ Alias: <code>r</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><code>deletecase 1</code><br>
+<code>undo</code> (reverses the <code>deletecase 1</code> command)<br>
+<code>redo</code> (reapplies the <code>deletecase 1</code> command)<br></p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>deletecase 1</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>deletecase 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>undo</code> (reverses the <code>deletecase 1</code> command)<br>
+<code>redo</code> (reapplies the <code>deletecase 1</code> command)<br>
 <code>redo</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
@@ -719,7 +720,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 19:46:11 UTC
+Last updated 2018-04-06 04:57:34 UTC
 </div>
 </div>
 </body>
