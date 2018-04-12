@@ -115,7 +115,21 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Investigapptor is a one-stop solution for investigators to make managing cases as simple, straightforward, and efficient as possible.</p>
+<p>Investigapptor is desktop application for a team of professional
+investigators to easily manage crime cases that have been
+delegated to them.</p>
+</div>
+<div class="paragraph">
+<p>Investigapptor comes with many useful features for investigators and
+their team members such as assigning investigators to a crime case, listing investigators
+based on their expertise so that you can solve crime cases more effienctly ande ffectively.</p>
+</div>
+<div class="paragraph">
+<p>Investigapptor v1.5 is available for Windows, Mac OS X, Linux and Unix operating systems.</p>
+</div>
+<div class="paragraph">
+<p>To get started, go to <a href="#Quick Start">[Quick Start]</a> for information on how to set
+up Investigapptor.</p>
 </div>
 </div>
 </div>
@@ -130,7 +144,11 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
+<p><strong>JDK <code>1.8.0_60</code></strong> or later<br>
+Download at <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a></p>
+</li>
+</ol>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -144,7 +162,11 @@ This app will not work with earlier versions of Java 8.
 </tr>
 </table>
 </div>
-</li>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><strong>IntelliJ</strong> IDE</p>
 <div class="admonitionblock note">
@@ -166,6 +188,10 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </div>
 <div class="sect2">
 <h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<div class="paragraph">
+<p>In order to start coding on Investigapptor, you first need to follow the step belows to set up an
+local Investigapptor project on your computer.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -317,16 +343,21 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section will explain structure of the Investigapptor and what each component of the
+Investigapptor does. WIth a clear understanding of the design, it becomes much easier for you
+to identify where and how your enhancement should be implemented</p>
+</div>
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
+<div class="paragraph">
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
-</div>
-<div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -341,15 +372,15 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializing the components in the correct sequence, and connects them up with each other.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shutting down the components and invokes cleanup method where necessary.</p>
 </li>
 </ul>
 </div>
@@ -1203,20 +1234,76 @@ that has handled the case.</p>
 <div class="sect2">
 <h3 id="investigator-class"><a class="link" href="#investigator-class">4.9. Investigator Class</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">4.9.1. Reason for Implementation</a></h4>
+<h4 id="investigator-package"><a class="link" href="#investigator-package">4.9.1. Investigator Package</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">Reason for Implementation</a></h5>
 <div class="paragraph">
-<p>As the base person class provided by the addressbook only has basic capability to store simple information such name and
+<p>As person class provided by the addressbook only has basic capability to store simple information such name and
 phone number, we had to create a new <code>Investigator</code> package which can store and handle a list of <code>CrimeCases</code> which is a core
- requirement for our product to work. We chose not to modify the <code>Person</code> package but instead extend from it as it will allow the ease of adding new
-  type of person object in the future such as suspects or witnesses.</p>
+requirement for our product to work. We chose not to modify the <code>Person</code> package but instead extend from it as it will be easier
+for you to implement new type of person object in the future such as suspects or witnesses.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.9.2. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h5>
 <div class="paragraph">
 <p>Currently the <code>Investigator</code> extends from the <code>Person</code> class, and the additional two properties the are:</p>
 </div>
-<div class="ulist">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 18.0327%;">
+<col style="width: 16.3934%;">
+<col style="width: 32.7868%;">
+<col style="width: 32.7871%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Composition Of</th>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Name(“Jon Doe”)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the name of the person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Phone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Phone(9123874)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores an <code>int</code> that represents the phone number of the person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Email(“<a href="mailto:JohnD@gmail.com">JohnD@gmail.com</a>”)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the email of the person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EndDate("Baker Street #01-04")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the address of the person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Investigator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rank</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Status('1')</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store a <code>String</code> that represent a int value that can be converted to the appropriate <a href="#Rank">[Rank]</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Investigator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UniqueCrimeCaseList</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Status()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>UniqueCrimeCaseList</code> that contains all the cases the investigator is in charged of</p></td>
+</tr>
+</tbody>
+</table>
+<div id="Rank" class="ulist">
 <ul>
 <li>
 <p><code>Rank</code></p>
@@ -1270,6 +1357,7 @@ phone number, we had to create a new <code>Investigator</code> package which can
 </li>
 </ul>
 </div>
+</div>
 <div class="sect4">
 <h5 id="model"><a class="link" href="#model">Model</a></h5>
 <div class="paragraph">
@@ -1277,22 +1365,15 @@ phone number, we had to create a new <code>Investigator</code> package which can
 This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
 functions.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/investigatorComponent.png" alt="invest-com" width="790">
+</div>
+<div class="title">Figure 11. Investigator in Model Component</div>
+</div>
 <div class="paragraph">
 <p>The code below is from the <code>syncWithMasterTagList</code> function. It shows that
 both Investigator and Person type are both return into the <code>UniquePersonList</code>.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>if (person instanceof Investigator) {
-    Set&lt;CrimeCase&gt; cases = new HashSet&lt;&gt;();
-    Investigator inv = (Investigator) person;
-    inv.getCrimeCases().forEach(crimeCase -&gt; cases.add(crimeCase));
-    return new Investigator(person.getName(), person.getPhone(), person.getEmail(),
-            person.getAddress(), ((Investigator) person).getRank(), correctTagReferences, cases);
-}
-return new Person(
-        person.getName(), person.getPhone(), person.getEmail(), person.getAddress(), correctTagReferences);</pre>
-</div>
 </div>
 </div>
 <div class="sect4">
@@ -1341,7 +1422,277 @@ separately</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As more type of people are added, more function to differentiate the UniquePersonList.</p>
+<p>As the <code>Investigator</code> has to store multiple <code>CrimeCase</code> , instead of store the whole <code>CrimeCase</code> and all
+its details inside of the <code>XmlAdaptedInvestigator</code>, we stored the hashcode instead to
+reduce the amount of space used for storage.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-interaction-between-investigator-and-crimecase"><a class="link" href="#aspect-interaction-between-investigator-and-crimecase">Aspect: Interaction between Investigator and CrimeCase</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use mutual reference between Investigator and CrimeCase</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy and fast to find relation between Investigator and CrimeCase by using the reference</p>
+</li>
+<li>
+<p>Cons: Hard to implement due to the undo/redo feature due to creating multiple <code>Investigapptor</code> hence the reference
+has to be correct for each instance.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using Association class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement. More compatible with the undo/redo feature</p>
+</li>
+<li>
+<p>Cons: Slower due to having to search through all the association class to find all all the connected
+<code>Investigator</code> and <code>CrimeCase</code>. More duplicates in the XML file.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-investigator-command"><a class="link" href="#add-investigator-command">4.9.2. Add Investigator Command</a></h4>
+<div class="paragraph">
+<p>The <code>addInvestigatorCommand</code> will create an instance of the Investigator class and store it in the Investigapptor.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-6"><a class="link" href="#reason-for-implementation-6">Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>addInvestigatorCommand</code> is important as you would want to be able to add your own investigator details into the
+investigapptor before you can start editing and managing with the other commands.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>addInvestigatorCommand</code> is created when the command word <code>addinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
+to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The
+add investigator command will then create a Investigator instance and pass it from the logic component to the model component.
+The model then recreates the Investigator instance and store it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddInvestigatorSequenceDiagram.png" alt="add-invest" width="790">
+</div>
+<div class="title">Figure 12. Add Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
+the wrong instance. In order to fix this, hashcode is used to identify the correct the CrimeCase and set the correct reference.
+This is done by the convertHashtoCases method in the Investigapptor as show below.</p>
+</div>
+<div class="paragraph">
+<p><strong>convertHashtoCases</strong><br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>for (CrimeCase c : cases) {
+    if (c.hashCode() == i) {
+        try {
+            key.addCrimeCase(c);
+        } catch (DuplicateCrimeCaseException e) {
+            throw new AssertionError("duplicate case");
+        }
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml"><a class="link" href="#aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml">Aspect: Setting up Reference between <code>Investigator</code> and <code>CrimeCase</code> when loading the XML</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using hashcode to reference <code>CrimeCase</code> when adding</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The <code>Investigator</code> will be able to find correct <code>CrimeCase</code> to reference despite having multiple instances.
+Storage takes lesser space as only the hashcode is required.</p>
+</li>
+<li>
+<p>Cons: Have to scan every <code>CrimeCase</code> for each <code>CrimeCase</code> belonging to the Investigator.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>**Alternative 2: Saving the whole <code>CrimeCase</code> inside the XML</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to reference the correct <code>CrimeCase</code> after loading the XML.</p>
+</li>
+<li>
+<p>Cons: Takes up a lot of storage as two copy <code>CrimeCase</code> has to be saved, one in <code>UniqueCrimeCaseList</code>
+and one in the <code>Investigator</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-investigator"><a class="link" href="#delete-investigator">4.9.3. Delete Investigator</a></h4>
+<div class="paragraph">
+<p>The <code>deleteInvestigatorCommand</code> will find and delete the specified Investigator in the Investigapptor.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>deleteInvestigatorCommand</code> is important as you may not longer wish to store certain investigator or have made a mistake when
+add the investigator.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>deleteInvestigatorCommand</code> is created when the command word <code>deleteinvestigator</code> is
+detected in the user input. It will then check if the index given is valid. If the index
+ is valid, it will check if the investigator at the index if it&#8217;s <code>UniqueCaseList</code> is empty.
+ If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>. The <code>ModelManager</code> will then call
+<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
+<code>persons</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteInvestigatorSequenceDiagram.png" alt="delete-invest" width="790">
+</div>
+<div class="title">Figure 13. Delete Investigator Sequence Diagram</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-method-of-removing-investigator"><a class="link" href="#aspect-method-of-removing-investigator">Aspect: Method of removing investigator</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Fully delete the investigator</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, no further issues after deleting the investigator.</p>
+</li>
+<li>
+<p>Cons: No longer able to retrieve it after deleted, other than undo.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Archive the investigator</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able bring any investigator out of archive.</p>
+</li>
+<li>
+<p>Cons: Complicated to implement, does not actually delete the investigator and may cause build up of unwanted data.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-investigator"><a class="link" href="#edit-investigator">4.9.4. Edit Investigator</a></h4>
+<div class="paragraph">
+<p>The <code>EditInvestigatorCommand</code> will recreate an instance of the Investigator class that exist and store it in the Investigapptor.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>EditInvestigatorCommand</code> is important as you would want to be able to edit an investigator&#8217;s details in the
+investigapptor rather than having to delete and add a new investigator.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>EditInvestigatorCommand</code> is created when the command word <code>editinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
+to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The <code>EditInvestigatorCommand</code>
+will then create a Investigator instance using both the old and new information and pass it from the logic component to the model component.
+The model then recreates the Investigator instance and replace the old investigator with the new one.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
+</div>
+<div class="title">Figure 14. Editing Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>After editing the investigator, the all the cases referencing the old investigator has to
+ be updated to ensure the that the cases point to the correct investigator. In order to do this, the <code>Investigapptor</code>
+ will have to recreate all the <code>CrimeCases</code> that belong to the investigator with the new <code>Investigator</code>. Once
+ all the <code>CrimeCases</code> are recreated, they will be added to new <code>Investigator</code> and finally stored
+ in <code>persons</code> of the <code>Investigapptor</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-4"><a class="link" href="#design-consideration-4">Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code">Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Recreate every <code>CrimeCase</code> with the new value</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: By recreating the <code>CrimeCase</code>, we are able to set the <code>Investigator</code> to be final inside the <code>CrimeCase</code>.
+This will help avoid bugs when redoing and undoing.</p>
+</li>
+<li>
+<p>Cons: Each edit requires more work as <code>CrimeCase</code> has to be remove and recreated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Change <code>CrimeCase</code> 's investigator to be not final, so that direct change can be made.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to change the each CrimeCase as it does not need to be recreated.</p>
+</li>
+<li>
+<p>Cons: <code>Investigator</code> in <code>CrimeCase</code> will no longer be final. This however involve the <code>Invesetigator</code> to
+modify <code>CrimeCase</code>, which result in bad coupling.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1349,7 +1700,7 @@ separately</p>
 <div class="sect2">
 <h3 id="code-crimecase-code-package"><a class="link" href="#code-crimecase-code-package">4.10. <code>crimecase</code> Package</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-6"><a class="link" href="#reason-for-implementation-6">4.10.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">4.10.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>As Investigapptor is a tool for managing investigations, the ability to store information about a case is essential.</p>
 </div>
@@ -1442,7 +1793,7 @@ separately</p>
 <div class="sect2">
 <h3 id="adding-cases-feature"><a class="link" href="#adding-cases-feature">4.11. Adding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">4.11.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-10"><a class="link" href="#reason-for-implementation-10">4.11.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>To be able to manage cases, investigators should have the ability to add case details into the application.</p>
 </div>
@@ -1501,7 +1852,7 @@ separately</p>
 <div class="sect2">
 <h3 id="deleting-cases-feature"><a class="link" href="#deleting-cases-feature">4.12. Deleting cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">4.12.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-11"><a class="link" href="#reason-for-implementation-11">4.12.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>Sometimes, cases are added by error or there is no need to continue management of a case. Investigators should have a method to remove a case from the application.</p>
 </div>
@@ -1555,7 +1906,7 @@ separately</p>
 <div class="sect2">
 <h3 id="finding-cases-feature"><a class="link" href="#finding-cases-feature">4.13. Finding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">4.13.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">4.13.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>To manage large numbers of cases, having a feature that would allow investigators to search the list of cases by name would be extremely helpful. If an investigator is looking for a particular case, it would be extremely inefficient and time-consuming to have to manually browse through all the cases. Hence, being able to find cases by name can help to increase productivity workflow and efficiency.</p>
 </div>
@@ -1604,7 +1955,7 @@ separately</p>
 <div class="sect2">
 <h3 id="creating-backup"><a class="link" href="#creating-backup">4.14. Creating Backup</a></h3>
 <div class="paragraph">
-<p>As investigators may want to save the current state of the application before progressing, they can do this
+<p>As investigators may want to save the current state of the Investigapptor before progressing, they can do this
 by using the backup command and typing in a name for the backup.</p>
 </div>
 <div class="paragraph">
@@ -1713,7 +2064,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3547,7 +3898,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 07:33:56 UTC
+Last updated 2018-04-12 13:30:13 UTC
 </div>
 </div>
 </body>
