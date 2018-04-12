@@ -58,7 +58,9 @@
 <li><a href="#adding-cases-feature">4.11. Adding cases feature</a></li>
 <li><a href="#deleting-cases-feature">4.12. Deleting cases feature</a></li>
 <li><a href="#finding-cases-feature">4.13. Finding cases feature</a></li>
-<li><a href="#creating-backup">4.14. Creating Backup</a></li>
+<li><a href="#selecting-cases-feature">4.14. Selecting cases feature</a></li>
+<li><a href="#editing-cases-feature">4.15. Editing cases feature</a></li>
+<li><a href="#creating-backup">4.16. Creating Backup</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1706,7 +1708,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented"><a class="link" href="#how-it-is-implemented">4.10.2. How it is implemented</a></h4>
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.10.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>Each attribute of a case, such as the case name, description, status, etc. are classes in the <code>crimecase</code> package. Each of the classes provide utility methods to check the validity of the string to be stored, retrieve the string that is stored, and obtain the hash code of the object.</p>
 </div>
@@ -1799,7 +1801,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-2"><a class="link" href="#how-it-is-implemented-2">4.11.2. How it is implemented</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">4.11.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>AddCaseCommandParser</code> parses the string of arguments provided by the user and splits the <code>String</code> into its separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) to be used in the context of the <code>AddCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -1858,7 +1860,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-3"><a class="link" href="#how-it-is-implemented-3">4.12.2. How it is implemented</a></h4>
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">4.12.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>DeleteCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -1901,6 +1903,21 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Below are sequence diagrams illustrating the <code>Logic</code> and <code>Model</code> components.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SD_DeleteCaseCommand_Logic.png" alt="SD DeleteCaseCommand Logic" width="800">
+</div>
+<div class="title">Figure 15. Interactions Inside the Logic Component for the <code>deleteCase 1</code> Command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="500">
+</div>
+<div class="title">Figure 16. Interactions Inside the Model Component for the <code>deleteCase 1</code> Command</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1908,11 +1925,11 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="sect3">
 <h4 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">4.13.1. Reason for implementation</a></h4>
 <div class="paragraph">
-<p>To manage large numbers of cases, having a feature that would allow investigators to search the list of cases by name would be extremely helpful. If an investigator is looking for a particular case, it would be extremely inefficient and time-consuming to have to manually browse through all the cases. Hence, being able to find cases by name can help to increase productivity workflow and efficiency.</p>
+<p>To manage large numbers of cases, having a feature that would allow investigators to search the list of cases by name would be extremely helpful. If an investigator is looking for a particular case, it would be extremely inefficient and time-consuming to have to manually browse through all the cases. Hence, being able to find cases by name can help to increase workflow productivity and efficiency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-implemented-4"><a class="link" href="#how-it-is-implemented-4">4.13.2. How it is implemented</a></h4>
+<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">4.13.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>FindCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the list of keywords to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -1953,7 +1970,244 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-backup"><a class="link" href="#creating-backup">4.14. Creating Backup</a></h3>
+<h3 id="selecting-cases-feature"><a class="link" href="#selecting-cases-feature">4.14. Selecting cases feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-13"><a class="link" href="#reason-for-implementation-13">4.14.1. Reason for implementation</a></h4>
+<div class="paragraph">
+<p>An investigator should be able to retrieve and view information about a case after adding them into the application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-14"><a class="link" href="#current-implementation-14">4.14.2. Current implementation</a></h4>
+<div class="paragraph">
+<p>Similar to <code>DeleteCaseCommandParser</code>, the <code>SelectCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>SelectCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SelectCaseCommand</code> extends <code>Command</code> and has one constructor.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new SelectCaseCommand(targetIndex)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object as parameter.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>targetIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model. Subsequently, a <code>JumpToCrimeCaseListRequestEvent</code> is posted to <code>EventsCenter</code> to signal the <code>UI</code> component. The following snippet shows the execution code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>public CommandResult execute() throws CommandException {
+
+    List &lt; CrimeCase &gt; lastShownList = model.getFilteredCrimeCaseList();
+
+    if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+        throw new CommandException(Messages.MESSAGE_INVALID_CASE_DISPLAYED_INDEX);
+    }
+
+    EventsCenter.getInstance().post(new JumpToCrimeCaseListRequestEvent(targetIndex));
+    return new CommandResult(String.format(MESSAGE_SELECT_CASE_SUCCESS, targetIndex.getOneBased()));
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Following the raised event, <code>handleJumpToCrimeCaseListRequestEvent</code> (in <code>CrimeCaseListPanel.java</code>) is signalled to handle the select request, which scrolls the view to the correct cell in the panel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>@Subscribe
+private void handleJumpToCrimeCaseListRequestEvent(JumpToCrimeCaseListRequestEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    scrollTo(event.targetIndex);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, a <code>CrimeCasePanelSelectionChangedEvent</code> that contains the <code>CrimeCase</code> object that was selected, is raised. This event is handled by <code>handleCrimeCasePanelSelectionChangedEvent</code> (in <code>BrowserPanel.java</code>), as shown in the snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>@Subscribe
+private void handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadCrimeCasePage(event.getNewSelection().crimeCase);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>loadCrimeCasePage</code> method takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags) as <code>String</code>, which are then used to create a URL query string. Components with strings that may contain symbols such as “#” are encoded first before appending to the query string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>encDescription = URLEncoder.encode(description, "UTF-8");
+encInvEmail = URLEncoder.encode(currentInvestigator.getEmail().value, "UTF-8");
+encInvAddress = URLEncoder.encode(currentInvestigator.getAddress().value, "UTF-8");
+encStartDate = URLEncoder.encode(startDate, "UTF-8");
+encEndDate = URLEncoder.encode(endDate, "UTF-8");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create the view where the information is displayed on the GUI (<code>BrowserPanel</code>), an HTML file (<code>/docs/CaseDetailsPage.html</code>) was created as a template for displaying the details of a single case. In order to load the HTML file, utility methods provided by JavaFX’s <code>WebView</code> (an embedded browser) is used.</p>
+</div>
+<div class="paragraph">
+<p>A <code>String</code> containing the URL or file path is passed to the <code>load</code> method with a request string appended to the back (e.g. “https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=John+Doe”). This method can be used to load pages from third-party services (e.g. Google Search).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>public void loadPage(String url) {
+    Platform.runLater(() - &gt; browser.getEngine().load(url));
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>String caseDetailsPage = CASE_DETAILS_PAGE +
+    "?caseName=" + caseName +
+    "&amp;description=" + encDescription +
+    "&amp;tags=" + tagList +
+    "&amp;invName=" + currentInvestigator.getName().fullName +
+    "&amp;invRank=" + currentInvestigator.getRank().toString() +
+    "&amp;invPhone=" + currentInvestigator.getPhone().value +
+    "&amp;invEmail=" + encInvEmail +
+    "&amp;invAddress=" + encInvAddress +
+    "&amp;startDate=" + encStartDate +
+    "&amp;endDate=" + encEndDate +
+    "&amp;status=" + status;
+
+loadPage(caseDetailsPage);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Javascript code is included in the HTML file to parse the URL request string and populate the HTML file with the corresponding case details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.14.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-to-view-case-details"><a class="link" href="#aspect-implementation-to-view-case-details">Aspect: Implementation to view case details</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use HTML and Javascript with JavaFX <code>WebView</code> (embedded browser)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and design with basic HTML knowledge.</p>
+</li>
+<li>
+<p>Cons: Passing of data to the HTML file has to be done with a request string, which can get a messy if the data is complex in structure. Loading data is not as efficient.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use only JavaFX</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The view integrates more seamlessly with the application.</p>
+</li>
+<li>
+<p>Cons: More troublesome to implement and requires JavaFX knowledge.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Reason for current choice:</strong> As the data we have is simple, implementing and styling with HTML is easier.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-cases-feature"><a class="link" href="#editing-cases-feature">4.15. Editing cases feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-14"><a class="link" href="#reason-for-implementation-14">4.15.1. Reason for implementation</a></h4>
+<div class="paragraph">
+<p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-15"><a class="link" href="#current-implementation-15">4.15.2. Current implementation</a></h4>
+<div class="paragraph">
+<p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a  ` EditCrimeCaseDescriptor` object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCrimeCaseDescriptor</code> is a class containing information that describes the case (i.e. case name, description, investigator, start date, tags). The descriptor is used because the user is not required to input all the fields except the case index. When the user specifies the field they wish to edit, it sets the field in the <code>EditCrimeCaseDescriptor</code> to that value. If any field is not specified, the field is set to <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCaseCommand</code> that extends the <code>UndoableCommand</code> has one constructor.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EditCaseCommand(caseIndex, editCrimeCaseDescriptor)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object and <code>EditCrimeCaseDescriptor</code> as parameters.</p>
+<p class="tableblock">The <code>caseIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p>
+<p class="tableblock">A new <code>CrimeCase</code> object is created using the retrieved case-to-be-edited and the descriptor.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When the <code>EditCaseCommand</code> is executed, the original <code>CrimeCase</code> object is not modified, but rather, replaced by a new <code>CrimeCase</code> object. Note that a new <code>Investigator</code> object is also created to be stored in the new <code>CrimeCase</code>. The cases in that particular <code>Investigator</code>’s <code>UniqueCrimeCaseList</code> is cleared so that only personal details of the investigator is stored within the <code>CrimeCase</code> object. This is to simplify the data to be recorded in storage. The list of cases within the original <code>Investigator</code> object remains untouched. The snippet of code below shows the implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>private CrimeCase syncWithMasterTagList(CrimeCase crimeCase) {
+    // … logic for handling and rebuilding tags …
+
+    Investigator investigator = (Investigator) syncWithMasterTagList(crimeCase.getCurrentInvestigator());
+    investigator.clearCaseList();
+    return new CrimeCase(
+        crimeCase.getCaseName(), crimeCase.getDescription(), investigator,
+        crimeCase.getStartDate(), crimeCase.getEndDate(), crimeCase.getStatus(), correctTagReferences);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the <code>CrimeCase</code> object is replaced rather than modified, we need to remove the old <code>CrimeCase</code> object stored in the <code>UniqueCrimeCaseList</code> of the <code>Investigator</code> and reference the new, modified <code>CrimeCase</code> object instead. This is done by traversing the entire list of investigators and finding the correct <code>Investigator</code> object to remove the case from. The code below shows its implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>public void updateCrimeCase(CrimeCase target, CrimeCase editedCase)
+throws DuplicateCrimeCaseException, CrimeCaseNotFoundException {
+    requireNonNull(editedCase);
+
+    CrimeCase syncedEditedCrimeCase = syncWithMasterTagList(editedCase);
+    removeCrimeCaseFromInvestigator(target);
+    cases.setCrimeCase(target, syncedEditedCrimeCase);
+    addCrimeCaseToInvestigator(syncedEditedCrimeCase);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-backup"><a class="link" href="#creating-backup">4.16. Creating Backup</a></h3>
 <div class="paragraph">
 <p>As investigators may want to save the current state of the Investigapptor before progressing, they can do this
 by using the backup command and typing in a name for the backup.</p>
@@ -2064,7 +2318,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3027,11 +3281,11 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Support data encryption</p>
+<p><strong>Minor enhancement</strong>: Update the GUI with a new colour scheme and style</p>
 <div class="ulist">
 <ul>
 <li>
-<p>This would allow for an added layer of security and prevent viewing of data outside the application.</p>
+<p>This would make the interface more aesthetically pleasing.</p>
 </li>
 </ul>
 </div>
@@ -3898,7 +4152,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 13:47:55 UTC
+Last updated 2018-04-12 16:47:03 UTC
 </div>
 </div>
 </body>
