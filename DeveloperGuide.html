@@ -677,9 +677,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="password-feature"><a class="link" href="#password-feature">5.1. Password feature</a></h3>
 <div class="paragraph">
-<p>The password feature allows for the user to set a password
+<p>The password feature allows for investigators to set a password
 for the application. This password can then be disclosed only to
-authorised users so as disallow unauthorised users from accessing
+authorised investigators so as disallow unauthorised users from accessing
  or modifying the application data.</p>
 </div>
 <div class="sect3">
@@ -814,7 +814,9 @@ access control between investigators of different ranks.</p>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which
+resides inside <code>LogicManager</code>. It supports undoing and redoing of
+ commands that modifies the state of the Investigapptor (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
 <p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
@@ -4692,7 +4694,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 20:59:30 UTC
+Last updated 2018-04-14 22:05:10 UTC
 </div>
 </div>
 </body>

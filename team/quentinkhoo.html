@@ -111,7 +111,15 @@ input password to always be hidden from plain sight.</p>
 [<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/203">PR#203</a>]</p>
 </li>
 <li>
-<p>Managed formatting for User Guide to ensure consistency in format and language</p>
+<p>Designed formatting for User Guide Command Summary to ensure readability
+and ease of usage</p>
+</li>
+<li>
+<p>Did cosmetic tweaks to existing contents of the Developer Guide</p>
+</li>
+<li>
+<p>Managed formatting for Developer Guide to ensure consistency in format
+and language.</p>
 </li>
 </ul>
 </div>
@@ -1842,9 +1850,138 @@ the data of your previous Investigapptor folder.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="password-feature"><a class="link" href="#password-feature">Password feature</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>The password feature allows for investigators to set a password
+for the application. This password can then be disclosed only to
+authorised investigators so as disallow unauthorised users from accessing
+ or modifying the application data.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>This subsection will describe the current implementation of the password
+feature. An overview of how the password feature is implemented can be
+seen in the sequence diagram below:</p>
+</div>
+<div id="HighLevelDiagram" class="imageblock">
+<div class="content">
+<img src="../images/PasswordHighLevelSequenceDiagram.png" alt="PasswordHighLevelSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 24. High Level Sequence Diagram of Password Feature</div>
+</div>
+<div class="sect4">
+<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<div class="paragraph">
+<p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
+object gets created if the parsing of the command was successful. This
+will in turn make a call to the <code>updatePassword</code> function in the <code>Model</code>
+component, as shown in the sequence diagram below:</p>
+</div>
+<div id="LogicDiagram" class="imageblock">
+<div class="content">
+<img src="../images/PasswordLogicSequenceDiagram.png" alt="PasswordLogicSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 25. Password Feature&#8217;s Logic Component Sequence Diagram</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="model-component-br"><a class="link" href="#model-component-br">Model Component<br></a></h5>
+<div class="paragraph">
+<p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
+would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
+password has been updated. The entire sequence diagram for the <code>Model</code>
+component as shown below describes this in greater detail.</p>
+</div>
+<div id="ModelDiagram" class="imageblock">
+<div class="content">
+<img src="../images/PasswordModelSequenceDiagram.png" alt="PasswordModelSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 26. Password Feature&#8217;s Model Component Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Whenever then <code>Password</code> Object&#8217;s <code>updatePassword</code> function is called,
+the hash of the password is first generated with the <code>generatePasswordHash</code>
+function. This function makes use of the <code>SHA-256</code> hashing algorithm
+to generate the hash of the password as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> generatePasswordHash(<span class="predefined-type">String</span> password) {
+        <span class="predefined-type">String</span> encodedHash = <span class="predefined-constant">null</span>;
+        <span class="keyword">try</span> {
+            <span class="predefined-type">MessageDigest</span> digest = <span class="predefined-type">MessageDigest</span>.getInstance(<span class="string"><span class="delimiter">&quot;</span><span class="content">SHA-256</span><span class="delimiter">&quot;</span></span>);
+            digest.update(INITIAL_VALUE.getBytes());
+            <span class="keyword">if</span> (!isNull(password)) {
+                <span class="type">byte</span><span class="type">[]</span> byteHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+                encodedHash = Base64.getEncoder().encodeToString(byteHash);
+            }
+        } <span class="keyword">catch</span> (<span class="exception">NoSuchAlgorithmException</span> noSuchAlgoException) {
+            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Cannot generate hash: MessageDigest.getInstance</span><span class="delimiter">&quot;</span></span>);
+        }
+        <span class="keyword">return</span> encodedHash;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="storage-component"><a class="link" href="#storage-component">Storage Component</a></h5>
+<div class="paragraph">
+<p>With regards to the password feature, the <code>Storage</code> component is responsible
+not only for storing the currently set password, but also for checking whether
+an input password is correct. If the input password is correct, a
+<code>ValidPasswordEvent</code> is raised, as shown in the sequence diagram below:</p>
+</div>
+<div id="StorageDiagram" class="imageblock">
+<div class="content">
+<img src="../images/PasswordInputSequenceDiagram.png" alt="PasswordInputSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 27. Password Feature&#8217;s Storage Component Sequence Diagram</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="alternatives-considered"><a class="link" href="#alternatives-considered">Alternatives Considered</a></h4>
+<div class="paragraph">
+<p>This subsection would describe other designs and implementations
+that were taken into consideration.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-usage-of-password-feature"><a class="link" href="#aspect-usage-of-password-feature">Aspect: Usage of password feature</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Have one password for the entire
+application</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Investigators within a team can simply share the password.</p>
+</li>
+<li>
+<p>Cons: There is no access control between investigators of different
+ranks.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Have a separate password for each investigator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Each investigator can have their own password, allowing for
+access control between investigators of different ranks.</p>
+</li>
+<li>
+<p>Cons: Requires an additional password attribute for each investigator.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1852,7 +1989,7 @@ the data of your previous Investigapptor folder.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 20:59:30 UTC
+Last updated 2018-04-14 22:05:10 UTC
 </div>
 </div>
 </body>
