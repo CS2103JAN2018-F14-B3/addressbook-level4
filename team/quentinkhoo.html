@@ -1831,16 +1831,16 @@ There is no need to save manually.</p>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="password-feature"><a class="link" href="#password-feature">Password feature</a></h3>
+<div class="sect3">
+<h4 id="password-feature"><a class="link" href="#password-feature">Password feature</a></h4>
 <div class="paragraph">
-<p>The password feature allows for investigators to set a password
+<p>The password feature allows for the user to set a password
 for the application. This password can then be disclosed only to
-authorised investigators so as disallow unauthorised users from accessing
+authorised users so as disallow unauthorised users from accessing
  or modifying the application data.</p>
 </div>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
 <div class="paragraph">
 <p>This subsection will describe the current implementation of the password
 feature. An overview of how the password feature is implemented can be
@@ -1852,8 +1852,8 @@ seen in the sequence diagram below:</p>
 </div>
 <div class="title">Figure 34. High Level Sequence Diagram of Password Feature</div>
 </div>
-<div class="sect4">
-<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<div class="sect5">
+<h6 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h6>
 <div class="paragraph">
 <p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
 object gets created if the parsing of the command was successful. This
@@ -1867,8 +1867,8 @@ component, as shown in the sequence diagram below:</p>
 <div class="title">Figure 35. Password Feature&#8217;s Logic Component Sequence Diagram</div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="model-component-br"><a class="link" href="#model-component-br">Model Component<br></a></h5>
+<div class="sect5">
+<h6 id="model-component"><a class="link" href="#model-component">Model Component</a></h6>
 <div class="paragraph">
 <p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
 would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
@@ -1906,8 +1906,8 @@ to generate the hash of the password as shown below:</p>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="storage-component"><a class="link" href="#storage-component">Storage Component</a></h5>
+<div class="sect5">
+<h6 id="storage-component"><a class="link" href="#storage-component">Storage Component</a></h6>
 <div class="paragraph">
 <p>With regards to the password feature, the <code>Storage</code> component is responsible
 not only for storing the currently set password, but also for checking whether
@@ -1922,14 +1922,14 @@ an input password is correct. If the input password is correct, a
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="alternatives-considered"><a class="link" href="#alternatives-considered">Alternatives Considered</a></h4>
+<div class="sect4">
+<h5 id="alternatives-considered"><a class="link" href="#alternatives-considered">Alternatives Considered</a></h5>
 <div class="paragraph">
 <p>This subsection would describe other designs and implementations
 that were taken into consideration.</p>
 </div>
-<div class="sect4">
-<h5 id="aspect-usage-of-password-feature"><a class="link" href="#aspect-usage-of-password-feature">Aspect: Usage of password feature</a></h5>
+<div class="sect5">
+<h6 id="aspect-usage-of-password-feature"><a class="link" href="#aspect-usage-of-password-feature">Aspect: Usage of password feature</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1971,7 +1971,7 @@ access control between investigators of different ranks.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:25:51 UTC
+Last updated 2018-04-15 08:33:12 UTC
 </div>
 </div>
 </body>

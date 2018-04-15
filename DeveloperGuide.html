@@ -36,7 +36,14 @@
 <li><a href="#prerequisites">3.1. Prerequisites</a></li>
 <li><a href="#setting-up-the-project-in-your-computer">3.2. Setting up the project in your computer</a></li>
 <li><a href="#verifying-the-setup">3.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">3.4. Configurations to do before writing code</a></li>
+<li><a href="#configurations-to-do-before-writing-code">3.4. Configurations to do before writing code</a>
+<ul class="sectlevel3">
+<li><a href="#configuring-the-coding-style">3.4.1. Configuring the coding style</a></li>
+<li><a href="#updating-documentation-to-match-your-fork">3.4.2. Updating documentation to match your fork</a></li>
+<li><a href="#setting-up-ci">3.4.3. Setting up CI</a></li>
+<li><a href="#getting-started-with-coding">3.4.4. Getting started with coding</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#design">4. Design</a>
@@ -51,21 +58,46 @@
 </li>
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#password-feature">5.1. Password feature</a></li>
-<li><a href="#undo-redo-feature">5.2. Undo/Redo feature</a></li>
-<li><a href="#Calendar-Feature">5.3. Calendar feature</a></li>
-<li><a href="#Find-Feature">5.4. Find cases by status/tags feature</a></li>
-<li><a href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">5.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
-<li><a href="#investigator-class">5.8. Investigator Class</a></li>
-<li><a href="#code-crimecase-code-package">5.9. <code>crimecase</code> Package</a></li>
-<li><a href="#adding-cases-feature">5.10. Adding cases feature</a></li>
-<li><a href="#deleting-cases-feature">5.11. Deleting cases feature</a></li>
-<li><a href="#finding-cases-feature">5.12. Finding cases feature</a></li>
-<li><a href="#selecting-cases-feature">5.13. Selecting cases feature</a></li>
-<li><a href="#editing-cases-feature">5.14. Editing cases feature</a></li>
-<li><a href="#creating-backup">5.15. Creating Backup</a></li>
+<li><a href="#laying-the-groundwork">5.1. Laying the Groundwork</a>
+<ul class="sectlevel3">
+<li><a href="#Implementation-Configuration">5.1.1. Configuration</a></li>
+<li><a href="#logging">5.1.2. Logging</a></li>
+<li><a href="#undo-redo-feature">5.1.3. Undo/Redo feature</a></li>
+</ul>
+</li>
+<li><a href="#functional-enhancements">5.2. Functional Enhancements</a>
+<ul class="sectlevel3">
+<li><a href="#password-feature">5.2.1. Password feature</a></li>
+<li><a href="#Calendar-Feature">5.2.2. Calendar feature</a></li>
+<li><a href="#create-backup">5.2.3. Create backup</a></li>
+</ul>
+</li>
+<li><a href="#investigator-features">5.3. Investigator Features</a>
+<ul class="sectlevel3">
+<li><a href="#code-investigator-code-package">5.3.1. <code>investigator</code> Package</a></li>
+<li><a href="#add-investigator">5.3.2. Add investigator</a></li>
+<li><a href="#delete-investigator">5.3.3. Delete investigator</a></li>
+<li><a href="#edit-investigator">5.3.4. Edit investigator</a></li>
+<li><a href="#list-investigator-s-cases">5.3.5. List investigator&#8217;s cases</a></li>
+</ul>
+</li>
+<li><a href="#case-features">5.4. Case Features</a>
+<ul class="sectlevel3">
+<li><a href="#code-crimecase-code-package">5.4.1. <code>crimecase</code> Package</a></li>
+<li><a href="#add-case">5.4.2. Add case</a></li>
+<li><a href="#delete-case">5.4.3. Delete case</a></li>
+<li><a href="#edit-case">5.4.4. Edit case</a></li>
+<li><a href="#find-cases-by-name">5.4.5. Find cases by name</a></li>
+<li><a href="#Find-Feature">5.4.6. Find cases by status/tags</a></li>
+<li><a href="#case-select">5.4.7. Select case</a></li>
+</ul>
+</li>
+<li><a href="#ui-enhancements">5.5. UI Enhancements</a>
+<ul class="sectlevel3">
+<li><a href="#UI-DetailsPane">5.5.1. Details pane</a></li>
+<li><a href="#modify-interface-theme-colour-scheme">5.5.2. Modify interface theme/colour scheme</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -95,7 +127,13 @@
 <li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
 <ul class="sectlevel2">
 <li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
-<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
+<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a>
+<ul class="sectlevel3">
+<li><a href="#description">A.2.1. Description</a></li>
+<li><a href="#step-by-step-instructions">A.2.2. Step-by-step Instructions</a></li>
+<li><a href="#full-solution">A.2.3. Full Solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix B: Product Scope</a></li>
@@ -164,9 +202,6 @@ in order for you to work on it further.</p>
 <ul>
 <li>
 <p><strong>JDK <code>1.8.0_60</code></strong> or later.</p>
-</li>
-</ul>
-</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -176,7 +211,7 @@ in order for you to work on it further.</p>
 <td class="content">
 If you do not
 already have it installed, you can download it from
-<a href="{javaURL}">here</a>.
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">here</a>.
 </td>
 </tr>
 </table>
@@ -194,8 +229,7 @@ This app will not work with earlier versions of Java 8.
 </tr>
 </table>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>IntelliJ</strong> IDE</p>
 <div class="admonitionblock note">
@@ -675,144 +709,68 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="password-feature"><a class="link" href="#password-feature">5.1. Password feature</a></h3>
-<div class="paragraph">
-<p>The password feature allows for investigators to set a password
-for the application. This password can then be disclosed only to
-authorised investigators so as disallow unauthorised users from accessing
- or modifying the application data.</p>
-</div>
+<h3 id="laying-the-groundwork"><a class="link" href="#laying-the-groundwork">5.1. Laying the Groundwork</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">5.1.1. Current Implementation</a></h4>
+<h4 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.1.1. Configuration</a></h4>
 <div class="paragraph">
-<p>This subsection will describe the current implementation of the password
-feature. An overview of how the password feature is implemented can be
-seen in the sequence diagram below:</p>
+<p>For starters, you can control certain properties of the application, such as:</p>
 </div>
-<div id="HighLevelDiagram" class="imageblock">
-<div class="content">
-<img src="images/PasswordHighLevelSequenceDiagram.png" alt="PasswordHighLevelSequenceDiagram" width="790">
-</div>
-<div class="title">Figure 11. High Level Sequence Diagram of Password Feature</div>
-</div>
-<div class="sect4">
-<h5 id="logic-component"><a class="link" href="#logic-component">5.1.1.1. Logic Component</a></h5>
-<div class="paragraph">
-<p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
-object gets created if the parsing of the command was successful. This
-will in turn make a call to the <code>updatePassword</code> function in the <code>Model</code>
-component, as shown in the sequence diagram below:</p>
-</div>
-<div id="LogicDiagram" class="imageblock">
-<div class="content">
-<img src="images/PasswordLogicSequenceDiagram.png" alt="PasswordLogicSequenceDiagram" width="790">
-</div>
-<div class="title">Figure 12. Password Feature&#8217;s Logic Component Sequence Diagram</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="model-component-br"><a class="link" href="#model-component-br">5.1.1.2. Model Component<br></a></h5>
-<div class="paragraph">
-<p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
-would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
-password has been updated. The entire sequence diagram for the <code>Model</code>
-component as shown below describes this in greater detail.</p>
-</div>
-<div id="ModelDiagram" class="imageblock">
-<div class="content">
-<img src="images/PasswordModelSequenceDiagram.png" alt="PasswordModelSequenceDiagram" width="790">
-</div>
-<div class="title">Figure 13. Password Feature&#8217;s Model Component Sequence Diagram</div>
-</div>
-<div class="paragraph">
-<p>Whenever then <code>Password</code> Object&#8217;s <code>updatePassword</code> function is called,
-the hash of the password is first generated with the <code>generatePasswordHash</code>
-function. This function makes use of the <code>SHA-256</code> hashing algorithm
-to generate the hash of the password as shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> generatePasswordHash(<span class="predefined-type">String</span> password) {
-        <span class="predefined-type">String</span> encodedHash = <span class="predefined-constant">null</span>;
-        <span class="keyword">try</span> {
-            <span class="predefined-type">MessageDigest</span> digest = <span class="predefined-type">MessageDigest</span>.getInstance(<span class="string"><span class="delimiter">&quot;</span><span class="content">SHA-256</span><span class="delimiter">&quot;</span></span>);
-            digest.update(INITIAL_VALUE.getBytes());
-            <span class="keyword">if</span> (!isNull(password)) {
-                <span class="type">byte</span><span class="type">[]</span> byteHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-                encodedHash = Base64.getEncoder().encodeToString(byteHash);
-            }
-        } <span class="keyword">catch</span> (<span class="exception">NoSuchAlgorithmException</span> noSuchAlgoException) {
-            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Cannot generate hash: MessageDigest.getInstance</span><span class="delimiter">&quot;</span></span>);
-        }
-        <span class="keyword">return</span> encodedHash;
-    }</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="storage-component"><a class="link" href="#storage-component">5.1.1.3. Storage Component</a></h5>
-<div class="paragraph">
-<p>With regards to the password feature, the <code>Storage</code> component is responsible
-not only for storing the currently set password, but also for checking whether
-an input password is correct. If the input password is correct, a
-<code>ValidPasswordEvent</code> is raised, as shown in the sequence diagram below:</p>
-</div>
-<div id="StorageDiagram" class="imageblock">
-<div class="content">
-<img src="images/PasswordInputSequenceDiagram.png" alt="PasswordInputSequenceDiagram" width="790">
-</div>
-<div class="title">Figure 14. Password Feature&#8217;s Storage Component Sequence Diagram</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alternatives-considered"><a class="link" href="#alternatives-considered">5.1.2. Alternatives Considered</a></h4>
-<div class="paragraph">
-<p>This subsection would describe other designs and implementations
-that were taken into consideration.</p>
-</div>
-<div class="sect4">
-<h5 id="aspect-usage-of-password-feature"><a class="link" href="#aspect-usage-of-password-feature">5.1.2.1. Aspect: Usage of password feature</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Current Choice)</strong>: Have one password for the entire
-application</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Investigators within a team can simply share the password.</p>
+<p>application name</p>
 </li>
 <li>
-<p>Cons: There is no access control between investigators of different
-ranks.</p>
+<p>logging level</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2 </strong>: Have a separate password for each investigator.</p>
+<div class="paragraph">
+<p>through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging"><a class="link" href="#logging">5.1.2. Logging</a></h4>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Each investigator can have their own password, allowing for
-access control between investigators of different ranks.</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.1.1, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
-<p>Cons: Requires an additional password attribute for each investigator.</p>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.2. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
+<h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.1.3. Undo/Redo feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">5.1.3.1. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which
 resides inside <code>LogicManager</code>. It supports undoing and redoing of
@@ -966,10 +924,10 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">5.2.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">5.2.2.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="design-considerations"><a class="link" href="#design-considerations">5.1.3.2. Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">5.1.3.2.1. Aspect: Implementation of <code>UndoableCommand</code></a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1001,8 +959,8 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">5.2.2.2. Aspect: How undo &amp; redo executes</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">5.1.3.2.2. Aspect: How undo &amp; redo executes</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1034,8 +992,8 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">5.2.2.3. Aspect: Type of commands that can be undone/redone</a></h5>
+<div class="sect5">
+<h6 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">5.1.3.2.3. Aspect: Type of commands that can be undone/redone</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1068,8 +1026,8 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">5.2.2.4. Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">5.1.3.2.4. Aspect: Data structure to support the undo/redo commands</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1103,8 +1061,146 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="Calendar-Feature"><a class="link" href="#Calendar-Feature">5.3. Calendar feature</a></h3>
+<h3 id="functional-enhancements"><a class="link" href="#functional-enhancements">5.2. Functional Enhancements</a></h3>
+<div class="sect3">
+<h4 id="password-feature"><a class="link" href="#password-feature">5.2.1. Password feature</a></h4>
+<div class="paragraph">
+<p>The password feature allows for the user to set a password
+for the application. This password can then be disclosed only to
+authorised users so as disallow unauthorised users from accessing
+ or modifying the application data.</p>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1.1. Current Implementation</a></h5>
+<div class="paragraph">
+<p>This subsection will describe the current implementation of the password
+feature. An overview of how the password feature is implemented can be
+seen in the sequence diagram below:</p>
+</div>
+<div id="HighLevelDiagram" class="imageblock">
+<div class="content">
+<img src="images/PasswordHighLevelSequenceDiagram.png" alt="PasswordHighLevelSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 11. High Level Sequence Diagram of Password Feature</div>
+</div>
+<div class="sect5">
+<h6 id="logic-component"><a class="link" href="#logic-component">5.2.1.1.1. Logic Component</a></h6>
+<div class="paragraph">
+<p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
+object gets created if the parsing of the command was successful. This
+will in turn make a call to the <code>updatePassword</code> function in the <code>Model</code>
+component, as shown in the sequence diagram below:</p>
+</div>
+<div id="LogicDiagram" class="imageblock">
+<div class="content">
+<img src="images/PasswordLogicSequenceDiagram.png" alt="PasswordLogicSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 12. Password Feature&#8217;s Logic Component Sequence Diagram</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model-component"><a class="link" href="#model-component">5.2.1.1.2. Model Component</a></h6>
+<div class="paragraph">
+<p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
+would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
+password has been updated. The entire sequence diagram for the <code>Model</code>
+component as shown below describes this in greater detail.</p>
+</div>
+<div id="ModelDiagram" class="imageblock">
+<div class="content">
+<img src="images/PasswordModelSequenceDiagram.png" alt="PasswordModelSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 13. Password Feature&#8217;s Model Component Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Whenever then <code>Password</code> Object&#8217;s <code>updatePassword</code> function is called,
+the hash of the password is first generated with the <code>generatePasswordHash</code>
+function. This function makes use of the <code>SHA-256</code> hashing algorithm
+to generate the hash of the password as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> generatePasswordHash(<span class="predefined-type">String</span> password) {
+        <span class="predefined-type">String</span> encodedHash = <span class="predefined-constant">null</span>;
+        <span class="keyword">try</span> {
+            <span class="predefined-type">MessageDigest</span> digest = <span class="predefined-type">MessageDigest</span>.getInstance(<span class="string"><span class="delimiter">&quot;</span><span class="content">SHA-256</span><span class="delimiter">&quot;</span></span>);
+            digest.update(INITIAL_VALUE.getBytes());
+            <span class="keyword">if</span> (!isNull(password)) {
+                <span class="type">byte</span><span class="type">[]</span> byteHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+                encodedHash = Base64.getEncoder().encodeToString(byteHash);
+            }
+        } <span class="keyword">catch</span> (<span class="exception">NoSuchAlgorithmException</span> noSuchAlgoException) {
+            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Cannot generate hash: MessageDigest.getInstance</span><span class="delimiter">&quot;</span></span>);
+        }
+        <span class="keyword">return</span> encodedHash;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="storage-component"><a class="link" href="#storage-component">5.2.1.1.3. Storage Component</a></h6>
+<div class="paragraph">
+<p>With regards to the password feature, the <code>Storage</code> component is responsible
+not only for storing the currently set password, but also for checking whether
+an input password is correct. If the input password is correct, a
+<code>ValidPasswordEvent</code> is raised, as shown in the sequence diagram below:</p>
+</div>
+<div id="StorageDiagram" class="imageblock">
+<div class="content">
+<img src="images/PasswordInputSequenceDiagram.png" alt="PasswordInputSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 14. Password Feature&#8217;s Storage Component Sequence Diagram</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="alternatives-considered"><a class="link" href="#alternatives-considered">5.2.1.2. Alternatives Considered</a></h5>
+<div class="paragraph">
+<p>This subsection would describe other designs and implementations
+that were taken into consideration.</p>
+</div>
+<div class="sect5">
+<h6 id="aspect-usage-of-password-feature"><a class="link" href="#aspect-usage-of-password-feature">5.2.1.2.1. Aspect: Usage of password feature</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Have one password for the entire
+application</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Investigators within a team can simply share the password.</p>
+</li>
+<li>
+<p>Cons: There is no access control between investigators of different
+ranks.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Have a separate password for each investigator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Each investigator can have their own password, allowing for
+access control between investigators of different ranks.</p>
+</li>
+<li>
+<p>Cons: Requires an additional password attribute for each investigator.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Calendar-Feature"><a class="link" href="#Calendar-Feature">5.2.2. Calendar feature</a></h4>
 <div class="paragraph">
 <p>The calendar feature serves as an interface to provide an overview of all the cases
 present in the <code>CrimeCaseListPanel</code>. The entries are colour-coded according to its case&#8217;s
@@ -1116,8 +1212,8 @@ status. Red represents the status <code>open</code>; whereas green represents th
 </div>
 <div class="title">Figure 15. Calendar Interface</div>
 </div>
-<div class="sect3">
-<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">5.3.1. Reason for implementation</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">5.2.2.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>The calendar serves as an organization tool to arrange the cases according to its start and end date,
 and it also categorizes the cases by its current status. This feature is useful for the investigators as it provides them an overview of all the cases that they are looking for.
@@ -1129,8 +1225,8 @@ scheduling existing cases. This thus improves the efficiency of the investigator
 significant events such as investigative work instead of bookkeeping tasks.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.2. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.2.2.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The calendar graphical interface was implemented with an external library, <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a>.
 The calendar interface, <code>CalendarPanel</code> is part of the UI component which supports the view of the cases that are currently present
@@ -1176,21 +1272,22 @@ has been raised from the <code>EventsCenter</code>, the <code>CalendarPanel</cod
 on how the event handling was carried out by <code>CalendarPanel</code>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="events-driven-entries"><a class="link" href="#events-driven-entries">5.3.3. Events-Driven Entries</a></h4>
+<div class="sect4">
+<h5 id="events-driven-entries"><a class="link" href="#events-driven-entries">5.2.2.3. Events-Driven Entries</a></h5>
 <div class="paragraph">
 <p>The entries displayed on the calendar will be changed according to the commands that were executed.</p>
 </div>
-<div class="sect4">
-<h5 id="event-raised-from-data-change-in-application"><a class="link" href="#event-raised-from-data-change-in-application">5.3.3.1. Event raised from data change in application</a></h5>
+<div class="sect5">
+<h6 id="event-raised-from-data-change-in-application"><a class="link" href="#event-raised-from-data-change-in-application">5.2.2.3.1. Event raised from data change in application</a></h6>
 <div class="paragraph">
 <p>As mentioned in the <a href="#Events">event-driven design section</a>, the model will raise
 an <code>InvestigapptorChangedEvent</code> to indicate that the data in the application has changed.
 In the following sequence diagrams, it indicates how the components interacts when the user
 enters the commands that changes the data in the investigapptor. (Commands are as shown in the diagrams).</p>
 </div>
+</div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-code-addcase-code"><a class="link" href="#sequence-diagram-for-code-addcase-code">5.3.3.1.1. Sequence Diagram for <code>addcase</code></a></h6>
+<h6 id="sequence-diagram-for-code-addcase-code"><a class="link" href="#sequence-diagram-for-code-addcase-code">5.2.2.3.2. Sequence Diagram for <code>addcase</code></a></h6>
 <div id="SDforAddCase" class="imageblock">
 <div class="content">
 <img src="images/SDforAddCase.png" alt="SDforAddCase" width="800">
@@ -1203,7 +1300,7 @@ an <code>InvestigapptorChangedEvent</code> which will update the calendar to ref
 </div>
 </div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-code-deletecase-code"><a class="link" href="#sequence-diagram-for-code-deletecase-code">5.3.3.1.2. Sequence Diagram for <code>deletecase</code></a></h6>
+<h6 id="sequence-diagram-for-code-deletecase-code"><a class="link" href="#sequence-diagram-for-code-deletecase-code">5.2.2.3.3. Sequence Diagram for <code>deletecase</code></a></h6>
 <div id="SDforDeleteCase" class="imageblock">
 <div class="content">
 <img src="images/SDforDeleteCase.png" alt="SDforDeleteCase" width="800">
@@ -1216,7 +1313,7 @@ will raise the <code>InvestigapptorChangedEvent</code> which will remove the cas
 </div>
 </div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-commands-that-updates-the-case-s-details"><a class="link" href="#sequence-diagram-for-commands-that-updates-the-case-s-details">5.3.3.1.3. Sequence Diagram for commands that updates the case&#8217;s details</a></h6>
+<h6 id="sequence-diagram-for-commands-that-updates-the-case-s-details"><a class="link" href="#sequence-diagram-for-commands-that-updates-the-case-s-details">5.2.2.3.4. Sequence Diagram for commands that updates the case&#8217;s details</a></h6>
 <div id="SDForUpdateCase" class="imageblock">
 <div class="content">
 <img src="images/SDforUpdateCase.png" alt="SDforUpdateCase" width="800">
@@ -1230,7 +1327,7 @@ update the calendar by displaying the updated entry.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-handling-code-investigapptorchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-investigapptorchangedevent-code">5.3.3.1.4. Sequence Diagram for handling <code>InvestigapptorChangedEvent</code></a></h6>
+<h6 id="sequence-diagram-for-handling-code-investigapptorchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-investigapptorchangedevent-code">5.2.2.3.5. Sequence Diagram for handling <code>InvestigapptorChangedEvent</code></a></h6>
 <div id="SDForInvestigapptorChangedEventHandling" class="imageblock">
 <div class="content">
 <img src="images/SDForInvestigapptorChangedEventHandling.png" alt="SDForInvestigapptorChangedEventHandling" width="800">
@@ -1243,7 +1340,7 @@ reacts to the <code>InvestigapptorChangedEvent</code>.</p>
 </div>
 <div class="paragraph">
 <p>When the commands mentioned in these diagrams - <a href="#SDforAddCase">#1</a>, <a href="#SDforDeleteCase">#2</a>, <a href="#SDForUpdateCase">#3</a>
-is executed, the <code>InvestigapptorChangedEvent</code> will be raised and the function
+are executed, the <code>InvestigapptorChangedEvent</code> will be raised and the function
 <code>handleInvestigapptorChangedEvent</code> in <code>CalendarPanel</code> will be invoked. The function
 would then re-initialize <code>crimeList</code> to the updated <code>crimeCaseList</code> and proceed to
 update the calendar accordingly.</p>
@@ -1261,7 +1358,7 @@ update the calendar accordingly.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="Calendar-Events-Filter"><a class="link" href="#Calendar-Events-Filter">5.3.3.2. Event raised from filtering the <code>CrimeCase</code> list</a></h5>
+<h5 id="Calendar-Events-Filter"><a class="link" href="#Calendar-Events-Filter">5.2.2.4. Event raised from fi=ltering the <code>CrimeCase</code> list</a></h5>
 <div class="paragraph">
 <p>In the following sequence diagram, it shows how the components interacts when the user issues
 the commands that filters  the cases that the user is looking for. (Commands are shown in the diagram).</p>
@@ -1272,7 +1369,7 @@ predicate which is passed in as an parameter in <code>updateFilteredCrimeCaseLis
 When the <code>FilteredCrimeCaseList</code> has been updated, it  will contain the cases that the user is looking for.</p>
 </div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code"><a class="link" href="#sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code">5.3.3.2.1. Sequence Diagram for commands that update <code>FilteredCrimeCaseList</code></a></h6>
+<h6 id="sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code"><a class="link" href="#sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code">5.2.2.4.1. Sequence Diagram for commands that update <code>FilteredCrimeCaseList</code></a></h6>
 <div id="SDForFindCase" class="imageblock">
 <div class="content">
 <img src="images/SDforFindCase.png" alt="SDforFindCase" width="800">
@@ -1285,7 +1382,7 @@ update the calendar with the cases that are currently in the <code>FilteredCrime
 </div>
 </div>
 <div class="sect5">
-<h6 id="sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code">5.3.3.2.2. Sequence Diagram for handling <code>FilteredCrimeCaseListChangedEvent</code></a></h6>
+<h6 id="sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code">5.2.2.4.2. Sequence Diagram for handling <code>FilteredCrimeCaseListChangedEvent</code></a></h6>
 <div id="SDforFilteredCrimeCaseListChangedEventHandling" class="imageblock">
 <div class="content">
 <img src="images/SDforFilteredCrimeCaseListChangedEventHandling.png" alt="SDforFilteredCrimeCaseListChangedEventHandling" width="800">
@@ -1316,361 +1413,69 @@ update the calendar accordingly with the updated <code>crimeList</code>.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Find-Feature"><a class="link" href="#Find-Feature">5.4. Find cases by status/tags feature</a></h3>
-<div class="paragraph">
-<p>The following sections provides an explanation on how the investigapptor finds
-certain cases according to its status or tags.</p>
-</div>
 <div class="sect3">
-<h4 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">5.4.1. Reason for implementation</a></h4>
+<h4 id="create-backup"><a class="link" href="#create-backup">5.2.3. Create backup</a></h4>
 <div class="paragraph">
-<p>This implementation improves efficiency as the investigators do not need to manually browse through
-all the listed cases just to find certain cases.</p>
-</div>
-<div class="paragraph">
-<p>By having a find command, the investigator can easily search for cases that they
-are looking for. They can simply just run the find-related commands with their desired
-keywords and the cases they require will be displayed instantly.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-to-find-cases-by-status"><a class="link" href="#current-implementation-to-find-cases-by-status">5.4.2. Current Implementation to find cases by status</a></h4>
-<div class="paragraph">
-<p>Commands were created to find the cases according to the status specified. As there
-are only two possible status - <code>open</code> or <code>close</code>, two separate command classes <code>FindCloseCaseCommand</code>
-and <code>FindOpenCaseCommand</code> were created. These two commands inherits from its parent class - <code>FindByStatusCommand</code>.</p>
+<p>This feature allows users to create a new xml file of the current state of the Investigapptor
+with a new name.</p>
 </div>
 <div class="sect4">
-<h5 id="class-inheritance"><a class="link" href="#class-inheritance">5.4.2.1. Class Inheritance</a></h5>
-<div id="CDFindByStatus" class="imageblock">
-<div class="content">
-<img src="images/CDFindByStatus.png" alt="CDFindByStatus" width="800">
-</div>
-<div class="title">Figure 23. Class Diagram to illustrate inheritance</div>
-</div>
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">5.2.3.1. Reason for implementation</a></h5>
 <div class="paragraph">
-<p>In both <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>, its respective constructor will
-invoke its parent class' (<code>FindByStatusCommand</code>) constructor as passes in its corresponding status as the parameter.</p>
-</div>
-<div class="paragraph">
-<p><code>FindCloseCaseCommand</code> will pass in the status <code>close</code> as shown in the code segment below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindCloseCaseCommand() {
-    <span class="local-variable">super</span>(CASE_CLOSE);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>FindOpenCaseCommand</code> will pass in the status <code>open</code> as shown in the code segment below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindOpenCaseCommand() {
-    <span class="local-variable">super</span>(CASE_OPEN);
-}</code></pre>
-</div>
+<p>As investigators may want to save the current state of the Investigapptor before progressing
+or having to create a periodic backup to fall back on.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="sequence-diagrams-for-logic-component"><a class="link" href="#sequence-diagrams-for-logic-component">5.4.2.2. Sequence Diagrams for Logic Component</a></h5>
+<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.2.3.2. Current implementation</a></h5>
 <div class="paragraph">
-<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
-component when the user inputs the <code>findopencases</code> or <code>findclosecases</code> command.</p>
+<p>The <code>BackupCommand</code> is created when the command word <code>backup</code> is detected in the user input. It will then use the <code>BackupCommandParser</code>
+ensure that the filename is alphanumeric. The <code>BackupCommand</code> will then call the <code>backupInvestigapptor</code> method from the model
+and pass in the filename as a string.</p>
 </div>
-<div id="SDforFindOpenCase" class="imageblock">
+<div id="backup-diagram" class="imageblock">
 <div class="content">
-<img src="images/SDforFindOpenCase.png" alt="SDforFindOpenCase" width="800">
+<img src="images/backupDiagram.png" alt="backupDiagram" width="790">
 </div>
-<div class="title">Figure 24. Sequence Diagram for interactions within Logic component for <code>FindOpenCaseCommand</code></div>
+<div class="title">Figure 23. Backup Sequence Diagram</div>
 </div>
-<div id="SDforFindCloseCase" class="imageblock">
+<div class="paragraph">
+<p>In the <code>Model</code>, the <code>backUpInvestigapptor</code> will raise the event <code>InvestigapptorBackupEvent</code> .The event contains filename which will be passed to
+Storage component to start the saving sequence.</p>
+</div>
+<div class="literalblock">
 <div class="content">
-<img src="images/SDForFindCloseCase.png" alt="SDForFindCloseCase" width="800">
+<pre>public void backUpInvestigapptor(String fileName) {
+    raise(new InvestigapptorBackupEvent(investigapptor, fileName));
+}</pre>
 </div>
-<div class="title">Figure 25. Sequence Diagram for interactions within Logic component for <code>FindCloseCaseCommand</code></div>
 </div>
 <div class="paragraph">
-<p>The <code>Logic</code> component will set the <code>StatusContainsKeywordsPredicate</code> with
-a <code>List&lt;String&gt;</code> containing the keyword of either <code>open</code> or <code>close</code>.</p>
+<p>At the Storage component, the <code>handleInvestigapptorBackupEvent</code> will extract the filename and create a new
+xml by using the <code>backupInvestigapptor</code> method.</p>
 </div>
-<div class="paragraph">
-<p>For <code>FindCloseCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>close</code>;
-whereas for <code>FindOpenCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>open</code>.</p>
-</div>
-<div class="paragraph">
-<p>The command will be executed by the <code>LogicManager</code> by updating the
-<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>StatusContainsKeywordsPredicate</code>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="sequence-diagrams-for-model-component"><a class="link" href="#sequence-diagrams-for-model-component">5.4.2.3. Sequence Diagrams for Model Component</a></h5>
-<div class="paragraph">
-<p>Below are the sequence diagrams that represents the interactions within the
-<code>Model</code> component after the <code>findopencases</code> or <code>findclosecases</code> command
-has been executed by the <code>LogicManager</code>.</p>
-</div>
-<div id="SDForFindByStatusModel" class="imageblock">
+<div class="literalblock">
 <div class="content">
-<img src="images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
+<pre>    public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event, "Backup command, saving to file"));
+        try {
+            backupInvestigapptor(event.data, event.fileName);
+        } catch (IOException e) {
+            raise(new DataSavingExceptionEvent(e));
+        }
+    }
+//end::backup[]</pre>
 </div>
-<div class="title">Figure 26. Sequence Diagram for interactions within Model component</div>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
-the given <code>StatusContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
-with any status of the case(s).</p>
-</div>
-<div class="paragraph">
-<p>Specifically, for <code>findopencases</code>, the predicate will test
-if the keyword 'open' matches any cases with the status of 'open'. Similarly,
-for <code>findclosecases</code>,  the predicate will test if the keyword 'close' matches
-any cases with the status of 'close'.</p>
-</div>
-<div class="paragraph">
-<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases that matches the
-given <code>StatusContainsKeywordsPredicate</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
-captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
-whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
-the <a href="#Calendar-Events-Filter">above section</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="activity-diagram"><a class="link" href="#activity-diagram">5.4.2.4. Activity Diagram</a></h5>
-<div class="paragraph">
-<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
-by its status.</p>
-</div>
-<div id="ADForFindCase" class="imageblock">
-<div class="content">
-<img src="images/ADforFindCase.png" alt="ADforFindCase" width="800">
-</div>
-<div class="title">Figure 27. Activity Diagram when user enters <code>findclosecase</code> command</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-to-find-cases-by-tags"><a class="link" href="#current-implementation-to-find-cases-by-tags">5.4.3. Current Implementation to find cases by tags</a></h4>
-<div class="paragraph">
-<p>The command class, <code>FindCaseTagsCommand</code> was created to find the cases according to its tags. Cases whose tags
-matches the keywords that the user has input will be displayed.</p>
-</div>
-<div class="sect4">
-<h5 id="sequence-diagrams-for-logic-component-2"><a class="link" href="#sequence-diagrams-for-logic-component-2">5.4.3.1. Sequence Diagrams for Logic Component</a></h5>
-<div class="paragraph">
-<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
-component when the user inputs the <code>findcasetags</code>.</p>
-</div>
-<div id="SDforFindCaseTags" class="imageblock">
-<div class="content">
-<img src="images/SDforFindCaseTags.png" alt="SDforFindCaseTags" width="800">
-</div>
-<div class="title">Figure 28. Sequence Diagram for interactions within Logic component</div>
-</div>
-<div class="paragraph">
-<p>The <code>Logic</code> component will set the <code>TagContainsKeywordsPredicate</code> with
-a <code>List&lt;String&gt;</code> containing the keywords that were parsed by <code>FindCaseTagsCommandParser</code>.</p>
-</div>
-<div class="paragraph">
-<p>For the command <code>findcasetags fraud homicide</code> in the
-<a href="#SDforFindCaseTags">sequence diagram above</a>, the <code>List&lt;String&gt;</code> will
-contain the keywords <code>fraud</code> and <code>homicide</code>.</p>
-</div>
-<div class="paragraph">
-<p>The command will be executed by the <code>LogicManager</code> by updating the
-<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>TagContainsKeywordsPredicate</code>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="sequence-diagrams-for-model-component-2"><a class="link" href="#sequence-diagrams-for-model-component-2">5.4.3.2. Sequence Diagrams for Model Component</a></h5>
-<div class="paragraph">
-<p>The following sequence diagram shows the interactions within the <code>Model</code> component.</p>
-</div>
-<div id="SDforFindCaseTagsModel" class="imageblock">
-<div class="content">
-<img src="images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
-</div>
-<div class="title">Figure 29. Sequence Diagram for interactions within Model component</div>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
-the given <code>TagContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
-with any tags of the case(s).</p>
-</div>
-<div class="paragraph">
-<p>For the example in the <a href="#SDforFindCaseTags">above logic sequence diagram</a>,
-the predicate will test if the keywords "fraud" or "homicide" matches any cases'
-tags.</p>
-</div>
-<div class="paragraph">
-<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases whose
-tags matches the keyword of either "fraud" or "homicide".</p>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
-captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
-whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
-the <a href="#Calendar-Events-Filter">above section</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="activity-diagram-2"><a class="link" href="#activity-diagram-2">5.4.3.3. Activity Diagram</a></h5>
-<div class="paragraph">
-<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
-by its tags.</p>
-</div>
-<div id="ADForFindCaseTags" class="imageblock">
-<div class="content">
-<img src="images/ADForFindCaseTags.png" alt="ADForFindCaseTags" width="800">
-</div>
-<div class="title">Figure 30. Activity Diagram when user enters <code>findcasetags murder</code> command</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alternatives-considered-2"><a class="link" href="#alternatives-considered-2">5.4.4. Alternatives Considered</a></h4>
-<div class="paragraph">
-<p>This section compares between the current choice of implementation and the
-alternative choice that was considered. It lists the pros and cons to each of the
-choices that were considered.</p>
-</div>
-<div class="sect4">
-<h5 id="aspect-design-implementation"><a class="link" href="#aspect-design-implementation">5.4.4.1. Aspect: Design Implementation</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Choice)</strong>: Separate the find-related commands classes into its
-individual category its searching for. In this case we have <code>FindCaseTagsCommand</code>,
-<code>FindCloseCaseCommand</code> &amp; <code>FindOpenCaseCommand</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for the user as they just need to know the command name/alias
-(i.e. <code>findopencases</code> or <code>foc</code> will just instantly display the cases that are closed)</p>
-</li>
-<li>
-<p>Cons: Additional <code>.java</code> class files</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2 </strong>: Have just one <code>FindCommand</code> class and use prefixes to differentiate
-the type of keywords (i.e. findcase t/Tags s/Status)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Only one <code>.java</code> file required for different types of find. Easier to
-extend the command to find other details by adding more prefixes.</p>
-</li>
-<li>
-<p>Cons: Not as user-friendly. Users has to recognize the prefixes, could be
-too technical for non-technical users.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-class-implementation-for-finding-cases-by-status"><a class="link" href="#aspect-class-implementation-for-finding-cases-by-status">5.4.4.2. Aspect: Class Implementation [for finding cases by status]</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Choice)</strong>: Have two classes <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>
-that are extended from parent class <code>FindByStatusCommand</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: No code duplication as duplicated set of codes will be in the parent class <code>FindByStatusCommand</code></p>
-</li>
-<li>
-<p>Cons: Additional <code>.java</code> class file</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2 </strong>: Separate commands into two classes without inheritance</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: One less <code>.java</code> class file (no parent class)</p>
-</li>
-<li>
-<p>Cons: Duplicated set of codes</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="investigator-class"><a class="link" href="#investigator-class">5.8. Investigator Class</a></h3>
+<h3 id="investigator-features"><a class="link" href="#investigator-features">5.3. Investigator Features</a></h3>
 <div class="sect3">
-<h4 id="investigator-package"><a class="link" href="#investigator-package">5.8.1. Investigator Package</a></h4>
+<h4 id="code-investigator-code-package"><a class="link" href="#code-investigator-code-package">5.3.1. <code>investigator</code> Package</a></h4>
 <div class="sect4">
-<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">5.8.1.1. Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">5.3.1.1. Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>As person class provided by the addressbook only has basic capability to store simple information such name and
 phone number, we had to create a new <code>Investigator</code> package which can store and handle a list of <code>CrimeCases</code> which is a core
@@ -1679,7 +1484,7 @@ for you to implement new type of person object in the future such as suspects or
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.8.1.2. Current Implementation</a></h5>
+<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.3.1.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>Currently the <code>Investigator</code> extends from the <code>Person</code> class, and the additional two properties the are:</p>
 </div>
@@ -1793,7 +1598,7 @@ for you to implement new type of person object in the future such as suspects or
 </div>
 </div>
 <div class="sect4">
-<h5 id="model"><a class="link" href="#model">5.8.1.3. Model</a></h5>
+<h5 id="model"><a class="link" href="#model">5.3.1.3. Model</a></h5>
 <div class="paragraph">
 <p>Currently the <code>Investigator</code> is upcasted and stored in the <code>Investigapptor</code> 's <code>UniquePersonList</code>.
 This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
@@ -1803,7 +1608,7 @@ functions.</p>
 <div class="content">
 <img src="images/investigatorComponent.png" alt="invest-com" width="790">
 </div>
-<div class="title">Figure 31. Investigator in Model Component</div>
+<div class="title">Figure 24. Investigator in Model Component</div>
 </div>
 <div class="paragraph">
 <p>The code below is from the <code>syncWithMasterTagList</code> function. It shows that
@@ -1811,7 +1616,7 @@ both Investigator and Person type are both return into the <code>UniquePersonLis
 </div>
 </div>
 <div class="sect4">
-<h5 id="storage"><a class="link" href="#storage">5.8.1.4. Storage</a></h5>
+<h5 id="storage"><a class="link" href="#storage">5.3.1.4. Storage</a></h5>
 <div class="paragraph">
 <p>As Investigator has addition properties compared to Person, <code>XmlAdaptedInvestigator</code> is created to convert
 the <code>Investigator</code> into correct XML format. We had to also change the method of storing the in <code>Investigapptor</code>
@@ -1862,11 +1667,11 @@ reduce the amount of space used for storage.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration"><a class="link" href="#design-consideration">5.8.1.5. Design Consideration</a></h5>
+<h5 id="design-consideration"><a class="link" href="#design-consideration">5.3.1.5. Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
-<h5 id="aspect-interaction-between-investigator-and-crimecase"><a class="link" href="#aspect-interaction-between-investigator-and-crimecase">5.8.1.6. Aspect: Interaction between Investigator and CrimeCase</a></h5>
+<h5 id="aspect-interaction-between-investigator-and-crimecase"><a class="link" href="#aspect-interaction-between-investigator-and-crimecase">5.3.1.6. Aspect: Interaction between Investigator and CrimeCase</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1902,43 +1707,43 @@ has to be correct for each instance.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-investigator-command"><a class="link" href="#add-investigator-command">5.8.2. Add Investigator Command</a></h4>
+<h4 id="add-investigator"><a class="link" href="#add-investigator">5.3.2. Add investigator</a></h4>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> will create an instance of the Investigator class and store it in the Investigapptor.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">5.8.2.1. Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">5.3.2.1. Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is important as you would want to be able to add your own investigator details into the
 investigapptor before you can start editing and managing with the other commands.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.8.2.2. Current Implementation</a></h5>
+<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.3.2.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is created when the command word <code>addinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The
 add investigator command will then create a Investigator instance and pass it from the logic component to the model component as shown
-in <a href="#add-investLogic">Figure 32, &#8220;Add Investigator Logic Diagram&#8221;</a>.</p>
+in <a href="#add-investLogic">Figure 25, &#8220;Add Investigator Logic Diagram&#8221;</a>.</p>
 </div>
 <div id="add-investLogic" class="imageblock">
 <div class="content">
 <img src="images/AddInvestigatorLogicDiagram.png" alt="AddInvestigatorLogicDiagram" width="790">
 </div>
-<div class="title">Figure 32. Add Investigator Logic Diagram</div>
+<div class="title">Figure 25. Add Investigator Logic Diagram</div>
 </div>
 <div class="paragraph">
 <p>When initialising Investigapptor, the storage using the <code>addPerson()</code> method as well to populate the
 Investigapptor thus it has to be able to correctly set up the reference to the <code>CrimeCase</code>. To do this,
 when a <code>investigator</code> is added to Investigapptor, it will check its list of <code>CrimeCase</code> hashcodes against
 the all the <code>CrimeCase</code> in the Investigapptor and add those that match into its list of <code>CrimeCase</code>.
-Only after adding the <code>CrimeCase</code> will the investigator be stored in the <code>persons</code> list as show in <a href="#add-invest">Figure 33, &#8220;Add Investigator Sequence Diagram&#8221;</a>.</p>
+Only after adding the <code>CrimeCase</code> will the investigator be stored in the <code>persons</code> list as show in <a href="#add-invest">Figure 26, &#8220;Add Investigator Sequence Diagram&#8221;</a>.</p>
 </div>
 <div id="add-invest" class="imageblock">
 <div class="content">
 <img src="images/AddInvestigatorSequenceDiagram.png" alt="AddInvestigatorSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 33. Add Investigator Sequence Diagram</div>
+<div class="title">Figure 26. Add Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
@@ -1975,11 +1780,11 @@ This is done by the convertHashtoCases method in the Investigapptor as show belo
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">5.8.2.3. Design Consideration</a></h5>
+<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">5.3.2.3. Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
-<h5 id="aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml"><a class="link" href="#aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml">5.8.2.4. Aspect: Setting up Reference between <code>Investigator</code> and <code>CrimeCase</code> when loading the XML</a></h5>
+<h5 id="aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml"><a class="link" href="#aspect-setting-up-reference-between-code-investigator-code-and-code-crimecase-code-when-loading-the-xml">5.3.2.4. Aspect: Setting up Reference between <code>Investigator</code> and <code>CrimeCase</code> when loading the XML</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2015,19 +1820,19 @@ and one in the <code>Investigator</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-investigator"><a class="link" href="#delete-investigator">5.8.3. Delete Investigator</a></h4>
+<h4 id="delete-investigator"><a class="link" href="#delete-investigator">5.3.3. Delete investigator</a></h4>
 <div class="paragraph">
 <p>The <code>deleteInvestigatorCommand</code> will find and delete the specified Investigator in the Investigapptor.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">5.8.3.1. Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">5.3.3.1. Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>deleteInvestigatorCommand</code> is important as you may not longer wish to store certain investigator or have made a mistake when
 add the investigator.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.8.3.2. Current Implementation</a></h5>
+<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.3.3.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>deleteInvestigatorCommand</code> is created when the command word <code>deleteinvestigator</code> is
 detected in the user input. It will then check if the index given is valid. If the index
@@ -2038,26 +1843,26 @@ detected in the user input. It will then check if the index given is valid. If t
 <div class="content">
 <img src="images/DeleteInvestigatorLogic.png" alt="DeleteInvestigatorLogic" width="790">
 </div>
-<div class="title">Figure 34. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 27. Delete Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>ModelManager</code> will then call
 <code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
-<code>persons</code> as show below in <a href="#delete-invest">Figure 35, &#8220;Delete Investigator Sequence Diagram&#8221;</a>.</p>
+<code>persons</code> as show below in <a href="#delete-invest">Figure 28, &#8220;Delete Investigator Sequence Diagram&#8221;</a>.</p>
 </div>
 <div id="delete-invest" class="imageblock">
 <div class="content">
 <img src="images/DeleteInvestigatorSequenceDiagram.png" alt="DeleteInvestigatorSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 35. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 28. Delete Investigator Sequence Diagram</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">5.8.3.3. Design Consideration</a></h5>
+<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">5.3.3.3. Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
-<h5 id="aspect-method-of-removing-investigator"><a class="link" href="#aspect-method-of-removing-investigator">5.8.3.4. Aspect: Method of removing investigator</a></h5>
+<h5 id="aspect-method-of-removing-investigator"><a class="link" href="#aspect-method-of-removing-investigator">5.3.3.4. Aspect: Method of removing investigator</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2091,24 +1896,24 @@ detected in the user input. It will then check if the index given is valid. If t
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-investigator"><a class="link" href="#edit-investigator">5.8.4. Edit Investigator</a></h4>
+<h4 id="edit-investigator"><a class="link" href="#edit-investigator">5.3.4. Edit investigator</a></h4>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> will recreate an instance of the Investigator class that exist and store it in the Investigapptor.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-6"><a class="link" href="#reason-for-implementation-6">5.8.4.1. Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-6"><a class="link" href="#reason-for-implementation-6">5.3.4.1. Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is important as you would want to be able to edit an investigator&#8217;s details in the
 investigapptor rather than having to delete and add a new investigator.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.8.4.2. Current Implementation</a></h5>
+<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.3.4.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is created when the command word <code>editinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The <code>EditInvestigatorCommand</code>
 will then create a Investigator instance using both the old and new information and pass it from the logic component to the model component.
-As the logic for edit is extremely similar to add, you can refer to <a href="#add-invest">Figure 33, &#8220;Add Investigator Sequence Diagram&#8221;</a> to view the logic diagram.</p>
+As the logic for edit is extremely similar to add, you can refer to <a href="#add-invest">Figure 26, &#8220;Add Investigator Sequence Diagram&#8221;</a> to view the logic diagram.</p>
 </div>
 <div class="paragraph">
 <p>The model will take in both the old and new the Investigator instance and start by recreating the all the cases as they reference the old investigator has to
@@ -2119,7 +1924,7 @@ Once all the <code>CrimeCases</code> are recreated, they will be added to new <c
 <div class="content">
 <img src="images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 36. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 29. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of how each case is recreated and swapped to ensure that the index is not changed.</p>
@@ -2141,11 +1946,11 @@ Once all the <code>CrimeCases</code> are recreated, they will be added to new <c
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-4"><a class="link" href="#design-consideration-4">5.8.4.3. Design Consideration</a></h5>
+<h5 id="design-consideration-4"><a class="link" href="#design-consideration-4">5.3.4.3. Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
-<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code">5.8.4.4. Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
+<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code">5.3.4.4. Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2181,19 +1986,19 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-investigator-cases"><a class="link" href="#list-investigator-cases">5.8.5. List Investigator Cases</a></h4>
+<h4 id="list-investigator-s-cases"><a class="link" href="#list-investigator-s-cases">5.3.5. List investigator&#8217;s cases</a></h4>
 <div class="paragraph">
 <p>The <code>ListInvestigatorCaseCommand</code> will search and display all the cases belonging to the investigator in the panel list.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">5.8.5.1. Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">5.3.5.1. Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>ListInvestigatorCaseCommand</code> is important as you would want to be able find all the cases the investigator is in charge of
 easily as compared to search each case one by one.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.8.5.2. Current Implementation</a></h5>
+<h5 id="current-implementation-9"><a class="link" href="#current-implementation-9">5.3.5.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>ListInvestigatorCaseCommand</code> is created when the command word <code>listinvestigatorcases</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to identify which investigator is selected by using the <code>Index</code>. <code>ListInvestigatorCaseCommand</code> will retrieve the selected <code>investigator</code>
@@ -2205,7 +2010,7 @@ the selected <code>investigator</code>. An event will be raised to alert the UI 
 <div class="content">
 <img src="images/ListInvestigatorCaseLogicDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 37. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 30. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of what is being done in the execute method</p>
@@ -2231,11 +2036,11 @@ the selected <code>investigator</code>. An event will be raised to alert the UI 
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-5"><a class="link" href="#design-consideration-5">5.8.5.3. Design Consideration</a></h5>
+<h5 id="design-consideration-5"><a class="link" href="#design-consideration-5">5.3.5.3. Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
-<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2">5.8.5.4. Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
+<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2">5.3.5.4. Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2271,15 +2076,17 @@ type of searches.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="code-crimecase-code-package"><a class="link" href="#code-crimecase-code-package">5.9. <code>crimecase</code> Package</a></h3>
+<h3 id="case-features"><a class="link" href="#case-features">5.4. Case Features</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">5.9.1. Reason for implementation</a></h4>
+<h4 id="code-crimecase-code-package"><a class="link" href="#code-crimecase-code-package">5.4.1. <code>crimecase</code> Package</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">5.4.1.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>As Investigapptor is a tool for managing investigations, the ability to store information about a case is essential.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">5.9.2. Current implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-10"><a class="link" href="#current-implementation-10">5.4.1.2. Current implementation</a></h5>
 <div class="paragraph">
 <p>Each attribute of a case, such as the case name, description, status, etc. are classes in the <code>crimecase</code> package. Each of the classes provide utility methods to check the validity of the string to be stored, retrieve the string that is stored, and obtain the hash code of the object.</p>
 </div>
@@ -2359,23 +2166,23 @@ type of searches.</p>
 <p><code>CrimeCase</code> objects are considered "duplicates" when they share at least the same <code>CaseName</code>, <code>Description</code>, and <code>StartDate</code>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="reasons-for-how-it-is-implemented"><a class="link" href="#reasons-for-how-it-is-implemented">5.9.3. Reasons for how it is implemented</a></h4>
+<div class="sect4">
+<h5 id="reasons-for-how-it-is-implemented"><a class="link" href="#reasons-for-how-it-is-implemented">5.4.1.3. Reasons for how it is implemented</a></h5>
 <div class="paragraph">
 <p>The <code>crimecase</code> package follows the model of the <code>person</code> package, whereby each attribute is represented by a class. This allows for better organization and a modular design which follows the single responsibility principle.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-cases-feature"><a class="link" href="#adding-cases-feature">5.10. Adding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">5.10.1. Reason for implementation</a></h4>
+<h4 id="add-case"><a class="link" href="#add-case">5.4.2. Add case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">5.4.2.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>To be able to manage cases, investigators should have the ability to add case details into the application.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">5.10.2. Current implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-11"><a class="link" href="#current-implementation-11">5.4.2.2. Current implementation</a></h5>
 <div class="paragraph">
 <p>The <code>AddCaseCommandParser</code> parses the string of arguments provided by the user and splits the <code>String</code> into its separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) to be used in the context of the <code>AddCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2412,13 +2219,13 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>public CommandResult executeUndoableCommand() throws CommandException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
     requireNonNull(model);
-    try {
+    <span class="keyword">try</span> {
         model.addCrimeCase(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
-    } catch (DuplicateCrimeCaseException e) {
-        throw new CommandException(MESSAGE_DUPLICATE_CASE);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, toAdd));
+    } <span class="keyword">catch</span> (DuplicateCrimeCaseException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_CASE);
     }
 }</code></pre>
 </div>
@@ -2428,9 +2235,9 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>public void addCrimeCase(CrimeCase c) throws DuplicateCrimeCaseException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> addCrimeCase(CrimeCase c) <span class="directive">throws</span> DuplicateCrimeCaseException {
     CrimeCase crimeCase = syncWithMasterTagList(c);
-    if (cases.add(crimeCase)) {
+    <span class="keyword">if</span> (cases.add(crimeCase)) {
         addCrimeCaseToInvestigator(crimeCase);
     }
 }</code></pre>
@@ -2443,13 +2250,13 @@ type of searches.</p>
 <div class="content">
 <img src="images/SD_AddCaseCommand_Model.png" alt="SD AddCaseCommand Model" width="800">
 </div>
-<div class="title">Figure 38. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
+<div class="title">Figure 31. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.10.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-parsing-the-investigator-to-be-assigned"><a class="link" href="#aspect-parsing-the-investigator-to-be-assigned">5.10.3.1. Aspect: Parsing the investigator-to-be-assigned</a></h5>
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.4.2.3. Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-parsing-the-investigator-to-be-assigned"><a class="link" href="#aspect-parsing-the-investigator-to-be-assigned">5.4.2.3.1. Aspect: Parsing the investigator-to-be-assigned</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -2483,16 +2290,16 @@ type of searches.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-cases-feature"><a class="link" href="#deleting-cases-feature">5.11. Deleting cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-10"><a class="link" href="#reason-for-implementation-10">5.11.1. Reason for implementation</a></h4>
+<h4 id="delete-case"><a class="link" href="#delete-case">5.4.3. Delete case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-10"><a class="link" href="#reason-for-implementation-10">5.4.3.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>Sometimes, cases are added by error or there is no need to continue management of a case. Investigators should have a method to remove a case from the application.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">5.11.2. Current implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-12"><a class="link" href="#current-implementation-12">5.4.3.2. Current implementation</a></h5>
 <div class="paragraph">
 <p>The <code>DeleteCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2523,15 +2330,15 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>public CommandResult executeUndoableCommand() {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() {
     requireNonNull(caseToDelete);
-    try {
+    <span class="keyword">try</span> {
         model.deleteCrimeCase(caseToDelete);
-        EventsCenter.getInstance().post(new SwapTabEvent(1));
-    } catch (CrimeCaseNotFoundException pnfe) {
-        throw new AssertionError("The target case cannot be missing");
+        EventsCenter.getInstance().post(<span class="keyword">new</span> SwapTabEvent(<span class="integer">1</span>));
+    } <span class="keyword">catch</span> (CrimeCaseNotFoundException pnfe) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target case cannot be missing</span><span class="delimiter">&quot;</span></span>);
     }
-    return new CommandResult(String.format(MESSAGE_DELETE_CASE_SUCCESS, caseToDelete));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_DELETE_CASE_SUCCESS, caseToDelete));
 }</code></pre>
 </div>
 </div>
@@ -2542,7 +2349,7 @@ type of searches.</p>
 <div class="content">
 <img src="images/SD_DeleteCaseCommand_Logic.png" alt="SD DeleteCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 39. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
+<div class="title">Figure 32. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2551,20 +2358,103 @@ type of searches.</p>
 <div class="content">
 <img src="images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="500">
 </div>
-<div class="title">Figure 40. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
+<div class="title">Figure 33. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="finding-cases-feature"><a class="link" href="#finding-cases-feature">5.12. Finding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-11"><a class="link" href="#reason-for-implementation-11">5.12.1. Reason for implementation</a></h4>
+<h4 id="edit-case"><a class="link" href="#edit-case">5.4.4. Edit case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-11"><a class="link" href="#reason-for-implementation-11">5.4.4.1. Reason for implementation</a></h5>
+<div class="paragraph">
+<p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-13"><a class="link" href="#current-implementation-13">5.4.4.2. Current implementation</a></h5>
+<div class="paragraph">
+<p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a <code>EditCrimeCaseDescriptor</code> object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCrimeCaseDescriptor</code> is a class containing information that describes the case (i.e. case name, description, investigator, start date, tags). The descriptor is used because the user is not required to input all the fields except the case index. When the user specifies the field they wish to edit, it sets the field in the <code>EditCrimeCaseDescriptor</code> to that value. If any field is not specified, the field is set to <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCaseCommand</code> that extends the <code>UndoableCommand</code> has one constructor.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EditCaseCommand(caseIndex, editCrimeCaseDescriptor)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object and <code>EditCrimeCaseDescriptor</code> as parameters.</p>
+<p class="tableblock">The <code>caseIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p>
+<p class="tableblock">A new <code>CrimeCase</code> object is created using the retrieved case-to-be-edited and the descriptor.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When the <code>EditCaseCommand</code> is executed, note that the original <code>CrimeCase</code> object is not modified, but rather, replaced by a new <code>CrimeCase</code> object. When the <code>CrimeCase</code> constructor is called, a new <code>Investigator</code> object without its <code>UniqueCrimeCaseList</code> is created within the <code>CrimeCase</code> (i.e. only the personal details are stored). This is to simplify the data to be recorded in storage. The list of cases within the original <code>Investigator</code> object remains untouched. The snippet of code below shows the implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> CrimeCase syncWithMasterTagList(CrimeCase crimeCase) {
+    <span class="comment">// … logic for handling and rebuilding tags …</span>
+
+    <span class="keyword">return</span> <span class="keyword">new</span> CrimeCase(
+        crimeCase.getCaseName(), crimeCase.getDescription(), crimeCase.getCurrentInvestigator(),,
+        crimeCase.getStartDate(), crimeCase.getEndDate(), crimeCase.getStatus(), correctTagReferences);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remember that each <code>Investigator</code> object has their own <code>UniqueCrimeCaseList</code> that holds <code>CrimeCase</code> objects that they&#8217;ve been assigned.</p>
+</div>
+<div class="paragraph">
+<p>Since the <code>CrimeCase</code> object is replaced rather than modified, we need to remove the old <code>CrimeCase</code> object stored in the <code>UniqueCrimeCaseList</code> of the <code>Investigator</code> and reference the new, modified <code>CrimeCase</code> object instead. This is done by traversing the entire list of investigators and finding the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from using the <code>removeCrimeCaseFromInvestigator</code> method. Next, after replacing the old <code>CrimeCase</code> object with the edited one in master list of all cases, it traverses the entire list of investigators again to add the case back to the correct <code>Investigator</code> object using the <code>addCrimeCaseFromInvestigator</code> method. The code below shows its implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> updateCrimeCase(CrimeCase target, CrimeCase editedCase)
+<span class="directive">throws</span> DuplicateCrimeCaseException, CrimeCaseNotFoundException {
+    requireNonNull(editedCase);
+
+    CrimeCase syncedEditedCrimeCase = syncWithMasterTagList(editedCase);
+    removeCrimeCaseFromInvestigator(target);
+    cases.setCrimeCase(target, syncedEditedCrimeCase);
+    addCrimeCaseToInvestigator(syncedEditedCrimeCase);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram below illustrates how the Model component works when a case is edited.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SD_EditCaseCommand_Model.png" alt="SD EditCaseCommand Model" width="800">
+</div>
+<div class="title">Figure 34. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-cases-by-name"><a class="link" href="#find-cases-by-name">5.4.5. Find cases by name</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">5.4.5.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>To manage large numbers of cases, having a feature that would allow investigators to search the list of cases by name would be extremely helpful. If an investigator is looking for a particular case, it would be extremely inefficient and time-consuming to have to manually browse through all the cases. Hence, being able to find cases by name can help to increase workflow productivity and efficiency.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">5.12.2. Current implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-14"><a class="link" href="#current-implementation-14">5.4.5.2. Current implementation</a></h5>
 <div class="paragraph">
 <p>The <code>FindCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the list of keywords to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2595,10 +2485,10 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>public CommandResult execute() {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult execute() {
     model.updateFilteredCrimeCaseList(predicate);
-    EventsCenter.getInstance().post(new SwapTabEvent(1));
-    return new CommandResult(getMessageForCrimeCaseListShownSummary(model.getFilteredCrimeCaseList().size()));
+    EventsCenter.getInstance().post(<span class="keyword">new</span> SwapTabEvent(<span class="integer">1</span>));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(getMessageForCrimeCaseListShownSummary(model.getFilteredCrimeCaseList().size()));
 }</code></pre>
 </div>
 </div>
@@ -2609,20 +2499,318 @@ type of searches.</p>
 <div class="content">
 <img src="images/SD_FindCaseCommand_Logic.png" alt="SD FindCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 41. Interactions Inside the Logic Component for the <code>findcase magic</code> Command</div>
+<div class="title">Figure 35. Interactions Inside the Logic Component for the <code>findcase magic</code> Command</div>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="selecting-cases-feature"><a class="link" href="#selecting-cases-feature">5.13. Selecting cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">5.13.1. Reason for implementation</a></h4>
+<h4 id="Find-Feature"><a class="link" href="#Find-Feature">5.4.6. Find cases by status/tags</a></h4>
+<div class="paragraph">
+<p>The following sections provides an explanation on how the investigapptor finds
+certain cases according to its status or tags.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-13"><a class="link" href="#reason-for-implementation-13">5.4.6.1. Reason for implementation</a></h5>
+<div class="paragraph">
+<p>This implementation improves efficiency as the investigators do not need to manually browse through
+all the listed cases just to find certain cases.</p>
+</div>
+<div class="paragraph">
+<p>By having a find command, the investigator can easily search for cases that they
+are looking for. They can simply just run the find-related commands with their desired
+keywords and the cases they require will be displayed instantly.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-to-find-cases-by-status"><a class="link" href="#current-implementation-to-find-cases-by-status">5.4.6.2. Current Implementation to find cases by status</a></h5>
+<div class="paragraph">
+<p>Commands were created to find the cases according to the status specified. As there
+are only two possible status - <code>open</code> or <code>close</code>, two separate command classes <code>FindCloseCaseCommand</code>
+and <code>FindOpenCaseCommand</code> were created. These two commands inherits from its parent class - <code>FindByStatusCommand</code>.</p>
+</div>
+<div class="sect5">
+<h6 id="class-inheritance"><a class="link" href="#class-inheritance">5.4.6.2.1. Class Inheritance</a></h6>
+<div id="CDFindByStatus" class="imageblock">
+<div class="content">
+<img src="images/CDFindByStatus.png" alt="CDFindByStatus" width="800">
+</div>
+<div class="title">Figure 36. Class Diagram to illustrate inheritance</div>
+</div>
+<div class="paragraph">
+<p>In both <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>, its respective constructor will
+invoke its parent class' (<code>FindByStatusCommand</code>) constructor as passes in its corresponding status as the parameter.</p>
+</div>
+<div class="paragraph">
+<p><code>FindCloseCaseCommand</code> will pass in the status <code>close</code> as shown in the code segment below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindCloseCaseCommand() {
+    <span class="local-variable">super</span>(CASE_CLOSE);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>FindOpenCaseCommand</code> will pass in the status <code>open</code> as shown in the code segment below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindOpenCaseCommand() {
+    <span class="local-variable">super</span>(CASE_OPEN);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-logic-component"><a class="link" href="#sequence-diagrams-for-logic-component">5.4.6.2.2. Sequence Diagrams for Logic Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
+component when the user inputs the <code>findopencases</code> or <code>findclosecases</code> command.</p>
+</div>
+<div id="SDforFindOpenCase" class="imageblock">
+<div class="content">
+<img src="images/SDforFindOpenCase.png" alt="SDforFindOpenCase" width="800">
+</div>
+<div class="title">Figure 37. Sequence Diagram for interactions within Logic component for <code>FindOpenCaseCommand</code></div>
+</div>
+<div id="SDforFindCloseCase" class="imageblock">
+<div class="content">
+<img src="images/SDForFindCloseCase.png" alt="SDForFindCloseCase" width="800">
+</div>
+<div class="title">Figure 38. Sequence Diagram for interactions within Logic component for <code>FindCloseCaseCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The <code>Logic</code> component will set the <code>StatusContainsKeywordsPredicate</code> with
+a <code>List&lt;String&gt;</code> containing the keyword of either <code>open</code> or <code>close</code>.</p>
+</div>
+<div class="paragraph">
+<p>For <code>FindCloseCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>close</code>;
+whereas for <code>FindOpenCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>open</code>.</p>
+</div>
+<div class="paragraph">
+<p>The command will be executed by the <code>LogicManager</code> by updating the
+<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>StatusContainsKeywordsPredicate</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-model-component"><a class="link" href="#sequence-diagrams-for-model-component">5.4.6.2.3. Sequence Diagrams for Model Component</a></h6>
+<div class="paragraph">
+<p>Below are the sequence diagrams that represents the interactions within the
+<code>Model</code> component after the <code>findopencases</code> or <code>findclosecases</code> command
+has been executed by the <code>LogicManager</code>.</p>
+</div>
+<div id="SDForFindByStatusModel" class="imageblock">
+<div class="content">
+<img src="images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
+</div>
+<div class="title">Figure 39. Sequence Diagram for interactions within Model component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
+the given <code>StatusContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
+with any status of the case(s).</p>
+</div>
+<div class="paragraph">
+<p>Specifically, for <code>findopencases</code>, the predicate will test
+if the keyword 'open' matches any cases with the status of 'open'. Similarly,
+for <code>findclosecases</code>,  the predicate will test if the keyword 'close' matches
+any cases with the status of 'close'.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases that matches the
+given <code>StatusContainsKeywordsPredicate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
+captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
+whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
+the <a href="#Calendar-Events-Filter">above section</a>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="activity-diagram"><a class="link" href="#activity-diagram">5.4.6.2.4. Activity Diagram</a></h6>
+<div class="paragraph">
+<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
+by its status.</p>
+</div>
+<div id="ADForFindCase" class="imageblock">
+<div class="content">
+<img src="images/ADforFindCase.png" alt="ADforFindCase" width="800">
+</div>
+<div class="title">Figure 40. Activity Diagram when user enters <code>findclosecase</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-to-find-cases-by-tags"><a class="link" href="#current-implementation-to-find-cases-by-tags">5.4.6.3. Current Implementation to find cases by tags</a></h5>
+<div class="paragraph">
+<p>The command class, <code>FindCaseTagsCommand</code> was created to find the cases according to its tags. Cases whose tags
+matches the keywords that the user has input will be displayed.</p>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-logic-component-2"><a class="link" href="#sequence-diagrams-for-logic-component-2">5.4.6.3.1. Sequence Diagrams for Logic Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
+component when the user inputs the <code>findcasetags</code>.</p>
+</div>
+<div id="SDforFindCaseTags" class="imageblock">
+<div class="content">
+<img src="images/SDforFindCaseTags.png" alt="SDforFindCaseTags" width="800">
+</div>
+<div class="title">Figure 41. Sequence Diagram for interactions within Logic component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Logic</code> component will set the <code>TagContainsKeywordsPredicate</code> with
+a <code>List&lt;String&gt;</code> containing the keywords that were parsed by <code>FindCaseTagsCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>For the command <code>findcasetags fraud homicide</code> in the
+<a href="#SDforFindCaseTags">sequence diagram above</a>, the <code>List&lt;String&gt;</code> will
+contain the keywords <code>fraud</code> and <code>homicide</code>.</p>
+</div>
+<div class="paragraph">
+<p>The command will be executed by the <code>LogicManager</code> by updating the
+<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>TagContainsKeywordsPredicate</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-model-component-2"><a class="link" href="#sequence-diagrams-for-model-component-2">5.4.6.3.2. Sequence Diagrams for Model Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagram shows the interactions within the <code>Model</code> component.</p>
+</div>
+<div id="SDforFindCaseTagsModel" class="imageblock">
+<div class="content">
+<img src="images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
+</div>
+<div class="title">Figure 42. Sequence Diagram for interactions within Model component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
+the given <code>TagContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
+with any tags of the case(s).</p>
+</div>
+<div class="paragraph">
+<p>For the example in the <a href="#SDforFindCaseTags">above logic sequence diagram</a>,
+the predicate will test if the keywords "fraud" or "homicide" matches any cases'
+tags.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases whose
+tags matches the keyword of either "fraud" or "homicide".</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
+captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
+whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
+the <a href="#Calendar-Events-Filter">above section</a>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="activity-diagram-2"><a class="link" href="#activity-diagram-2">5.4.6.3.3. Activity Diagram</a></h6>
+<div class="paragraph">
+<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
+by its tags.</p>
+</div>
+<div id="ADForFindCaseTags" class="imageblock">
+<div class="content">
+<img src="images/ADForFindCaseTags.png" alt="ADForFindCaseTags" width="800">
+</div>
+<div class="title">Figure 43. Activity Diagram when user enters <code>findcasetags murder</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="alternatives-considered-2"><a class="link" href="#alternatives-considered-2">5.4.6.4. Alternatives Considered</a></h5>
+<div class="paragraph">
+<p>This section compares between the current choice of implementation and the
+alternative choice that was considered. It lists the pros and cons to each of the
+choices that were considered.</p>
+</div>
+<div class="sect5">
+<h6 id="aspect-design-implementation"><a class="link" href="#aspect-design-implementation">5.4.6.4.1. Aspect: Design Implementation</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Separate the find-related commands classes into its
+individual category its searching for. In this case we have <code>FindCaseTagsCommand</code>,
+<code>FindCloseCaseCommand</code> &amp; <code>FindOpenCaseCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for the user as they just need to know the command name/alias
+(i.e. <code>findopencases</code> or <code>foc</code> will just instantly display the cases that are closed)</p>
+</li>
+<li>
+<p>Cons: Additional <code>.java</code> class files</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Have just one <code>FindCommand</code> class and use prefixes to differentiate
+the type of keywords (i.e. findcase t/Tags s/Status)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only one <code>.java</code> file required for different types of find. Easier to
+extend the command to find other details by adding more prefixes.</p>
+</li>
+<li>
+<p>Cons: Not as user-friendly. Users has to recognize the prefixes, could be
+too technical for non-technical users.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-class-implementation-for-finding-cases-by-status"><a class="link" href="#aspect-class-implementation-for-finding-cases-by-status">5.4.6.4.2. Aspect: Class Implementation [for finding cases by status]</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Have two classes <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>
+that are extended from parent class <code>FindByStatusCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No code duplication as duplicated set of codes will be in the parent class <code>FindByStatusCommand</code></p>
+</li>
+<li>
+<p>Cons: Additional <code>.java</code> class file</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Separate commands into two classes without inheritance</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: One less <code>.java</code> class file (no parent class)</p>
+</li>
+<li>
+<p>Cons: Duplicated set of codes</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="case-select"><a class="link" href="#case-select">5.4.7. Select case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-14"><a class="link" href="#reason-for-implementation-14">5.4.7.1. Reason for implementation</a></h5>
 <div class="paragraph">
 <p>An investigator should be able to retrieve and view information about a case after adding them into the application.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">5.13.2. Current implementation</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-15"><a class="link" href="#current-implementation-15">5.4.7.2. Current implementation</a></h5>
 <div class="paragraph">
 <p>Similar to <code>DeleteCaseCommandParser</code>, the <code>SelectCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>SelectCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2652,16 +2840,16 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>public CommandResult execute() throws CommandException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
 
-    List &lt; CrimeCase &gt; lastShownList = model.getFilteredCrimeCaseList();
+    <span class="predefined-type">List</span> &lt; CrimeCase &gt; lastShownList = model.getFilteredCrimeCaseList();
 
-    if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
-        throw new CommandException(Messages.MESSAGE_INVALID_CASE_DISPLAYED_INDEX);
+    <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_CASE_DISPLAYED_INDEX);
     }
 
-    EventsCenter.getInstance().post(new JumpToCrimeCaseListRequestEvent(targetIndex));
-    return new CommandResult(String.format(MESSAGE_SELECT_CASE_SUCCESS, targetIndex.getOneBased()));
+    EventsCenter.getInstance().post(<span class="keyword">new</span> JumpToCrimeCaseListRequestEvent(targetIndex));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SELECT_CASE_SUCCESS, targetIndex.getOneBased()));
 
 }</code></pre>
 </div>
@@ -2673,7 +2861,7 @@ type of searches.</p>
 <div class="content">
 <img src="images/SD_SelectCaseCommand_Logic.png" alt="SD SelectCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 42. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 44. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2683,8 +2871,8 @@ type of searches.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>@Subscribe
-private void handleJumpToCrimeCaseListRequestEvent(JumpToCrimeCaseListRequestEvent event) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleJumpToCrimeCaseListRequestEvent(JumpToCrimeCaseListRequestEvent event) {
     logger.info(LogsCenter.getEventHandlingLogMessage(event));
     scrollTo(event.targetIndex);
 }</code></pre>
@@ -2695,8 +2883,8 @@ private void handleJumpToCrimeCaseListRequestEvent(JumpToCrimeCaseListRequestEve
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>@Subscribe
-private void handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionChangedEvent event) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadCrimeCasePage(event.getNewSelection().crimeCase);
 }</code></pre>
@@ -2709,62 +2897,80 @@ private void handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionCh
 <div class="content">
 <img src="images/SD_SelectCaseCommand_EventsCenter.png" alt="SD SelectCaseCommand EventsCenter" width="800">
 </div>
-<div class="title">Figure 43. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 45. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
 </div>
 <div class="paragraph">
-<p>&#160;<br></p>
+<p><code>loadCrimeCasePage</code> method then takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags), to be processed for viewing on the UI.</p>
 </div>
 <div class="paragraph">
-<p><code>loadCrimeCasePage</code> method takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags) as <code>String</code>, which are then used to create a URL query string. Components with strings that may contain symbols such as “#” are encoded first before appending to the query string.</p>
+<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">Section 5.5.1, &#8220;Details pane&#8221;</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ui-enhancements"><a class="link" href="#ui-enhancements">5.5. UI Enhancements</a></h3>
+<div class="sect3">
+<h4 id="UI-DetailsPane"><a class="link" href="#UI-DetailsPane">5.5.1. Details pane</a></h4>
+<div class="paragraph">
+<p>This component is used by the <code>selectinvestigator</code> and <code>selectcase</code>(<a href="#case-select">Section 5.4.7, &#8220;Select case&#8221;</a>) commands. The details pane makes use of JavaFx&#8217;s <code>WebView</code> (an embedded browser) to render the data onto the display. The implementation for this can be found in <a href="https://github.com/CS2103JAN2018-F14-B3/main/java/seedu/investigapptor/ui/BrowserPanel.java">BrowserPanel</a>.</p>
+</div>
+<div class="paragraph">
+<p>Two HTML files, <code>/docs/InvestigatorDetailsPage.html</code> and <code>/docs/CaseDetailsPage.html</code> are created as templates for displaying the details of a single investigator and case respectively. <code>WebView</code> provides utility methods that can be used to load and display the HTML files.</p>
+</div>
+<div class="paragraph">
+<p>A <code>String</code> containing the URL or file path is passed to the <code>load</code> method with a query string appended to the back (e.g. “https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=John%20Doe”). This method can be used to load pages from third-party services (e.g. Google Search).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>encDescription = URLEncoder.encode(description, "UTF-8");
-encInvEmail = URLEncoder.encode(currentInvestigator.getEmail().value, "UTF-8");
-encInvAddress = URLEncoder.encode(currentInvestigator.getAddress().value, "UTF-8");
-encStartDate = URLEncoder.encode(startDate, "UTF-8");
-encEndDate = URLEncoder.encode(endDate, "UTF-8");</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To create the view where the information is displayed on the GUI (<code>BrowserPanel</code>), an HTML file (<code>/docs/CaseDetailsPage.html</code>) was created as a template for displaying the details of a single case. In order to load the HTML file, utility methods provided by JavaFX’s <code>WebView</code> (an embedded browser) are used.</p>
-</div>
-<div class="paragraph">
-<p>A <code>String</code> containing the URL or file path is passed to the <code>load</code> method with a request string appended to the back (e.g. “https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=John%20Doe”). This method can be used to load pages from third-party services (e.g. Google Search).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>public void loadPage(String url) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> loadPage(<span class="predefined-type">String</span> url) {
     Platform.runLater(() - &gt; browser.getEngine().load(url));
 }</code></pre>
 </div>
 </div>
+<div class="sect4">
+<h5 id="example-displaying-case-information"><a class="link" href="#example-displaying-case-information">5.5.1.1. Example: Displaying case information</a></h5>
+<div class="paragraph">
+<p>The following sub-section shows how the query string is generated for the <code>CrimeCase</code> object.</p>
+</div>
+<div class="paragraph">
+<p>A URL query string is generated by deconstructing the <code>CrimeCase</code> object into its components (i.e. case name, description, investigator, start date, end date, status, and tags) as <code>String</code>. Components that might contain symbols such as “#” are encoded first before appending to the query string to prevent parsing error by the browser.</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>String caseDetailsPage = CASE_DETAILS_PAGE +
-    "?caseName=" + caseName +
-    "&amp;description=" + encDescription +
-    "&amp;tags=" + tagList +
-    "&amp;invName=" + currentInvestigator.getName().fullName +
-    "&amp;invRank=" + currentInvestigator.getRank().toString() +
-    "&amp;invPhone=" + currentInvestigator.getPhone().value +
-    "&amp;invEmail=" + encInvEmail +
-    "&amp;invAddress=" + encInvAddress +
-    "&amp;startDate=" + encStartDate +
-    "&amp;endDate=" + encEndDate +
-    "&amp;status=" + status;
+<pre class="CodeRay highlight"><code data-lang="java">encDescription = <span class="predefined-type">URLEncoder</span>.encode(description, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encInvEmail = <span class="predefined-type">URLEncoder</span>.encode(currentInvestigator.getEmail().value, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encInvAddress = <span class="predefined-type">URLEncoder</span>.encode(currentInvestigator.getAddress().value, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encStartDate = <span class="predefined-type">URLEncoder</span>.encode(startDate, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encEndDate = <span class="predefined-type">URLEncoder</span>.encode(endDate, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> caseDetailsPage = CASE_DETAILS_PAGE +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">?caseName=</span><span class="delimiter">&quot;</span></span> + caseName +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;description=</span><span class="delimiter">&quot;</span></span> + encDescription +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;tags=</span><span class="delimiter">&quot;</span></span> + tagList +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invName=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getName().fullName +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invRank=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getRank().toString() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invPhone=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getPhone().value +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invEmail=</span><span class="delimiter">&quot;</span></span> + encInvEmail +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invAddress=</span><span class="delimiter">&quot;</span></span> + encInvAddress +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;startDate=</span><span class="delimiter">&quot;</span></span> + encStartDate +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;endDate=</span><span class="delimiter">&quot;</span></span> + encEndDate +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;status=</span><span class="delimiter">&quot;</span></span> + status;
 
-loadPage(caseDetailsPage);</code></pre>
+loadPage(caseDetailsPage)</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Javascript code is included in the HTML file to parse the URL request string and populate the HTML file with the corresponding case details.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.13.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-to-view-case-details"><a class="link" href="#aspect-implementation-to-view-case-details">5.13.3.1. Aspect: Implementation to view case details</a></h5>
+<h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.5.1.2. Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-implementation-to-view-case-details"><a class="link" href="#aspect-implementation-to-view-case-details">5.5.1.2.1. Aspect: Implementation to view case details</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -2801,145 +3007,42 @@ loadPage(caseDetailsPage);</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-cases-feature"><a class="link" href="#editing-cases-feature">5.14. Editing cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-13"><a class="link" href="#reason-for-implementation-13">5.14.1. Reason for implementation</a></h4>
+<h4 id="modify-interface-theme-colour-scheme"><a class="link" href="#modify-interface-theme-colour-scheme">5.5.2. Modify interface theme/colour scheme</a></h4>
 <div class="paragraph">
-<p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-14"><a class="link" href="#current-implementation-14">5.14.2. Current implementation</a></h4>
-<div class="paragraph">
-<p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a  ` EditCrimeCaseDescriptor` object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+<p>It&#8217;s easy to customize the look and feel of Investigapptor just by using CSS!</p>
 </div>
 <div class="paragraph">
-<p>The <code>EditCrimeCaseDescriptor</code> is a class containing information that describes the case (i.e. case name, description, investigator, start date, tags). The descriptor is used because the user is not required to input all the fields except the case index. When the user specifies the field they wish to edit, it sets the field in the <code>EditCrimeCaseDescriptor</code> to that value. If any field is not specified, the field is set to <code>null</code>.</p>
+<p>The default style of the interface is generated by <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/LightTheme.css">LightTheme.css</a>. To start personalising it, you can create a new CSS file in the <code>/resources/view/</code> directory and replace the name of the file in the following line in <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/MainWindow.fxml">MainWindow.fxml</a>  with the name of your CSS file:</p>
 </div>
-<div class="paragraph">
-<p>The <code>EditCaseCommand</code> that extends the <code>UndoableCommand</code> has one constructor.</p>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;URL value="@LightTheme.css" /&gt;</pre>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
+</div>
+<div class="admonitionblock tip">
+<table>
 <tr>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can take a look at <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/DarkTheme.css">DarkTheme.css</a> for reference on what elements you can change.
+</td>
 </tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EditCaseCommand(caseIndex, editCrimeCaseDescriptor)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object and <code>EditCrimeCaseDescriptor</code> as parameters.</p>
-<p class="tableblock">The <code>caseIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p>
-<p class="tableblock">A new <code>CrimeCase</code> object is created using the retrieved case-to-be-edited and the descriptor.</p></td>
-</tr>
-</tbody>
 </table>
-<div class="paragraph">
-<p>When the <code>EditCaseCommand</code> is executed, note that the original <code>CrimeCase</code> object is not modified, but rather, replaced by a new <code>CrimeCase</code> object. When the <code>CrimeCase</code> constructor is called, a new <code>Investigator</code> object without its <code>UniqueCrimeCaseList</code> is created within the <code>CrimeCase</code> (i.e. only the personal details are stored). This is to simplify the data to be recorded in storage. The list of cases within the original <code>Investigator</code> object remains untouched. The snippet of code below shows the implementation.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>private CrimeCase syncWithMasterTagList(CrimeCase crimeCase) {
-    // … logic for handling and rebuilding tags …
-
-    return new CrimeCase(
-        crimeCase.getCaseName(), crimeCase.getDescription(), crimeCase.getCurrentInvestigator(),,
-        crimeCase.getStartDate(), crimeCase.getEndDate(), crimeCase.getStatus(), correctTagReferences);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Remember that each <code>Investigator</code> object has their own <code>UniqueCrimeCaseList</code> that holds <code>CrimeCase</code> objects that they&#8217;ve been assigned.</p>
-</div>
-<div class="paragraph">
-<p>Since the <code>CrimeCase</code> object is replaced rather than modified, we need to remove the old <code>CrimeCase</code> object stored in the <code>UniqueCrimeCaseList</code> of the <code>Investigator</code> and reference the new, modified <code>CrimeCase</code> object instead. This is done by traversing the entire list of investigators and finding the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from using the <code>removeCrimeCaseFromInvestigator</code> method. Next, after replacing the old <code>CrimeCase</code> object with the edited one in master list of all cases, it traverses the entire list of investigators again to add the case back to the correct <code>Investigator</code> object using the <code>addCrimeCaseFromInvestigator</code> method. The code below shows its implementation.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>public void updateCrimeCase(CrimeCase target, CrimeCase editedCase)
-throws DuplicateCrimeCaseException, CrimeCaseNotFoundException {
-    requireNonNull(editedCase);
-
-    CrimeCase syncedEditedCrimeCase = syncWithMasterTagList(editedCase);
-    removeCrimeCaseFromInvestigator(target);
-    cases.setCrimeCase(target, syncedEditedCrimeCase);
-    addCrimeCaseToInvestigator(syncedEditedCrimeCase);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram below illustrates how the Model component works when a case is edited.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SD_EditCaseCommand_Model.png" alt="SD EditCaseCommand Model" width="800">
-</div>
-<div class="title">Figure 44. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="creating-backup"><a class="link" href="#creating-backup">5.15. Creating Backup</a></h3>
-<div class="paragraph">
-<p>This feature allows users to create a new xml file of the current state of the Investigapptor
-with a new name.</p>
-</div>
-<div class="sect3">
-<h4 id="reason-for-implementation-14"><a class="link" href="#reason-for-implementation-14">5.15.1. Reason for implementation</a></h4>
-<div class="paragraph">
-<p>As investigators may want to save the current state of the Investigapptor before progressing
-or having to create a periodic backup to fall back on.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-15"><a class="link" href="#current-implementation-15">5.15.2. Current implementation</a></h4>
-<div class="paragraph">
-<p>The <code>BackupCommand</code> is created when the command word <code>backup</code> is detected in the user input. It will then use the <code>BackupCommandParser</code>
-ensure that the filename is alphanumeric. The <code>BackupCommand</code> will then call the <code>backupInvestigapptor</code> method from the model
-and pass in the filename as a string.</p>
-</div>
-<div id="backup-diagram" class="imageblock">
-<div class="content">
-<img src="images/backupDiagram.png" alt="backupDiagram" width="790">
-</div>
-<div class="title">Figure 45. Backup Sequence Diagram</div>
-</div>
-<div class="paragraph">
-<p>In the <code>Model</code>, the <code>backUpInvestigapptor</code> will raise the event <code>InvestigapptorBackupEvent</code> .The event contains filename which will be passed to
-Storage component to start the saving sequence.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>public void backUpInvestigapptor(String fileName) {
-    raise(new InvestigapptorBackupEvent(investigapptor, fileName));
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>At the Storage component, the <code>handleInvestigapptorBackupEvent</code> will extract the filename and create a new
-xml by using the <code>backupInvestigapptor</code> method.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>    public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event, "Backup command, saving to file"));
-        try {
-            backupInvestigapptor(event.data, event.fileName);
-        } catch (IOException e) {
-            raise(new DataSavingExceptionEvent(e));
-        }
-    }
-//end::backup[]</pre>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The current version of Investigapptor does not provide users with the ability to set the theme from within the application. This is a feature that we wish to implement in future versions.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -4838,7 +4941,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:25:51 UTC
+Last updated 2018-04-15 08:33:12 UTC
 </div>
 </div>
 </body>
