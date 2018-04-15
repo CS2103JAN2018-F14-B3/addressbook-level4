@@ -25,8 +25,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Investigapptor is a desktop application used for investigators to manage cases as simple, straightforward and efficient as possible.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Investigapptor is a desktop application used for investigators to manage cases as simple, straightforward and efficient as possible.</p>
+</div>
+<div class="paragraph">
+<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -40,10 +42,10 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to add, delete, edit, find, and view case details in Investigapptor</p>
+<p>What it does: allows the user to add, delete, edit, find, and view case details in Investigapptor using the Command Line Interface (CLI)</p>
 </li>
 <li>
-<p>Justification: As Investigapptor is a tool for managing investigations, the ability to store, modify, and view case information is fundamental to the functionality of the application.</p>
+<p>Justification: As Investigapptor is a tool for managing investigations, the ability to store, modify, and view case information is integral to the functionality of the application. This feature aims to eliminate the need for paper-based processing during investigations, and give investigators a platform to access the data that they need more easily and efficiently.</p>
 </li>
 <li>
 <p>Highlights: This enhancement touched on the logic, model, storage, and UI components. In the model component, a new package had to be introduced to store case information.</p>
@@ -52,14 +54,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: updated the GUI with a new colour scheme and style</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Highlights: Styled with CSS</p>
-</li>
-</ul>
-</div>
+<p><strong>Minor enhancement</strong>: updated the GUI with a new colour scheme and style <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/185">#185</a></p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/collated/functional/leowweiching.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/collated/test/leowweiching.md">Test code</a>]</p>
@@ -69,11 +64,11 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Project management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/185">#185</a></p>
+<p>Managed release <code>v1.5rc</code> on GitHub</p>
 </li>
 </ul>
 </div>
@@ -86,6 +81,9 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <p>Wrote content for the README.md <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/23">#23</a></p>
 </li>
 <li>
+<p>Restructured the Developer Guide and changed language style of existing content to make it more reader-focused <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/252">#252</a></p>
+</li>
+<li>
 <p>Did cosmetic tweaks to existing contents of the User Guide</p>
 </li>
 </ul>
@@ -95,9 +93,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <p>Community:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments)</p>
-</li>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-W15-B3/main/issues/127">1</a>, <a href="https://github.com/CS2103JAN2018-W15-B3/main/issues/133">2</a>)</p>
 </li>
@@ -554,6 +549,420 @@ Selects the 3rd case in the most recent list of cases.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="add-case"><a class="link" href="#add-case">Add case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>To be able to manage cases, investigators should have the ability to add case details into the application.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h5>
+<div class="sect5">
+<h6 id="logic-component"><a class="link" href="#logic-component">Logic component</a></h6>
+<div class="paragraph">
+<p>The <code>AddCaseCommandParser</code> parses the string of arguments provided by the user and splits the <code>String</code> into its separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) to be used in the context of the <code>AddCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AddCaseCommand</code> that extends the <code>UndoableCommand</code> class is implemented with constructor overloading, where either constructor can be used depending on the developer’s needs.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new AddCaseCommand(crimeCase)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts a <code>CrimeCase</code> object as parameter.</p>
+<p class="tableblock">Useful in testing where <code>CrimeCaseBuilder</code> is used to create the <code>CrimeCase</code> object first.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new AddCaseCommand(name, description, investigatorIndex, startDate, tagList)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code> objects as parameters.</p>
+<p class="tableblock">Called by <code>AddCaseCommandParser</code> when a user inputs the command and details of a case.</p>
+<p class="tableblock">When this constructor is used, the <code>Index</code> object is processed to retrieve the <code>Investigator</code> object at the specified index on the most recent list of investigators displayed by the model. A <code>CrimeCase</code> object is created using the parameters and the retrieved <code>Investigator</code> object.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>CrimeCase</code> object is then added to the model and throws a <code>DuplicateCrimeCaseException</code> if there exists a similar object already in Investigapptor. The following snippet shows the execution code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+    requireNonNull(model);
+    <span class="keyword">try</span> {
+        model.addCrimeCase(toAdd);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, toAdd));
+    } <span class="keyword">catch</span> (DuplicateCrimeCaseException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_CASE);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model-component"><a class="link" href="#model-component">Model component</a></h6>
+<div class="paragraph">
+<p>In the <code>Model</code> component, the new <code>CrimeCase</code> object gets added to the case list of the assigned investigator as well (i.e. <code>UniqueCrimeCaseList</code> within the <code>Investigator</code> object) via the <code>addCrimeCaseToInvestigator</code> method. This method traverses through the entire list of investigators to find the correct <code>Investigator</code> object to add the new <code>CrimeCase</code> object to. The code is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> addCrimeCase(CrimeCase c) <span class="directive">throws</span> DuplicateCrimeCaseException {
+    CrimeCase crimeCase = syncWithMasterTagList(c);
+    <span class="keyword">if</span> (cases.add(crimeCase)) {
+        addCrimeCaseToInvestigator(crimeCase);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates what happens in the <code>Model</code> component when a case is added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_AddCaseCommand_Model.png" alt="SD AddCaseCommand Model" width="800">
+</div>
+<div class="title">Figure 9. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-parsing-the-investigator-to-be-assigned"><a class="link" href="#aspect-parsing-the-investigator-to-be-assigned">Aspect: Parsing the investigator-to-be-assigned</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> User inputs an investigator&#8217;s name after the <code>i/</code> prefix to indicate who to assign the case to</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More intuitive for the user.</p>
+</li>
+<li>
+<p>Cons: More difficult to implement - need a way to decide which investigator to assign if they share identical names.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> User inputs the index of the investigator based on the case list after the <code>i/</code> prefix to indicate who to assign the case to</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement and more straightforward. Index provided is the investigator to be assigned - don&#8217;t have to worry about identical names.</p>
+</li>
+<li>
+<p>Cons: User would have to switch between lists to refer to the investigator index. For example, the user types the command to add the case but then realises that they needed the investigator index. They would have to either use the interface to switch the tabs or type the <code>listinvestigators</code> command. This disrupts the flow and hinders efficiency.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-case"><a class="link" href="#delete-case">Delete case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>Sometimes, cases are added by error or there is no need to continue management of a case. Investigators should have a method to remove a case from the application.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current implementation</a></h5>
+<div class="sect5">
+<h6 id="logic-component-2"><a class="link" href="#logic-component-2">Logic component</a></h6>
+<div class="paragraph">
+<p>The <code>DeleteCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>DeleteCaseCommand</code> extends the <code>UndoableCommand</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new DeleteCaseCommand(targetIndex)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object as parameter.</p>
+<p class="tableblock">The <code>targetIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>CrimeCase</code> object is then removed from the model. <code>EventsCenter</code> reacts to the <code>SwapTabEvent</code>, which switches the tab to show the list of cases. The following snippet shows the execution code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() {
+    requireNonNull(caseToDelete);
+    <span class="keyword">try</span> {
+        model.deleteCrimeCase(caseToDelete);
+        EventsCenter.getInstance().post(<span class="keyword">new</span> SwapTabEvent(<span class="integer">1</span>));
+    } <span class="keyword">catch</span> (CrimeCaseNotFoundException pnfe) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target case cannot be missing</span><span class="delimiter">&quot;</span></span>);
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_DELETE_CASE_SUCCESS, caseToDelete));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is a sequence diagram illustrating the <code>Logic</code> component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_DeleteCaseCommand_Logic.png" alt="SD DeleteCaseCommand Logic" width="800">
+</div>
+<div class="title">Figure 10. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="model-component-2"><a class="link" href="#model-component-2">Model component</a></h6>
+<div class="paragraph">
+<p>The new <code>CrimeCase</code> object gets removed from the case list of the assigned investigator as well (i.e. <code>UniqueCrimeCaseList</code> within the <code>Investigator</code> object) via the <code>removeCrimeCaseFromInvestigator</code> method. This method traverses through the entire list of investigators to find the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from. The code is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> removeCrimeCase(CrimeCase key) <span class="directive">throws</span> CrimeCaseNotFoundException {
+    <span class="keyword">if</span> (cases.remove(key)) {
+        removeCrimeCaseFromInvestigator(key);
+        <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+    } <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CrimeCaseNotFoundException();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for the <code>Model</code> component is provided below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="500">
+</div>
+<div class="title">Figure 11. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-case"><a class="link" href="#edit-case">Edit case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current implementation</a></h5>
+<div class="sect5">
+<h6 id="logic-component-3"><a class="link" href="#logic-component-3">Logic component</a></h6>
+<div class="paragraph">
+<p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a <code>EditCrimeCaseDescriptor</code> object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCrimeCaseDescriptor</code> is a class containing information that describes the case (i.e. case name, description, investigator, start date, tags). The descriptor is used because the user is not required to input all the fields except the case index. When the user specifies the field they wish to edit, it sets the field in the <code>EditCrimeCaseDescriptor</code> to that value. If any field is not specified, the field is set to <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EditCaseCommand</code> that extends the <code>UndoableCommand</code> has one constructor.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EditCaseCommand(caseIndex, editCrimeCaseDescriptor)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object and <code>EditCrimeCaseDescriptor</code> as parameters.</p>
+<p class="tableblock">The <code>caseIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p>
+<p class="tableblock">A new <code>CrimeCase</code> object is created using the retrieved case-to-be-edited and the descriptor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="model-component-3"><a class="link" href="#model-component-3">Model component</a></h6>
+<div class="paragraph">
+<p>When the <code>EditCaseCommand</code> is executed, note that the original <code>CrimeCase</code> object is not modified, but rather, replaced by a new <code>CrimeCase</code> object. When the <code>CrimeCase</code> constructor is called, a new <code>Investigator</code> object without its <code>UniqueCrimeCaseList</code> is created within the <code>CrimeCase</code> (i.e. only the personal details are stored). This is to simplify the data to be recorded in storage. The list of cases within the original <code>Investigator</code> object remains untouched. The snippet of code below shows the implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> CrimeCase syncWithMasterTagList(CrimeCase crimeCase) {
+    <span class="comment">// … logic for handling and rebuilding tags …</span>
+
+    <span class="keyword">return</span> <span class="keyword">new</span> CrimeCase(
+        crimeCase.getCaseName(), crimeCase.getDescription(), crimeCase.getCurrentInvestigator(),,
+        crimeCase.getStartDate(), crimeCase.getEndDate(), crimeCase.getStatus(), correctTagReferences);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remember that each <code>Investigator</code> object has their own <code>UniqueCrimeCaseList</code> that holds <code>CrimeCase</code> objects that they&#8217;ve been assigned.</p>
+</div>
+<div class="paragraph">
+<p>Since the <code>CrimeCase</code> object is replaced rather than modified, we need to remove the old <code>CrimeCase</code> object stored in the <code>UniqueCrimeCaseList</code> of the <code>Investigator</code> and reference the new, modified <code>CrimeCase</code> object instead. This is done by traversing the entire list of investigators and finding the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from using the <code>removeCrimeCaseFromInvestigator</code> method. Next, after replacing the old <code>CrimeCase</code> object with the edited one in master list of all cases, it traverses the entire list of investigators again to add the case back to the correct <code>Investigator</code> object using the <code>addCrimeCaseFromInvestigator</code> method. The code below shows its implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> updateCrimeCase(CrimeCase target, CrimeCase editedCase)
+<span class="directive">throws</span> DuplicateCrimeCaseException, CrimeCaseNotFoundException {
+    requireNonNull(editedCase);
+
+    CrimeCase syncedEditedCrimeCase = syncWithMasterTagList(editedCase);
+    removeCrimeCaseFromInvestigator(target);
+    cases.setCrimeCase(target, syncedEditedCrimeCase);
+    addCrimeCaseToInvestigator(syncedEditedCrimeCase);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram below illustrates how the Model component works when a case is edited.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_EditCaseCommand_Model.png" alt="SD EditCaseCommand Model" width="800">
+</div>
+<div class="title">Figure 12. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="select-case"><a class="link" href="#select-case">Select case</a></h4>
+<div class="sect4">
+<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>An investigator should be able to retrieve and view information about a case after adding them into the application.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current implementation</a></h5>
+<div class="sect5">
+<h6 id="logic-component-4"><a class="link" href="#logic-component-4">Logic component</a></h6>
+<div class="paragraph">
+<p>Similar to <code>DeleteCaseCommandParser</code>, the <code>SelectCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>SelectCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SelectCaseCommand</code> extends <code>Command</code> and has one constructor.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constructor</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new SelectCaseCommand(targetIndex)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object as parameter.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>targetIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model. Subsequently, a <code>JumpToCrimeCaseListRequestEvent</code> is posted to <code>EventsCenter</code> to signal the <code>UI</code> component. The following snippet shows the execution code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+
+    <span class="predefined-type">List</span> &lt; CrimeCase &gt; lastShownList = model.getFilteredCrimeCaseList();
+
+    <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_CASE_DISPLAYED_INDEX);
+    }
+
+    EventsCenter.getInstance().post(<span class="keyword">new</span> JumpToCrimeCaseListRequestEvent(targetIndex));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SELECT_CASE_SUCCESS, targetIndex.getOneBased()));
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates what happens in the <code>Logic</code> component when a case is selected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_SelectCaseCommand_Logic.png" alt="SD SelectCaseCommand Logic" width="800">
+</div>
+<div class="title">Figure 13. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="eventscenter-and-ui-component"><a class="link" href="#eventscenter-and-ui-component">EventsCenter and UI component</a></h6>
+<div class="paragraph">
+<p>Following the raised event, <code>handleJumpToCrimeCaseListRequestEvent</code> (in <code>CrimeCaseListPanel.java</code>) is signalled to handle the select request, which scrolls the view to the correct cell in the panel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleJumpToCrimeCaseListRequestEvent(JumpToCrimeCaseListRequestEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    scrollTo(event.targetIndex);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, a <code>CrimeCasePanelSelectionChangedEvent</code> that contains the <code>CrimeCase</code> object that was selected, is raised. This event is handled by <code>handleCrimeCasePanelSelectionChangedEvent</code> (in <code>BrowserPanel.java</code>), as shown in the snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadCrimeCasePage(event.getNewSelection().crimeCase);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram below shows how the EventsCenter interacts with the UI component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SD_SelectCaseCommand_EventsCenter.png" alt="SD SelectCaseCommand EventsCenter" width="800">
+</div>
+<div class="title">Figure 14. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
+</div>
+<div class="paragraph">
+<p><code>loadCrimeCasePage</code> method then takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags), to be processed for viewing on the UI.</p>
+</div>
+<div class="paragraph">
+<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">[UI-DetailsPane]</a>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -568,7 +977,7 @@ Selects the 3rd case in the most recent list of cases.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:44:38 UTC
+Last updated 2018-04-15 12:47:53 UTC
 </div>
 </div>
 </body>
