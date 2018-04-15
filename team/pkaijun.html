@@ -44,31 +44,48 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Calendar GUI</p>
+<p>Provide an overview of all the cases in a Calendar GUI (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/131">#131</a>, <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/201">#201</a>)</p>
 </li>
 <li>
-<p><code>findcasetags</code> Command</p>
+<p>Command to display cases whose tags matches the keyword(s) provided by the user (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/100">#100</a>)</p>
 </li>
 <li>
-<p><code>findclosecases</code> &amp; <code>findopencases</code> Command</p>
+<p>Command to display cases whose status is close (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/223">#223</a>)</p>
 </li>
 <li>
-<p><code>close</code> Command</p>
+<p>Command to display cases whose status is open (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/223">#223</a>)</p>
+</li>
+<li>
+<p>Command to change the case&#8217;s status from open to close (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/104">#104</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>What it does:</p>
+<p>What it does: This enhancement incorporates the abovementioned features to allow investigators to
+view the cases they want in an efficient and user-friendly manner.</p>
 </li>
 <li>
-<p>Justification:</p>
+<p>Justification: Its essential for investigators to solve the crime cases within the shortest amount of time possible.
+Hence, efficiency is key for the investigators. Bookkeeping is important as well
+in order to manage and keep track of the cases - however, time spent on this area can be rather large
+if there is no proper system to manage these information.<br></p>
+<div class="paragraph">
+<p>By having this enhancement, it not only provides a better user experience for the investigators,
+but more importantly, it reduces the time spent on bookkeeping work. With this enhancement,
+investigators do not need to perform any manual work to display an overview of the cases in a nicely formatted
+layout or having to search through a long list of data to find a particular set of cases.
+Thus, this will improve the efficiency of the investigators as time will be spent on
+significant events such as investigative work instead of bookkeeping tasks.</p>
+</div>
 </li>
 <li>
-<p>Highlights:</p>
+<p>Highlights: The Calendar GUI is not just a piece of static image on the interface. It interacts
+with the various components in Investigapptor and will instantly reflect newly added cases, remove any deleted
+cases or display only a certain set of cases when commands related to the cases are executed.</p>
 </li>
 <li>
-<p>Credits: <a href="https://github.com/dlemmermann/CalendarFX">External API - CalendarFX</a></p>
+<p>Credits: The Calendar GUI was implemented with the external API, <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a>.</p>
 </li>
 </ul>
 </div>
@@ -78,26 +95,19 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Added functionality to provide different tag colours for different tag contents</p>
+<p>Added functionality to provide different tag colours for different tag contents (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/137">#137</a>)</p>
 </li>
 <li>
-<p>Provided support for certain commands</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findinvesttags</code> Command</p>
+<p>Added new command to display investigators whose tags matches the keyword(s) provided by the user (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/59">#59</a>)</p>
 </li>
 <li>
-<p>Added new attribute <code>endDate</code> to CrimeCase class</p>
-</li>
-</ul>
-</div>
+<p>Added new attribute <code>endDate</code> to CrimeCase class (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/104/commits/89f36467df0ae93ba1b5459685dc7db7d72918d7">#104</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/collated/functional/pkaijun.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/collated/test">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -108,20 +118,24 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed release <code>v1.5</code> (1 release) on GitHub</p>
+</li>
+<li>
+<p>Referencing between <code>type.epic</code> <code>type.story</code> <code>type.task</code> <code>type.testing</code> to break down
+the major enhancement into smaller tasks (Epic Issue <a href="https://github.com/CS2103JAN2018-F14-B3/main/issues/212">#212</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Enhancements:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Implemented auto-update functionality for the Calendar to automatically reflect the current list of
+cases shown on the panel
+(Commit <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/237/commits/b4453b5a872a426632720086f2eea8904109a9ce">#237</a>,
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/223/commits/b3e3235967302ff3b47f20f732e055aef6062a4c">#223</a>)</p>
 </li>
 </ul>
 </div>
@@ -131,7 +145,15 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks by adding screenshots to the User Guide: <a href="https://github.com">#14</a></p>
+<p>Added screenshots to the User Guide to illustrate examples:
+(PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/246">#246</a>,
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/225/">#225</a>)</p>
+</li>
+<li>
+<p>Updated Developer Guide&#8217;s diagrams according to the components of the Investigapptor:
+(PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/132/files">#132</a>,
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/232">#232</a>,
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/242">#242</a>)</p>
 </li>
 </ul>
 </div>
@@ -140,12 +162,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <p>Community:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
 <li>
 <p>Reported bugs and suggestions for other teams (examples:  <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/137">1</a>,
 <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/134">2</a>,
@@ -164,7 +180,22 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (CalendarFx) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated a third party library (CalendarFX) to the project
+(PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/131">#131</a>,
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/224">#224</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Troubleshooting:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed bugs from user testing (PR <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/204">#204</a>)</p>
+</li>
+<li>
+<p>Fixed bug from test case caused by the auto-update functionality (Commit <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/237/commits/4fd7aada969f97774a3a86afbad4267a2eca38ab">#237</a>)</p>
 </li>
 </ul>
 </div>
@@ -173,9 +204,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -489,105 +517,6 @@ Closes the 3rd case in the listed panel list case.</p>
 <p>You can refer to <a href="#CasesCalendar">Cases Calendar Section</a> for the guide to the Cases' Calendar should you require more information about it.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Undo"><a class="link" href="#Undo">Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code><br>
-Alias: <code>u</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands are those commands that modify the Investigapptor&#8217;s content<br>
-<code>addinvestigator</code>, <code>deleteinvestigator</code>, <code>editinvestigator</code><br>
-<code>addcase</code>, <code>deletecase</code>, <code>editcase</code>, <code>close</code> and <code>clear</code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deletecase 1</code><br>
-<code>listcases</code><br>
-<code>undo</code> (reverses the <code>deletecase 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><code>listcases</code> is NOT an undoable command. Hence, <code>undo</code> will not be applied on <code>listcases</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>selectcase 1</code><br>
-<code>listcases</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>deletecase 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>deletecase 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="Redo"><a class="link" href="#Redo">Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code><br>
-Alias: <code>r</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deletecase 1</code><br>
-<code>undo</code> (reverses the <code>deletecase 1</code> command)<br>
-<code>redo</code> (reapplies the <code>deletecase 1</code> command)<br></p>
-</li>
-<li>
-<p><code>deletecase 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>deletecase 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>deletecase 1</code> command)<br>
-<code>redo</code> (reapplies the <code>deletecase 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect2">
 <h3 id="CasesCalendar"><a class="link" href="#CasesCalendar">Calendar View for Cases [Since v1.4]</a></h3>
 <div class="paragraph">
@@ -764,6 +693,518 @@ its start date to end date.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="Calendar-Feature"><a class="link" href="#Calendar-Feature">Calendar feature</a></h4>
+<div class="paragraph">
+<p>The calendar feature serves as an interface to provide an overview of all the cases
+present in the <code>CrimeCaseListPanel</code>. The entries are colour-coded according to its case&#8217;s
+status. Red represents the status <code>open</code>; whereas green represents the status <code>close</code>.</p>
+</div>
+<div id="CalendarFeature" class="imageblock">
+<div class="content">
+<img src="../images/CalendarFeature.PNG" alt="CalendarFeature" width="800">
+</div>
+<div class="title">Figure 13. Calendar Interface</div>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>The calendar serves as an organization tool to arrange the cases according to its start and end date,
+and it also categorizes the cases by its current status. This feature is useful for the investigators as it provides them an overview of all the cases that they are looking for.
+Having such an overview, the investigators can instantly identify all the required cases at a quick glance.</p>
+</div>
+<div class="paragraph">
+<p>This feature not only brings in convenience for the investigators, it also eliminates the need of manual work in
+scheduling existing cases. This thus improves the efficiency of the investigators as time will be spent on
+significant events such as investigative work instead of bookkeeping tasks.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The calendar graphical interface was implemented with an external library, <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a>.
+The calendar interface, <code>CalendarPanel</code> is part of the UI component which supports the view of the cases that are currently present
+in the panel list.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates how the components within the <code>CalendarPanel</code>
+interacts with each other.</p>
+</div>
+<div id="SDforCalendar" class="imageblock">
+<div class="content">
+<img src="../images/SDForCalendar.png" alt="SDForCalendar" width="800">
+</div>
+<div class="title">Figure 14. Component interactions within <code>CalendarPanel</code></div>
+</div>
+<div class="paragraph">
+<p>The <code>CalendarPanel</code> comprises of the following attributes and objects:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Calendar</code> object called <code>caseCloseCalendar</code> which stores the entries consisting of cases whose status is <code>close</code></p>
+</li>
+<li>
+<p>A <code>Calendar</code> object called <code>caseOpenCalendar</code> which stores the entries consisting of cases whose status is <code>open</code></p>
+</li>
+<li>
+<p>A <code>CalendarSource</code> object called <code>caseCalendarSource</code> which stores the calendars, <code>caseCloseCalendar</code> and <code>caseOpenCalendar</code></p>
+</li>
+<li>
+<p>A <code>CalendarView</code> FXML object called <code>calendarPanel</code> which provides the graphical view (interface) of the calendar</p>
+</li>
+<li>
+<p>An <code>ObservableList&lt;CrimeCase&gt;</code> called <code>crimeList</code> that stores the current list of the crime cases</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>CalendarPanel</code> does event handling in order to keep its view updated with the list of
+cases that is currently displayed on the <code>CrimeCaseListPanel</code>. Hence, when either one of the two events, <code>InvestigapptorChangedEvent</code> or <code>FilteredCrimeCaseListChangedEvent</code>
+has been raised from the <code>EventsCenter</code>, the <code>CalendarPanel</code> will handle the event by updating the
+<code>FilteredCrimeCaseList</code>. The following section below will illustrate in details
+on how the event handling was carried out by <code>CalendarPanel</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="events-driven-entries"><a class="link" href="#events-driven-entries">Events-Driven Entries</a></h5>
+<div class="paragraph">
+<p>The entries displayed on the calendar will be changed according to the commands that were executed.</p>
+</div>
+<div class="sect5">
+<h6 id="event-raised-from-data-change-in-application"><a class="link" href="#event-raised-from-data-change-in-application">Event raised from data change in application</a></h6>
+<div class="paragraph">
+<p>As mentioned in the <a href="#Events">event-driven design section</a>, the model will raise
+an <code>InvestigapptorChangedEvent</code> to indicate that the data in the application has changed.
+In the following sequence diagrams, it indicates how the components interacts when the user
+enters the commands that changes the data in the investigapptor. (Commands are as shown in the diagrams).</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-code-addcase-code"><a class="link" href="#sequence-diagram-for-code-addcase-code">Sequence Diagram for <code>addcase</code></a></h6>
+<div id="SDforAddCase" class="imageblock">
+<div class="content">
+<img src="../images/SDforAddCase.png" alt="SDforAddCase" width="800">
+</div>
+<div class="title">Figure 15. Component interactions for <code>addcase 1</code> command</div>
+</div>
+<div class="paragraph">
+<p>For the <code>addcase</code> command, when a new case has been added to the investigapptor, it will raise
+an <code>InvestigapptorChangedEvent</code> which will update the calendar to reflect the newly added case.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-code-deletecase-code"><a class="link" href="#sequence-diagram-for-code-deletecase-code">Sequence Diagram for <code>deletecase</code></a></h6>
+<div id="SDforDeleteCase" class="imageblock">
+<div class="content">
+<img src="../images/SDforDeleteCase.png" alt="SDforDeleteCase" width="800">
+</div>
+<div class="title">Figure 16. Component interactions for <code>deletecase 1</code> command</div>
+</div>
+<div class="paragraph">
+<p>Similarly, for the <code>deletecase</code> command, when a case has been deleted from the investigapptor, it
+will raise the <code>InvestigapptorChangedEvent</code> which will remove the case from the calendar.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-commands-that-updates-the-case-s-details"><a class="link" href="#sequence-diagram-for-commands-that-updates-the-case-s-details">Sequence Diagram for commands that updates the case&#8217;s details</a></h6>
+<div id="SDForUpdateCase" class="imageblock">
+<div class="content">
+<img src="../images/SDforUpdateCase.png" alt="SDforUpdateCase" width="800">
+</div>
+<div class="title">Figure 17. Component interactions for commands that update the details of a case</div>
+</div>
+<div class="paragraph">
+<p>As for <code>editcase</code> and <code>close</code> command, it will make changes to the details of the cases. When the
+case is updated, the investigapptor will raise the <code>InvestigapptorChangedEvent</code> which will
+update the calendar by displaying the updated entry.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-handling-code-investigapptorchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-investigapptorchangedevent-code">Sequence Diagram for handling <code>InvestigapptorChangedEvent</code></a></h6>
+<div id="SDForInvestigapptorChangedEventHandling" class="imageblock">
+<div class="content">
+<img src="../images/SDForInvestigapptorChangedEventHandling.png" alt="SDForInvestigapptorChangedEventHandling" width="800">
+</div>
+<div class="title">Figure 18. Handling <code>InvestigapptorChangedEvent</code></div>
+</div>
+<div class="paragraph">
+<p>The <a href="#SDForInvestigapptorChangedEventHandling">diagram above</a> represents how the <code>EventsCenter</code>
+reacts to the <code>InvestigapptorChangedEvent</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the commands mentioned in these diagrams - <a href="#SDforAddCase">#1</a>, <a href="#SDforDeleteCase">#2</a>, <a href="#SDForUpdateCase">#3</a>
+are executed, the <code>InvestigapptorChangedEvent</code> will be raised and the function
+<code>handleInvestigapptorChangedEvent</code> in <code>CalendarPanel</code> will be invoked. The function
+would then re-initialize <code>crimeList</code> to the updated <code>crimeCaseList</code> and proceed to
+update the calendar accordingly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleInvestigapptorChangedEvent(InvestigapptorChangedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    crimeList = event.data.getCrimeCaseList();
+    Platform.runLater(<span class="local-variable">this</span>::updateCalendar);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="Calendar-Events-Filter"><a class="link" href="#Calendar-Events-Filter">Event raised from filtering the <code>CrimeCase</code> list</a></h5>
+<div class="paragraph">
+<p>In the following sequence diagram, it shows how the components interacts when the user issues
+the commands that filters  the cases that the user is looking for. (Commands are shown in the diagram).</p>
+</div>
+<div class="paragraph">
+<p>These commands does not change the data in the investigapptor, but it filters the cases that matches the keywords
+predicate which is passed in as an parameter in <code>updateFilteredCrimeCaseList(keywords)</code>.
+When the <code>FilteredCrimeCaseList</code> has been updated, it  will contain the cases that the user is looking for.</p>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code"><a class="link" href="#sequence-diagram-for-commands-that-update-code-filteredcrimecaselist-code">Sequence Diagram for commands that update <code>FilteredCrimeCaseList</code></a></h6>
+<div id="SDForFindCase" class="imageblock">
+<div class="content">
+<img src="../images/SDforFindCase.png" alt="SDforFindCase" width="800">
+</div>
+<div class="title">Figure 19. Component interactions for commands that update the <code>FilteredCrimeCaseList</code></div>
+</div>
+<div class="paragraph">
+<p>When these commands are executed, it will raise a <code>FilteredCrimeCaseListChangedEvent</code> which will
+update the calendar with the cases that are currently in the <code>FilteredCrimeCaseList</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code"><a class="link" href="#sequence-diagram-for-handling-code-filteredcrimecaselistchangedevent-code">Sequence Diagram for handling <code>FilteredCrimeCaseListChangedEvent</code></a></h6>
+<div id="SDforFilteredCrimeCaseListChangedEventHandling" class="imageblock">
+<div class="content">
+<img src="../images/SDforFilteredCrimeCaseListChangedEventHandling.png" alt="SDforFilteredCrimeCaseListChangedEventHandling" width="800">
+</div>
+<div class="title">Figure 20. Handling <code>FilteredCrimeCaseListChangedEvent</code></div>
+</div>
+<div class="paragraph">
+<p>The <a href="#SDforFilteredCrimeCaseListChangedEventHandling">diagram above</a> represents how the <code>EventsCenter</code>
+reacts to the <code>FilteredCrimeCaseListChangedEvent</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the commands in the <a href="#SDForFindCase">Component interactions for commands that update the <code>FilteredCrimeCaseList</code></a> is executed, it will update the <code>FilteredCrimeCaseList</code> in the
+model component and the <code>FilteredCrimeCaseListChangedEvent</code> will be raised.
+<code>handleFilteredCrimeCaseListChangedEvent</code> from <code>CalendarPanel</code> will be invoked which
+updates the <code>crimeList</code> to the updated <code>FilteredCrimeCaseList</code>. It will then
+update the calendar accordingly with the updated <code>crimeList</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleFilteredCrimeCaseListChangedEvent(FilteredCrimeCaseListChangedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    crimeList = event.getFilteredCrimeCaseList();
+    Platform.runLater(<span class="local-variable">this</span>::updateCalendar);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-cases-by-status-tags"><a class="link" href="#find-cases-by-status-tags">Find cases by status/tags</a></h4>
+<div class="paragraph">
+<p>The following sections provides an explanation on how the investigapptor finds
+certain cases according to its status or tags.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h5>
+<div class="paragraph">
+<p>This implementation improves efficiency as the investigators do not need to manually browse through
+all the listed cases just to find certain cases.</p>
+</div>
+<div class="paragraph">
+<p>By having a find command, the investigator can easily search for cases that they
+are looking for. They can simply just run the find-related commands with their desired
+keywords and the cases they require will be displayed instantly.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-to-find-cases-by-status"><a class="link" href="#current-implementation-to-find-cases-by-status">Current Implementation to find cases by status</a></h5>
+<div class="paragraph">
+<p>Commands were created to find the cases according to the status specified. As there
+are only two possible status - <code>open</code> or <code>close</code>, two separate command classes <code>FindCloseCaseCommand</code>
+and <code>FindOpenCaseCommand</code> were created. These two commands inherits from its parent class - <code>FindByStatusCommand</code>.</p>
+</div>
+<div class="sect5">
+<h6 id="class-inheritance"><a class="link" href="#class-inheritance">Class Inheritance</a></h6>
+<div id="CDFindByStatus" class="imageblock">
+<div class="content">
+<img src="../images/CDFindByStatus.png" alt="CDFindByStatus" width="800">
+</div>
+<div class="title">Figure 21. Class Diagram to illustrate inheritance</div>
+</div>
+<div class="paragraph">
+<p>In both <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>, its respective constructor will
+invoke its parent class' (<code>FindByStatusCommand</code>) constructor as passes in its corresponding status as the parameter.</p>
+</div>
+<div class="paragraph">
+<p><code>FindCloseCaseCommand</code> will pass in the status <code>close</code> as shown in the code segment below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindCloseCaseCommand() {
+    <span class="local-variable">super</span>(CASE_CLOSE);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>FindOpenCaseCommand</code> will pass in the status <code>open</code> as shown in the code segment below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindOpenCaseCommand() {
+    <span class="local-variable">super</span>(CASE_OPEN);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-logic-component"><a class="link" href="#sequence-diagrams-for-logic-component">Sequence Diagrams for Logic Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
+component when the user inputs the <code>findopencases</code> or <code>findclosecases</code> command.</p>
+</div>
+<div id="SDforFindOpenCase" class="imageblock">
+<div class="content">
+<img src="../images/SDforFindOpenCase.png" alt="SDforFindOpenCase" width="800">
+</div>
+<div class="title">Figure 22. Sequence Diagram for interactions within Logic component for <code>FindOpenCaseCommand</code></div>
+</div>
+<div id="SDforFindCloseCase" class="imageblock">
+<div class="content">
+<img src="../images/SDForFindCloseCase.png" alt="SDForFindCloseCase" width="800">
+</div>
+<div class="title">Figure 23. Sequence Diagram for interactions within Logic component for <code>FindCloseCaseCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The <code>Logic</code> component will set the <code>StatusContainsKeywordsPredicate</code> with
+a <code>List&lt;String&gt;</code> containing the keyword of either <code>open</code> or <code>close</code>.</p>
+</div>
+<div class="paragraph">
+<p>For <code>FindCloseCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>close</code>;
+whereas for <code>FindOpenCaseCommand</code>, the <code>List&lt;String&gt;</code> will contain the keyword <code>open</code>.</p>
+</div>
+<div class="paragraph">
+<p>The command will be executed by the <code>LogicManager</code> by updating the
+<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>StatusContainsKeywordsPredicate</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-model-component"><a class="link" href="#sequence-diagrams-for-model-component">Sequence Diagrams for Model Component</a></h6>
+<div class="paragraph">
+<p>Below are the sequence diagrams that represents the interactions within the
+<code>Model</code> component after the <code>findopencases</code> or <code>findclosecases</code> command
+has been executed by the <code>LogicManager</code>.</p>
+</div>
+<div id="SDForFindByStatusModel" class="imageblock">
+<div class="content">
+<img src="../images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
+</div>
+<div class="title">Figure 24. Sequence Diagram for interactions within Model component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
+the given <code>StatusContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
+with any status of the case(s).</p>
+</div>
+<div class="paragraph">
+<p>Specifically, for <code>findopencases</code>, the predicate will test
+if the keyword 'open' matches any cases with the status of 'open'. Similarly,
+for <code>findclosecases</code>,  the predicate will test if the keyword 'close' matches
+any cases with the status of 'close'.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases that matches the
+given <code>StatusContainsKeywordsPredicate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
+captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
+whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
+the <a href="#Calendar-Events-Filter">above section</a>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="activity-diagram"><a class="link" href="#activity-diagram">Activity Diagram</a></h6>
+<div class="paragraph">
+<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
+by its status.</p>
+</div>
+<div id="ADForFindCase" class="imageblock">
+<div class="content">
+<img src="../images/ADforFindCase.png" alt="ADforFindCase" width="800">
+</div>
+<div class="title">Figure 25. Activity Diagram when user enters <code>findclosecase</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-to-find-cases-by-tags"><a class="link" href="#current-implementation-to-find-cases-by-tags">Current Implementation to find cases by tags</a></h5>
+<div class="paragraph">
+<p>The command class, <code>FindCaseTagsCommand</code> was created to find the cases according to its tags. Cases whose tags
+matches the keywords that the user has input will be displayed.</p>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-logic-component-2"><a class="link" href="#sequence-diagrams-for-logic-component-2">Sequence Diagrams for Logic Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagrams represents the interactions within the <code>Logic</code>
+component when the user inputs the <code>findcasetags</code>.</p>
+</div>
+<div id="SDforFindCaseTags" class="imageblock">
+<div class="content">
+<img src="../images/SDforFindCaseTags.png" alt="SDforFindCaseTags" width="800">
+</div>
+<div class="title">Figure 26. Sequence Diagram for interactions within Logic component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Logic</code> component will set the <code>TagContainsKeywordsPredicate</code> with
+a <code>List&lt;String&gt;</code> containing the keywords that were parsed by <code>FindCaseTagsCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>For the command <code>findcasetags fraud homicide</code> in the
+<a href="#SDforFindCaseTags">sequence diagram above</a>, the <code>List&lt;String&gt;</code> will
+contain the keywords <code>fraud</code> and <code>homicide</code>.</p>
+</div>
+<div class="paragraph">
+<p>The command will be executed by the <code>LogicManager</code> by updating the
+<code>FilteredCrimeCaseList</code> in the <code>Model</code> component with the given <code>TagContainsKeywordsPredicate</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="sequence-diagrams-for-model-component-2"><a class="link" href="#sequence-diagrams-for-model-component-2">Sequence Diagrams for Model Component</a></h6>
+<div class="paragraph">
+<p>The following sequence diagram shows the interactions within the <code>Model</code> component.</p>
+</div>
+<div id="SDforFindCaseTagsModel" class="imageblock">
+<div class="content">
+<img src="../images/SDForFindByStatusModel.png" alt="SDForFindByStatusModel" width="800">
+</div>
+<div class="title">Figure 27. Sequence Diagram for interactions within Model component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> component is responsible for updating the filtered crime case list with
+the given <code>TagContainsKeywordsPredicate</code>. The predicate will test if any keywords matches
+with any tags of the case(s).</p>
+</div>
+<div class="paragraph">
+<p>For the example in the <a href="#SDforFindCaseTags">above logic sequence diagram</a>,
+the predicate will test if the keywords "fraud" or "homicide" matches any cases'
+tags.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FilteredCrimeCaseList</code> will then be updated with the cases whose
+tags matches the keyword of either "fraud" or "homicide".</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> will then raise a <code>FilteredCrimeCaseListChangedEvent</code> which is
+captured by the <code>EventsCenter</code>. This event is used as an indication to update the calendar entries
+whenever the <code>FilteredCrimeCaseList</code> has changed. This implementation can be found in
+the <a href="#Calendar-Events-Filter">above section</a>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="activity-diagram-2"><a class="link" href="#activity-diagram-2">Activity Diagram</a></h6>
+<div class="paragraph">
+<p>The following activity diagram illustrates an example when a user executes a command that finds the cases
+by its tags.</p>
+</div>
+<div id="ADForFindCaseTags" class="imageblock">
+<div class="content">
+<img src="../images/ADForFindCaseTags.png" alt="ADForFindCaseTags" width="800">
+</div>
+<div class="title">Figure 28. Activity Diagram when user enters <code>findcasetags murder</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="alternatives-considered"><a class="link" href="#alternatives-considered">Alternatives Considered</a></h5>
+<div class="paragraph">
+<p>This section compares between the current choice of implementation and the
+alternative choice that was considered. It lists the pros and cons to each of the
+choices that were considered.</p>
+</div>
+<div class="sect5">
+<h6 id="aspect-design-implementation"><a class="link" href="#aspect-design-implementation">Aspect: Design Implementation</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Separate the find-related commands classes into its
+individual category its searching for. In this case we have <code>FindCaseTagsCommand</code>,
+<code>FindCloseCaseCommand</code> &amp; <code>FindOpenCaseCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for the user as they just need to know the command name/alias
+(i.e. <code>findopencases</code> or <code>foc</code> will just instantly display the cases that are closed)</p>
+</li>
+<li>
+<p>Cons: Additional <code>.java</code> class files</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Have just one <code>FindCommand</code> class and use prefixes to differentiate
+the type of keywords (i.e. findcase t/Tags s/Status)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only one <code>.java</code> file required for different types of find. Easier to
+extend the command to find other details by adding more prefixes.</p>
+</li>
+<li>
+<p>Cons: Not as user-friendly. Users has to recognize the prefixes, could be
+too technical for non-technical users.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-class-implementation-for-finding-cases-by-status"><a class="link" href="#aspect-class-implementation-for-finding-cases-by-status">Aspect: Class Implementation [for finding cases by status]</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Have two classes <code>FindCloseCaseCommand</code> and <code>FindOpenCaseCommand</code>
+that are extended from parent class <code>FindByStatusCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No code duplication as duplicated set of codes will be in the parent class <code>FindByStatusCommand</code></p>
+</li>
+<li>
+<p>Cons: Additional <code>.java</code> class file</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Separate commands into two classes without inheritance</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: One less <code>.java</code> class file (no parent class)</p>
+</li>
+<li>
+<p>Cons: Duplicated set of codes</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -778,7 +1219,7 @@ its start date to end date.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:57:49 UTC
+Last updated 2018-04-15 10:15:33 UTC
 </div>
 </div>
 </body>
