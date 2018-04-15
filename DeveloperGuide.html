@@ -1917,15 +1917,28 @@ investigapptor before you can start editing and managing with the other commands
 <h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.8.2.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is created when the command word <code>addinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
-to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The
-add investigator command will then create a Investigator instance and pass it from the logic component to the model component.
-The model then recreates the Investigator instance and store it.</p>
+to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The
+add investigator command will then create a Investigator instance and pass it from the logic component to the model component as shown
+in <a href="#add-investLogic">Figure 32, &#8220;Add Investigator Logic Diagram&#8221;</a>.</p>
 </div>
-<div class="imageblock">
+<div id="add-investLogic" class="imageblock">
 <div class="content">
-<img src="images/AddInvestigatorSequenceDiagram.png" alt="add-invest" width="790">
+<img src="images/AddInvestigatorLogicDiagram.png" alt="AddInvestigatorLogicDiagram" width="790">
 </div>
-<div class="title">Figure 32. Add Investigator Sequence Diagram</div>
+<div class="title">Figure 32. Add Investigator Logic Diagram</div>
+</div>
+<div class="paragraph">
+<p>When initialising Investigapptor, the storage using the <code>addPerson()</code> method as well to populate the
+Investigapptor thus it has to be able to correctly set up the reference to the <code>CrimeCase</code>. To do this,
+when a <code>investigator</code> is added to Investigapptor, it will check its list of <code>CrimeCase</code> hashcodes against
+the all the <code>CrimeCase</code> in the Investigapptor and add those that match into its list of <code>CrimeCase</code>.
+Only after adding the <code>CrimeCase</code> will the investigator be stored in the <code>persons</code> list as show in <a href="#add-invest">Figure 33, &#8220;Add Investigator Sequence Diagram&#8221;</a>.</p>
+</div>
+<div id="add-invest" class="imageblock">
+<div class="content">
+<img src="images/AddInvestigatorSequenceDiagram.png" alt="AddInvestigatorSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 33. Add Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
@@ -1933,16 +1946,28 @@ the wrong instance. In order to fix this, hashcode is used to identify the corre
 This is done by the convertHashtoCases method in the Investigapptor as show below.</p>
 </div>
 <div class="paragraph">
-<p><strong>convertHashtoCases</strong><br></p>
+<p>The methods below are used to match and add the <code>CrimeCase</code> to the <code>investigator</code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>for (CrimeCase c : cases) {
-    if (c.hashCode() == i) {
+<pre>private void convertHashToCases(Investigator key) {
+    requireNonNull(key.getCaseListHashed());
+    for (Integer i : key.getCaseListHashed()) {
         try {
-            key.addCrimeCase(c);
+            addCaseFromHash(key, i);
         } catch (DuplicateCrimeCaseException e) {
-            throw new AssertionError("duplicate case");
+            throw new AssertionError("Not possible, duplicate case while retrieving from xml");
+        }
+    }
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>private void addCaseFromHash (Investigator key, int hash) throws DuplicateCrimeCaseException {
+    for (CrimeCase c : cases) {
+        if (c.hashCode() == hash) {
+            key.addCrimeCase(c);
         }
     }
 }</pre>
@@ -2007,15 +2032,24 @@ add the investigator.</p>
 <p>The <code>deleteInvestigatorCommand</code> is created when the command word <code>deleteinvestigator</code> is
 detected in the user input. It will then check if the index given is valid. If the index
  is valid, it will check if the investigator at the index if it&#8217;s <code>UniqueCaseList</code> is empty.
- If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>. The <code>ModelManager</code> will then call
-<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
-<code>persons</code>.</p>
+ If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>.</p>
 </div>
-<div class="imageblock">
+<div id="delete-investLogic" class="imageblock">
 <div class="content">
-<img src="images/DeleteInvestigatorSequenceDiagram.png" alt="delete-invest" width="790">
+<img src="images/DeleteInvestigatorLogic.png" alt="DeleteInvestigatorLogic" width="790">
 </div>
-<div class="title">Figure 33. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 34. Delete Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <code>ModelManager</code> will then call
+<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
+<code>persons</code> as show below in <a href="#delete-invest">Figure 35, &#8220;Delete Investigator Sequence Diagram&#8221;</a>.</p>
+</div>
+<div id="delete-invest" class="imageblock">
+<div class="content">
+<img src="images/DeleteInvestigatorSequenceDiagram.png" alt="DeleteInvestigatorSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 35. Delete Investigator Sequence Diagram</div>
 </div>
 </div>
 <div class="sect4">
@@ -2072,22 +2106,38 @@ investigapptor rather than having to delete and add a new investigator.</p>
 <h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.8.4.2. Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is created when the command word <code>editinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
-to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The <code>EditInvestigatorCommand</code>
+to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The <code>EditInvestigatorCommand</code>
 will then create a Investigator instance using both the old and new information and pass it from the logic component to the model component.
-The model then recreates the Investigator instance and replace the old investigator with the new one.</p>
+As the logic for edit is extremely similar to add, you can refer to <a href="#add-invest">Figure 33, &#8220;Add Investigator Sequence Diagram&#8221;</a> to view the logic diagram.</p>
+</div>
+<div class="paragraph">
+<p>The model will take in both the old and new the Investigator instance and start by recreating the all the cases as they reference the old investigator has to
+be updated. In order to do this, the <code>Investigapptor</code> will swap all the <code>CrimeCases</code> that belong to the investigator with a <code>CrimeCase</code> with the new <code>Investigator</code>.
+Once all the <code>CrimeCases</code> are recreated, they will be added to new <code>Investigator</code> and the <code>Investigator</code> will be stored in the <code>persons</code> list.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 34. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 36. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>After editing the investigator, the all the cases referencing the old investigator has to
- be updated to ensure the that the cases point to the correct investigator. In order to do this, the <code>Investigapptor</code>
- will have to recreate all the <code>CrimeCases</code> that belong to the investigator with the new <code>Investigator</code>. Once
- all the <code>CrimeCases</code> are recreated, they will be added to new <code>Investigator</code> and finally stored
- in <code>persons</code> of the <code>Investigapptor</code>.</p>
+<p>Code snippet of how each case is recreated and swapped to ensure that the index is not changed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>private void recreateCasesForInvestigator(Investigator inv, CrimeCase c) {
+     CrimeCase newCase = syncWithMasterTagList(new CrimeCase(c.getCaseName(), c.getDescription(),
+        inv, c.getStartDate(), c.getEndDate(), c.getStatus(), c.getTags()));
+     try {
+         cases.setCrimeCase(c, newCase);
+     } catch (DuplicateCrimeCaseException e) {
+         throw new AssertionError("Duplicate Case when editing investigator");
+     } catch (CrimeCaseNotFoundException e) {
+         throw new AssertionError("Case not found when editing investigator");
+     }
+ }</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -2130,17 +2180,106 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="list-investigator-cases"><a class="link" href="#list-investigator-cases">5.8.5. List Investigator Cases</a></h4>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> will search and display all the cases belonging to the investigator in the panel list.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">5.8.5.1. Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> is important as you would want to be able find all the cases the investigator is in charge of
+easily as compared to search each case one by one.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.8.5.2. Current Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> is created when the command word <code>listinvestigatorcases</code> is detected in the user input. It will then use the <code>ParserUtil</code>
+to identify which investigator is selected by using the <code>Index</code>. <code>ListInvestigatorCaseCommand</code> will retrieve the selected <code>investigator</code>
+from the <code>Model</code> and use its hashcode to create the <code>CaseContainsInvestigatorPredicate</code>. The
+predicate will be used to filter the list of <code>CrimeCase</code> to only show <code>CrimeCase</code> that contain
+the selected <code>investigator</code>. An event will be raised to alert the UI to swap over to show the <code>CrimeCase</code> panel list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListInvestigatorCaseLogicDiagram.png" alt="edit-invest" width="790">
+</div>
+<div class="title">Figure 37. Editing Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Code snippet of what is being done in the execute method</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public CommandResult execute() throws CommandException {
+    if (targetIndex != null) {
+        List&lt;Person&gt; lastShownList = model.getFilteredPersonList();
+        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+            throw new
+            CommandException(Messages.MESSAGE_INVALID_INVESTIGATOR_DISPLAYED_INDEX);
+        }
+        investigator = (Investigator) lastShownList.get(targetIndex.getZeroBased());
+        requireNonNull(investigator);
+        predicate = new CaseContainsInvestigatorPredicate(investigator.hashCode());
+    }
+    model.updateFilteredCrimeCaseList(predicate);
+    EventsCenter.getInstance().post(new SwapTabEvent(1));
+    return new CommandResult(getMessageForCrimeCaseListShownSummary(model.getFilteredCrimeCaseList().size()));
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-5"><a class="link" href="#design-consideration-5">5.8.5.3. Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2">5.8.5.4. Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using predicate and filtered list</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The architecture for using predicate and filtered is already implemented and used for other
+type of searches.</p>
+</li>
+<li>
+<p>Cons: Require to search every single <code>CrimeCase</code> to get the result.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using the <code>investigator</code> 's list of <code>CrimeCase</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not need to search every <code>CrimeCase</code> , meaning command will be processed faster</p>
+</li>
+<li>
+<p>Cons: Have to implement a method to convert the <code>investigator</code> 's list of <code>CrimeCase</code> to a filtered list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="code-crimecase-code-package"><a class="link" href="#code-crimecase-code-package">5.9. <code>crimecase</code> Package</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-7"><a class="link" href="#reason-for-implementation-7">5.9.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">5.9.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>As Investigapptor is a tool for managing investigations, the ability to store information about a case is essential.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.9.2. Current implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">5.9.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>Each attribute of a case, such as the case name, description, status, etc. are classes in the <code>crimecase</code> package. Each of the classes provide utility methods to check the validity of the string to be stored, retrieve the string that is stored, and obtain the hash code of the object.</p>
 </div>
@@ -2230,13 +2369,13 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="sect2">
 <h3 id="adding-cases-feature"><a class="link" href="#adding-cases-feature">5.10. Adding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-8"><a class="link" href="#reason-for-implementation-8">5.10.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">5.10.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>To be able to manage cases, investigators should have the ability to add case details into the application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">5.10.2. Current implementation</a></h4>
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">5.10.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>AddCaseCommandParser</code> parses the string of arguments provided by the user and splits the <code>String</code> into its separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) to be used in the context of the <code>AddCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2304,7 +2443,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="content">
 <img src="images/SD_AddCaseCommand_Model.png" alt="SD AddCaseCommand Model" width="800">
 </div>
-<div class="title">Figure 35. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
+<div class="title">Figure 38. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2347,13 +2486,13 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="sect2">
 <h3 id="deleting-cases-feature"><a class="link" href="#deleting-cases-feature">5.11. Deleting cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-9"><a class="link" href="#reason-for-implementation-9">5.11.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-10"><a class="link" href="#reason-for-implementation-10">5.11.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>Sometimes, cases are added by error or there is no need to continue management of a case. Investigators should have a method to remove a case from the application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">5.11.2. Current implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">5.11.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>DeleteCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2403,7 +2542,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="content">
 <img src="images/SD_DeleteCaseCommand_Logic.png" alt="SD DeleteCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 36. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
+<div class="title">Figure 39. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2412,20 +2551,20 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="content">
 <img src="images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="500">
 </div>
-<div class="title">Figure 37. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
+<div class="title">Figure 40. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="finding-cases-feature"><a class="link" href="#finding-cases-feature">5.12. Finding cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-10"><a class="link" href="#reason-for-implementation-10">5.12.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-11"><a class="link" href="#reason-for-implementation-11">5.12.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>To manage large numbers of cases, having a feature that would allow investigators to search the list of cases by name would be extremely helpful. If an investigator is looking for a particular case, it would be extremely inefficient and time-consuming to have to manually browse through all the cases. Hence, being able to find cases by name can help to increase workflow productivity and efficiency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">5.12.2. Current implementation</a></h4>
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">5.12.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The <code>FindCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the list of keywords to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2470,20 +2609,20 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="content">
 <img src="images/SD_FindCaseCommand_Logic.png" alt="SD FindCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 38. Interactions Inside the Logic Component for the <code>findcase magic</code> Command</div>
+<div class="title">Figure 41. Interactions Inside the Logic Component for the <code>findcase magic</code> Command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="selecting-cases-feature"><a class="link" href="#selecting-cases-feature">5.13. Selecting cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-11"><a class="link" href="#reason-for-implementation-11">5.13.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">5.13.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>An investigator should be able to retrieve and view information about a case after adding them into the application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">5.13.2. Current implementation</a></h4>
+<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">5.13.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>Similar to <code>DeleteCaseCommandParser</code>, the <code>SelectCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>SelectCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2534,7 +2673,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <div class="content">
 <img src="images/SD_SelectCaseCommand_Logic.png" alt="SD SelectCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 39. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 42. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2570,7 +2709,7 @@ private void handleCrimeCasePanelSelectionChangedEvent(CrimeCasePanelSelectionCh
 <div class="content">
 <img src="images/SD_SelectCaseCommand_EventsCenter.png" alt="SD SelectCaseCommand EventsCenter" width="800">
 </div>
-<div class="title">Figure 40. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 43. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2665,13 +2804,13 @@ loadPage(caseDetailsPage);</code></pre>
 <div class="sect2">
 <h3 id="editing-cases-feature"><a class="link" href="#editing-cases-feature">5.14. Editing cases feature</a></h3>
 <div class="sect3">
-<h4 id="reason-for-implementation-12"><a class="link" href="#reason-for-implementation-12">5.14.1. Reason for implementation</a></h4>
+<h4 id="reason-for-implementation-13"><a class="link" href="#reason-for-implementation-13">5.14.1. Reason for implementation</a></h4>
 <div class="paragraph">
 <p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">5.14.2. Current implementation</a></h4>
+<h4 id="current-implementation-14"><a class="link" href="#current-implementation-14">5.14.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a  ` EditCrimeCaseDescriptor` object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -2741,7 +2880,7 @@ throws DuplicateCrimeCaseException, CrimeCaseNotFoundException {
 <div class="content">
 <img src="images/SD_EditCaseCommand_Model.png" alt="SD EditCaseCommand Model" width="800">
 </div>
-<div class="title">Figure 41. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
+<div class="title">Figure 44. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2751,29 +2890,32 @@ throws DuplicateCrimeCaseException, CrimeCaseNotFoundException {
 <div class="sect2">
 <h3 id="creating-backup"><a class="link" href="#creating-backup">5.15. Creating Backup</a></h3>
 <div class="paragraph">
-<p>As investigators may want to save the current state of the Investigapptor before progressing, they can do this
-by using the backup command and typing in a name for the backup.</p>
+<p>This feature allows users to create a new xml file of the current state of the Investigapptor
+with a new name.</p>
 </div>
+<div class="sect3">
+<h4 id="reason-for-implementation-14"><a class="link" href="#reason-for-implementation-14">5.15.1. Reason for implementation</a></h4>
 <div class="paragraph">
-<p>eg: backup 3rdMarch</p>
+<p>As investigators may want to save the current state of the Investigapptor before progressing
+or having to create a periodic backup to fall back on.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-15"><a class="link" href="#current-implementation-15">5.15.2. Current implementation</a></h4>
 <div class="paragraph">
-<p>The data is saved whenever an <code>InvestigapptorChangeedEvent</code> is raised in the Model component</p>
+<p>The <code>BackupCommand</code> is created when the command word <code>backup</code> is detected in the user input. It will then use the <code>BackupCommandParser</code>
+ensure that the filename is alphanumeric. The <code>BackupCommand</code> will then call the <code>backupInvestigapptor</code> method from the model
+and pass in the filename as a string.</p>
 </div>
-<div class="paragraph">
-<p>This method is commonly called after adding, editing of deleting any information</p>
-</div>
-<div class="literalblock">
+<div id="backup-diagram" class="imageblock">
 <div class="content">
-<pre>private void indicateInvestigapptorChanged() {
-        raise(new InvestigapptorChangedEvent(investigapptor));
-    }</pre>
+<img src="images/backupDiagram.png" alt="backupDiagram" width="790">
 </div>
+<div class="title">Figure 45. Backup Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>The event contains information which will be passed to Storage component to start the saving sequence.
-In order to create our own backup xml, additional information such as filename has to be passed in.
-Hence a new event <code>InvestigapptorBackupEvent</code> is create for this specific.</p>
+<p>In the <code>Model</code>, the <code>backUpInvestigapptor</code> will raise the event <code>InvestigapptorBackupEvent</code> .The event contains filename which will be passed to
+Storage component to start the saving sequence.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2783,19 +2925,21 @@ Hence a new event <code>InvestigapptorBackupEvent</code> is create for this spec
 </div>
 </div>
 <div class="paragraph">
-<p><code>backupInvestigapptor</code> is call when the investigator uses the backup command and event is raised, The
-<code>Storage</code> package will handle the event and create a new backup.</p>
+<p>At the Storage component, the <code>handleInvestigapptorBackupEvent</code> will extract the filename and create a new
+xml by using the <code>backupInvestigapptor</code> method.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
-    logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
-    try {
-        backupInvestigapptor(event.data, event.fileName);
-    } catch (IOException e) {
-        raise(new DataSavingExceptionEvent(e));
+<pre>    public void handleInvestigapptorBackupEvent(InvestigapptorBackupEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event, "Backup command, saving to file"));
+        try {
+            backupInvestigapptor(event.data, event.fileName);
+        } catch (IOException e) {
+            raise(new DataSavingExceptionEvent(e));
+        }
     }
-}</pre>
+//end::backup[]</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2860,7 +3004,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 42. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 46. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -4694,7 +4838,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:00:26 UTC
+Last updated 2018-04-15 06:34:08 UTC
 </div>
 </div>
 </body>

@@ -471,15 +471,28 @@ investigapptor before you can start editing and managing with the other commands
 <h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is created when the command word <code>addinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
-to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The
-add investigator command will then create a Investigator instance and pass it from the logic component to the model component.
-The model then recreates the Investigator instance and store it.</p>
+to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The
+add investigator command will then create a Investigator instance and pass it from the logic component to the model component as shown
+in <a href="#add-investLogic">Add Investigator Logic Diagram</a>.</p>
 </div>
-<div class="imageblock">
+<div id="add-investLogic" class="imageblock">
 <div class="content">
-<img src="../images/AddInvestigatorSequenceDiagram.png" alt="add-invest" width="790">
+<img src="../images/AddInvestigatorLogicDiagram.png" alt="AddInvestigatorLogicDiagram" width="790">
 </div>
-<div class="title">Figure 2. Add Investigator Sequence Diagram</div>
+<div class="title">Figure 2. Add Investigator Logic Diagram</div>
+</div>
+<div class="paragraph">
+<p>When initialising Investigapptor, the storage using the <code>addPerson()</code> method as well to populate the
+Investigapptor thus it has to be able to correctly set up the reference to the <code>CrimeCase</code>. To do this,
+when a <code>investigator</code> is added to Investigapptor, it will check its list of <code>CrimeCase</code> hashcodes against
+the all the <code>CrimeCase</code> in the Investigapptor and add those that match into its list of <code>CrimeCase</code>.
+Only after adding the <code>CrimeCase</code> will the investigator be stored in the <code>persons</code> list as show in <a href="#add-invest">Add Investigator Sequence Diagram</a>.</p>
+</div>
+<div id="add-invest" class="imageblock">
+<div class="content">
+<img src="../images/AddInvestigatorSequenceDiagram.png" alt="AddInvestigatorSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 3. Add Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
@@ -487,16 +500,28 @@ the wrong instance. In order to fix this, hashcode is used to identify the corre
 This is done by the convertHashtoCases method in the Investigapptor as show below.</p>
 </div>
 <div class="paragraph">
-<p><strong>convertHashtoCases</strong><br></p>
+<p>The methods below are used to match and add the <code>CrimeCase</code> to the <code>investigator</code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>for (CrimeCase c : cases) {
-    if (c.hashCode() == i) {
+<pre>private void convertHashToCases(Investigator key) {
+    requireNonNull(key.getCaseListHashed());
+    for (Integer i : key.getCaseListHashed()) {
         try {
-            key.addCrimeCase(c);
+            addCaseFromHash(key, i);
         } catch (DuplicateCrimeCaseException e) {
-            throw new AssertionError("duplicate case");
+            throw new AssertionError("Not possible, duplicate case while retrieving from xml");
+        }
+    }
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>private void addCaseFromHash (Investigator key, int hash) throws DuplicateCrimeCaseException {
+    for (CrimeCase c : cases) {
+        if (c.hashCode() == hash) {
+            key.addCrimeCase(c);
         }
     }
 }</pre>
@@ -561,15 +586,24 @@ add the investigator.</p>
 <p>The <code>deleteInvestigatorCommand</code> is created when the command word <code>deleteinvestigator</code> is
 detected in the user input. It will then check if the index given is valid. If the index
  is valid, it will check if the investigator at the index if it&#8217;s <code>UniqueCaseList</code> is empty.
- If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>. The <code>ModelManager</code> will then call
-<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
-<code>persons</code>.</p>
+ If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>.</p>
 </div>
-<div class="imageblock">
+<div id="delete-investLogic" class="imageblock">
 <div class="content">
-<img src="../images/DeleteInvestigatorSequenceDiagram.png" alt="delete-invest" width="790">
+<img src="../images/DeleteInvestigatorLogic.png" alt="DeleteInvestigatorLogic" width="790">
 </div>
-<div class="title">Figure 3. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 4. Delete Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <code>ModelManager</code> will then call
+<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
+<code>persons</code> as show below in <a href="#delete-invest">Delete Investigator Sequence Diagram</a>.</p>
+</div>
+<div id="delete-invest" class="imageblock">
+<div class="content">
+<img src="../images/DeleteInvestigatorSequenceDiagram.png" alt="DeleteInvestigatorSequenceDiagram" width="790">
+</div>
+<div class="title">Figure 5. Delete Investigator Sequence Diagram</div>
 </div>
 </div>
 <div class="sect4">
@@ -626,22 +660,38 @@ investigapptor rather than having to delete and add a new investigator.</p>
 <h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is created when the command word <code>editinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
-to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, Address`, <code>Rank</code>, Set&lt;Tag&gt;). The <code>EditInvestigatorCommand</code>
+to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The <code>EditInvestigatorCommand</code>
 will then create a Investigator instance using both the old and new information and pass it from the logic component to the model component.
-The model then recreates the Investigator instance and replace the old investigator with the new one.</p>
+As the logic for edit is extremely similar to add, you can refer to <a href="#add-invest">Add Investigator Sequence Diagram</a> to view the logic diagram.</p>
+</div>
+<div class="paragraph">
+<p>The model will take in both the old and new the Investigator instance and start by recreating the all the cases as they reference the old investigator has to
+be updated. In order to do this, the <code>Investigapptor</code> will swap all the <code>CrimeCases</code> that belong to the investigator with a <code>CrimeCase</code> with the new <code>Investigator</code>.
+Once all the <code>CrimeCases</code> are recreated, they will be added to new <code>Investigator</code> and the <code>Investigator</code> will be stored in the <code>persons</code> list.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 4. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 6. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>After editing the investigator, the all the cases referencing the old investigator has to
- be updated to ensure the that the cases point to the correct investigator. In order to do this, the <code>Investigapptor</code>
- will have to recreate all the <code>CrimeCases</code> that belong to the investigator with the new <code>Investigator</code>. Once
- all the <code>CrimeCases</code> are recreated, they will be added to new <code>Investigator</code> and finally stored
- in <code>persons</code> of the <code>Investigapptor</code>.</p>
+<p>Code snippet of how each case is recreated and swapped to ensure that the index is not changed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>private void recreateCasesForInvestigator(Investigator inv, CrimeCase c) {
+     CrimeCase newCase = syncWithMasterTagList(new CrimeCase(c.getCaseName(), c.getDescription(),
+        inv, c.getStartDate(), c.getEndDate(), c.getStatus(), c.getTags()));
+     try {
+         cases.setCrimeCase(c, newCase);
+     } catch (DuplicateCrimeCaseException e) {
+         throw new AssertionError("Duplicate Case when editing investigator");
+     } catch (CrimeCaseNotFoundException e) {
+         throw new AssertionError("Case not found when editing investigator");
+     }
+ }</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -684,6 +734,95 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="list-investigator-cases"><a class="link" href="#list-investigator-cases">List Investigator Cases</a></h4>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> will search and display all the cases belonging to the investigator in the panel list.</p>
+</div>
+<div class="sect4">
+<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">Reason for Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> is important as you would want to be able find all the cases the investigator is in charge of
+easily as compared to search each case one by one.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>ListInvestigatorCaseCommand</code> is created when the command word <code>listinvestigatorcases</code> is detected in the user input. It will then use the <code>ParserUtil</code>
+to identify which investigator is selected by using the <code>Index</code>. <code>ListInvestigatorCaseCommand</code> will retrieve the selected <code>investigator</code>
+from the <code>Model</code> and use its hashcode to create the <code>CaseContainsInvestigatorPredicate</code>. The
+predicate will be used to filter the list of <code>CrimeCase</code> to only show <code>CrimeCase</code> that contain
+the selected <code>investigator</code>. An event will be raised to alert the UI to swap over to show the <code>CrimeCase</code> panel list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ListInvestigatorCaseLogicDiagram.png" alt="edit-invest" width="790">
+</div>
+<div class="title">Figure 7. Editing Investigator Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Code snippet of what is being done in the execute method</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public CommandResult execute() throws CommandException {
+    if (targetIndex != null) {
+        List&lt;Person&gt; lastShownList = model.getFilteredPersonList();
+        if (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+            throw new
+            CommandException(Messages.MESSAGE_INVALID_INVESTIGATOR_DISPLAYED_INDEX);
+        }
+        investigator = (Investigator) lastShownList.get(targetIndex.getZeroBased());
+        requireNonNull(investigator);
+        predicate = new CaseContainsInvestigatorPredicate(investigator.hashCode());
+    }
+    model.updateFilteredCrimeCaseList(predicate);
+    EventsCenter.getInstance().post(new SwapTabEvent(1));
+    return new CommandResult(getMessageForCrimeCaseListShownSummary(model.getFilteredCrimeCaseList().size()));
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-5"><a class="link" href="#design-consideration-5">Design Consideration</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2"><a class="link" href="#aspect-updating-the-code-crimecases-code-referencing-the-code-investigator-code-2">Aspect: Updating the <code>CrimeCases</code> referencing the <code>Investigator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using predicate and filtered list</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The architecture for using predicate and filtered is already implemented and used for other
+type of searches.</p>
+</li>
+<li>
+<p>Cons: Require to search every single <code>CrimeCase</code> to get the result.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using the <code>investigator</code> 's list of <code>CrimeCase</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not need to search every <code>CrimeCase</code> , meaning command will be processed faster</p>
+</li>
+<li>
+<p>Cons: Have to implement a method to convert the <code>investigator</code> 's list of <code>CrimeCase</code> to a filtered list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -699,7 +838,7 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:00:26 UTC
+Last updated 2018-04-15 06:34:09 UTC
 </div>
 </div>
 </body>
