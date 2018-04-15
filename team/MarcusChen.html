@@ -431,14 +431,14 @@ The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#82
 </table>
 </div>
 <div class="paragraph">
-<p>You can refer to the screenshots below for an example of how the Investigapptor
-would look like after you&#8217;ve executed the <code>listinvestigatorcases</code> command.</p>
+<p>To use the <code>listinvestigatorcases</code> command, you just need to indicate which investigator&#8217;s cases you
+want to view by using the index as shown in <a href="#investigatorcase-1">Locating investigator&#8217;s index</a> below</p>
 </div>
-<div id="lic-before" class="imageblock">
+<div id="investigatorcase-1" class="imageblock">
 <div class="content">
-<img src="../images/userguide-images/lic-before.png" alt="lic before" width="800">
+<img src="../images/userguide-images/lic-command1.png" alt="lic command1" width="450">
 </div>
-<div class="title">Figure 6. Before executing <code>listinvestigatorcases 1</code> command</div>
+<div class="title">Figure 6. Locating investigator&#8217;s index</div>
 </div>
 <div id="lic-after" class="imageblock">
 <div class="content">
@@ -448,25 +448,6 @@ would look like after you&#8217;ve executed the <code>listinvestigatorcases</cod
 </div>
 <div class="paragraph">
 <p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="paragraph">
-<p>To use the <code>listinvestigatorcases</code> command, you just need to indicate which investigator&#8217;s cases you
-want to view by using the index as shown in <a href="#investigatorcase-1">Using listinvestigatorcases command</a> bellow</p>
-</div>
-<div id="investigatorcase-1" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/lic-command1.png" alt="lic command1" width="900">
-</div>
-<div class="title">Figure 8. Using listinvestigatorcases command</div>
-</div>
-<div id="investigatorcase-1" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/lic-command2.png" alt="lic command2" width="900">
-</div>
-<div class="title">Figure 9. Result</div>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -640,7 +621,7 @@ functions.</p>
 <div class="content">
 <img src="../images/investigatorComponent.png" alt="invest-com" width="790">
 </div>
-<div class="title">Figure 10. Investigator in Model Component</div>
+<div class="title">Figure 8. Investigator in Model Component</div>
 </div>
 <div class="paragraph">
 <p>The code below is from the <code>syncWithMasterTagList</code> function. It shows that
@@ -762,7 +743,7 @@ in <a href="#add-investLogic">Add Investigator Logic Diagram</a>.</p>
 <div class="content">
 <img src="../images/AddInvestigatorLogicDiagram.png" alt="AddInvestigatorLogicDiagram" width="790">
 </div>
-<div class="title">Figure 11. Add Investigator Logic Diagram</div>
+<div class="title">Figure 9. Add Investigator Logic Diagram</div>
 </div>
 <div class="paragraph">
 <p>When initialising Investigapptor, the storage using the <code>addPerson()</code> method as well to populate the
@@ -775,7 +756,7 @@ Only after adding the <code>CrimeCase</code> will the investigator be stored in 
 <div class="content">
 <img src="../images/AddInvestigatorSequenceDiagram.png" alt="AddInvestigatorSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 12. Add Investigator Sequence Diagram</div>
+<div class="title">Figure 10. Add Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
@@ -875,7 +856,7 @@ detected in the user input. It will then check if the index given is valid. If t
 <div class="content">
 <img src="../images/DeleteInvestigatorLogic.png" alt="DeleteInvestigatorLogic" width="790">
 </div>
-<div class="title">Figure 13. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 11. Delete Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>ModelManager</code> will then call
@@ -886,7 +867,7 @@ detected in the user input. It will then check if the index given is valid. If t
 <div class="content">
 <img src="../images/DeleteInvestigatorSequenceDiagram.png" alt="DeleteInvestigatorSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 14. Delete Investigator Sequence Diagram</div>
+<div class="title">Figure 12. Delete Investigator Sequence Diagram</div>
 </div>
 </div>
 <div class="sect4">
@@ -956,7 +937,7 @@ Once all the <code>CrimeCases</code> are recreated, they will be added to new <c
 <div class="content">
 <img src="../images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 15. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 13. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of how each case is recreated and swapped to ensure that the index is not changed.</p>
@@ -1042,7 +1023,7 @@ the selected <code>investigator</code>. An event will be raised to alert the UI 
 <div class="content">
 <img src="../images/ListInvestigatorCaseLogicDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 16. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 14. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of what is being done in the execute method</p>
@@ -1130,7 +1111,7 @@ and pass in the filename as a string.</p>
 <div class="content">
 <img src="../images/backupDiagram.png" alt="backupDiagram" width="790">
 </div>
-<div class="title">Figure 17. Backup Sequence Diagram</div>
+<div class="title">Figure 15. Backup Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>In the <code>Model</code>, the <code>backUpInvestigapptor</code> will raise the event <code>InvestigapptorBackupEvent</code> .The event contains filename which will be passed to
@@ -1176,7 +1157,7 @@ xml by using the <code>backupInvestigapptor</code> method.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:03:04 UTC
+Last updated 2018-04-15 12:39:46 UTC
 </div>
 </div>
 </body>
