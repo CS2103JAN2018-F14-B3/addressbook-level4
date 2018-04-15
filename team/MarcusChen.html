@@ -49,11 +49,8 @@
 basic information rather than just morphing the person class.</p>
 </li>
 <li>
-<p>Highlights: This enhancement has includes much changes to the model component of the Investigapptor allowing it to apply the same general commands to all subclass of the Person class while still being able to use specfic command for specific classes.
-The Investigator also stores a live reference to all his cases that works with undo/redo feature by the usage of hashcode to always ensure it reference the correct case.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement has includes much changes to all major changes to all components of the Invesitgapptor,
+especially the model component to allow the Investigator to stores a live reference to all his cases that works with undo/redo feature by the usage of hashcode.</p>
 </li>
 </ul>
 </div>
@@ -147,6 +144,31 @@ The Investigator also stores a live reference to all his cases that works with u
 </ul>
 </div>
 </li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the sample data to reflect the new data type, investigator and cases: <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/264">#264</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams (examples:
+<a href="https://github.com/CS2103JAN2018-F11-B4/main/issues/120">1</a>,
+<a href="https://github.com/CS2103JAN2018-F11-B4/main/issues/132">2</a>,
+<a href="https://github.com/CS2103JAN2018-F11-B4/main/issues/128">3</a>,
+<a href="https://github.com/CS2103JAN2018-F11-B4/main/issues/104">4</a>,
+<a href="https://github.com/CS2103JAN2018-F11-B4/main/issues/110">5</a>)</p>
+</li>
 </ul>
 </div>
 </li>
@@ -217,11 +239,14 @@ Ranks ranges from 1 to 5 (Constable ,Sergeant, Inspector, Detective, Captain)
 </div>
 </div>
 <div class="sect3">
-<h4 id="EditInv"><a class="link" href="#EditInv">Editing an investigator : <code>editinvestigator</code> [Since v1.3]</a></h4>
+<h4 id="Backup"><a class="link" href="#Backup">Backing up data : <code>backup</code></a></h4>
 <div class="paragraph">
-<p>You can edit an existing information of an existing investigator in the Investigapptor.<br>
-Format: <code>editinvestigator INVESTIGATOR_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [r/RANK] [t/TAG]&#8230;&#8203;</code><br>
-Alias: <code>ei</code></p>
+<p>To save a snapshot of the current data in the Investigapptor before you make major changes, you use a the backup command to create
+a new xml file of the current state. The new save file will be placed in the data folder.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>backup "Filename"</code><br>
+Alias: <code>bu</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -230,240 +255,39 @@ Alias: <code>ei</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Edits the investigator at the specified <code>INVESTIGATOR_INDEX</code>.<br>
-The index refers to the index number shown in the last listing of investigators.<br>
-Existing values will be updated to the input values.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;<br>
-At least one of the optional fields must be provided.<br>
-When editing tags, the existing tags of the person will be removed (i.e adding of tags is not cumulative).
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You can remove all the investigator&#8217;s tags by typing <code>t/</code> without specifying any tags after it.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>To change a investigator&#8217;s detail, follow the steps below</p>
+<p>The data folder is located in the same directory as your investigapptor.jar<br>
+Saving the xml using the name "Investigator" will only overwrite the currenty save file and not create a new file.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Select the investigator you want to edit by using the index as show below in <a href="#editinvestigator">Using the Edit Investigator Command</a>.</p>
-</li>
-<li>
-<p>Use the prefix to indicate which details you want to edit, e.g <code>n/John</code> to change the name to John.</p>
-</li>
-</ol>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You can refer to the screenshot below for an example.</p>
 </div>
-<div id="editinvestigator" class="imageblock">
+<div id="backup-img" class="imageblock">
 <div class="content">
-<img src="../images/userguide-images/ei-command1.png" alt="ei command1" width="450">
+<img src="../images/userguide-images/backup.png" alt="backup" width="450">
 </div>
-<div class="title">Figure 2. Using the Edit Investigator Command</div>
+<div class="title">Figure 2. <code>backup</code> command</div>
 </div>
 <div class="paragraph">
-<p>You can observe that the details of the investigator has be change in both the panel list and details panel.
-The result box will also print the new investigator details as show in <a href="#editinvestigator2">Outcome</a>.</p>
-</div>
-<div id="editinvestigator2" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/ei-command2.png" alt="ei command2" width="450">
-</div>
-<div class="title">Figure 3. Outcome</div>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
+<p>The following provides an explanation of some command examples:<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editinvestigator 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st investigator to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>backup February</code><br>
+Creates a copy of the data with the name <code>February</code> in <code>root/data</code> folder</p>
 </li>
 <li>
-<p><code>ei 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd investigator to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="DelInv"><a class="link" href="#DelInv">Deleting an investigator : <code>deleteinvestigator</code> [Since v1.3]</a></h4>
-<div class="paragraph">
-<p>You can delete a specified investigator from Investigapptor.<br>
-Format: <code>deleteinvestigator INVESTIGATOR_INDEX</code><br>
-Alias: <code>di</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Deletes the investigator at the specified <code>INVESTIGATOR_INDEX</code>.<br>
-The index refers to the index number shown in the most recent listing.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You can identify and delete the investigator by looking at their <code>INDEX</code> at the top left of their card as show in the
-diagram <a href="#deleteinv-index">below</a>.</p>
-</div>
-<div id="deleteinv-index" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/di-command-index.png" alt="di command index" width="320">
-</div>
-<div class="title">Figure 4. Investigator Index</div>
-</div>
-<div class="paragraph">
-<p>You can refer to the screenshot below for an example.</p>
-</div>
-<div id="deleteinv" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/di-command.png" alt="di command" width="500">
-</div>
-<div class="title">Figure 5. Deleting an investigator</div>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listinvestigators</code><br>
-<code>deleteinvestigator 2</code><br>
-Deletes the 2nd investigator in the address book.</p>
+<p><code>backup 02012018</code><br>
+Creates a copy of the data with the name <code>02012018</code> in <code>root/data</code> folder</p>
 </li>
 <li>
-<p><code>findinvestigators Betsy</code><br>
-<code>di 1</code><br>
-Deletes the 1st investigator in the results of the <code>findinvestigators</code> command.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If the investigator you are deleting is currently in charge of a case, it cannot be deleted.
-The case should be reassigned to another investigator before you delete the selected investigator.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="ListInvCases"><a class="link" href="#ListInvCases">List a specific Investigator&#8217;s cases <code>listinvestigatorcases</code> [Since v1.4]</a></h4>
-<div class="paragraph">
-<p>To find all the case belonging to a certain investigator, you can use the <code>listinvestigatorcases</code> command to retrieve all
-the cases which the investigator is currently in charge of and display them on the list panel.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>listinvestigatorcases INDEX</code><br>
-Alias: <code>lic</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Selects the investigator by the <code>INVESTIGATOR_INDEX</code> and loads the cases he/she is in-charge of in the case list.<br>
-The <code>INVESTIGATOR_INDEX</code> refers to the index number shown in the most recent listing of the investigators.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>To use the <code>listinvestigatorcases</code> command, you just need to indicate which investigator&#8217;s cases you
-want to view by using the index as shown in <a href="#investigatorcase-1">Locating investigator&#8217;s index</a> below</p>
-</div>
-<div id="investigatorcase-1" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/lic-command1.png" alt="lic command1" width="450">
-</div>
-<div class="title">Figure 6. Locating investigator&#8217;s index</div>
-</div>
-<div id="lic-after" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/lic-command.png" alt="lic command" width="800">
-</div>
-<div class="title">Figure 7. After executing <code>listinvestigatorcases 1</code> command</div>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listinvestigator</code><br>
-<code>listinvestigatorcases 2</code><br>
-Display all the cases of the 2nd investigator in the results of the <code>list case</code> command.</p>
-</li>
-<li>
-<p><code>findinvestigators Amy</code><br>
-<code>listinvestigatorcases 1</code><br>
-Display all the cases of the 2nd investigator in the results of the <code>FindInvestigator</code> command.</p>
-</li>
-<li>
-<p><code>lic 3</code><br>
-Display all the cases of the 2nd investigator  in the investigator panel list case.</p>
+<p><code>bu 03Mar2018</code><br>
+Creates a copy of the data with the name <code>March3rd</code> in <code>root/data</code> folder</p>
 </li>
 </ul>
 </div>
@@ -483,256 +307,20 @@ Display all the cases of the 2nd investigator  in the investigator panel list ca
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="investigator-features"><a class="link" href="#investigator-features">Investigator Features</a></h3>
-<div class="sect3">
-<h4 id="code-investigator-code-package"><a class="link" href="#code-investigator-code-package"><code>investigator</code> Package</a></h4>
-<div class="sect4">
-<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for Implementation</a></h5>
-<div class="paragraph">
-<p>As person class provided by the addressbook only has basic capability to store simple information such name and
-phone number, we had to create a new <code>Investigator</code> package which can store and handle a list of <code>CrimeCases</code> which is a core
-requirement for our product to work. We chose not to modify the <code>Person</code> package but instead extend from it as it will be easier
-for you to implement new type of person object in the future such as suspects or witnesses.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
-<div class="paragraph">
-<p>Currently the <code>Investigator</code> extends from the <code>Person</code> class, and the additional two properties the are:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 18.0327%;">
-<col style="width: 16.3934%;">
-<col style="width: 32.7868%;">
-<col style="width: 32.7871%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Composition Of</th>
-<th class="tableblock halign-left valign-top">Class</th>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Name(“Jon Doe”)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the name of the person.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Phone</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Phone(9123874)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores an <code>int</code> that represents the phone number of the person.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Email</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Email(“<a href="mailto:JohnD@gmail.com">JohnD@gmail.com</a>”)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the email of the person.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Address</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EndDate("Baker Street #01-04")</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the address of the person.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Investigator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rank</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Status('1')</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Store a <code>String</code> that represent a int value that can be converted to the appropriate <a href="#Rank">[Rank]</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Investigator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UniqueCrimeCaseList</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Status()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>UniqueCrimeCaseList</code> that contains all the cases the investigator is in charged of</p></td>
-</tr>
-</tbody>
-</table>
-<div id="Rank" class="ulist">
-<ul>
-<li>
-<p><code>Rank</code></p>
-<div class="paragraph">
-<p>Stores the rank of the investigator</p>
-</div>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 50%;">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Integer Value</th>
-<th class="tableblock halign-left valign-top">Rank</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Constable</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sergeant</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Inspector</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Detective</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Captain</code></p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p><code>UniqueCrimeCaseList</code></p>
-<div class="paragraph">
-<p>Stores and manages all the CrimeCases which the investigator is in charge of.</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="model"><a class="link" href="#model">Model</a></h5>
-<div class="paragraph">
-<p>Currently the <code>Investigator</code> is upcasted and stored in the <code>Investigapptor</code> 's <code>UniquePersonList</code>.
-This is done on purpose to allow future enhancement that allows us to implement types of people such as suspects and witnesses. Storing them together makes it easier to use general
-functions.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/investigatorComponent.png" alt="invest-com" width="790">
-</div>
-<div class="title">Figure 8. Investigator in Model Component</div>
-</div>
-<div class="paragraph">
-<p>The code below is from the <code>syncWithMasterTagList</code> function. It shows that
-both Investigator and Person type are both return into the <code>UniquePersonList</code>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="storage"><a class="link" href="#storage">Storage</a></h5>
-<div class="paragraph">
-<p>As Investigator has addition properties compared to Person, <code>XmlAdaptedInvestigator</code> is created to convert
-the <code>Investigator</code> into correct XML format. We had to also change the method of storing the in <code>Investigapptor</code>
-the different classes have to be converted and stored in the correct format. To accomplish this,
-two new methods were added which each return a person only list and a investigator only list to store them
-separately</p>
-</div>
-<div class="paragraph">
-<p>This function will return only <code>Investigator</code> in the list</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>public ObservableList&lt;Investigator&gt; investigatorList() {
-    Iterator irt = iterator();
-    ObservableList&lt;Investigator&gt; investigators = FXCollections.observableArrayList();
-    while (irt.hasNext()) {
-        Object element = irt.next();
-        if (element instanceof Investigator) {
-            investigators.add((Investigator) element);
-        }
-    }
-    return investigators;
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This function will only return <code>Person</code> in the list</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>public ObservableList&lt;Person&gt; personOnlyList() {
-    Iterator irt = iterator();
-    ObservableList&lt;Person&gt; persons = FXCollections.observableArrayList();
-    while (irt.hasNext()) {
-        Object element = irt.next();
-        if (!(element instanceof Investigator)) {
-            persons.add((Person) element);
-        }
-    }
-    return persons;
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As the <code>Investigator</code> has to store multiple <code>CrimeCase</code> , instead of store the whole <code>CrimeCase</code> and all
-its details inside of the <code>XmlAdaptedInvestigator</code>, we stored the hashcode instead to
-reduce the amount of space used for storage.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="aspect-interaction-between-investigator-and-crimecase"><a class="link" href="#aspect-interaction-between-investigator-and-crimecase">Aspect: Interaction between Investigator and CrimeCase</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use mutual reference between Investigator and CrimeCase</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy and fast to find relation between Investigator and CrimeCase by using the reference</p>
-</li>
-<li>
-<p>Cons: Hard to implement due to the undo/redo feature due to creating multiple <code>Investigapptor</code> hence the reference
-has to be correct for each instance.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Using Association class</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement. More compatible with the undo/redo feature</p>
-</li>
-<li>
-<p>Cons: Slower due to having to search through all the association class to find all all the connected
-<code>Investigator</code> and <code>CrimeCase</code>. More duplicates in the XML file.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="sect3">
 <h4 id="add-investigator"><a class="link" href="#add-investigator">Add investigator</a></h4>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> will create an instance of the Investigator class and store it in the Investigapptor.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is important as you would want to be able to add your own investigator details into the
 investigapptor before you can start editing and managing with the other commands.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addInvestigatorCommand</code> is created when the command word <code>addinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to split the user input into its separate components (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The
@@ -743,7 +331,7 @@ in <a href="#add-investLogic">Add Investigator Logic Diagram</a>.</p>
 <div class="content">
 <img src="../images/AddInvestigatorLogicDiagram.png" alt="AddInvestigatorLogicDiagram" width="790">
 </div>
-<div class="title">Figure 9. Add Investigator Logic Diagram</div>
+<div class="title">Figure 3. Add Investigator Logic Diagram</div>
 </div>
 <div class="paragraph">
 <p>When initialising Investigapptor, the storage using the <code>addPerson()</code> method as well to populate the
@@ -756,7 +344,7 @@ Only after adding the <code>CrimeCase</code> will the investigator be stored in 
 <div class="content">
 <img src="../images/AddInvestigatorSequenceDiagram.png" alt="AddInvestigatorSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 10. Add Investigator Sequence Diagram</div>
+<div class="title">Figure 4. Add Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Due to the Redo/Undo feature, multiple instance of the Investigapptor will be created which means the references may point to
@@ -793,7 +381,7 @@ This is done by the convertHashtoCases method in the Investigapptor as show belo
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h5>
+<h5 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
@@ -833,95 +421,19 @@ and one in the <code>Investigator</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-investigator"><a class="link" href="#delete-investigator">Delete investigator</a></h4>
-<div class="paragraph">
-<p>The <code>deleteInvestigatorCommand</code> will find and delete the specified Investigator in the Investigapptor.</p>
-</div>
-<div class="sect4">
-<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">Reason for Implementation</a></h5>
-<div class="paragraph">
-<p>The <code>deleteInvestigatorCommand</code> is important as you may not longer wish to store certain investigator or have made a mistake when
-add the investigator.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h5>
-<div class="paragraph">
-<p>The <code>deleteInvestigatorCommand</code> is created when the command word <code>deleteinvestigator</code> is
-detected in the user input. It will then check if the index given is valid. If the index
- is valid, it will check if the investigator at the index if it&#8217;s <code>UniqueCaseList</code> is empty.
- If it is empty, it will call the <code>deletePerson</code> method from the <code>ModelManager</code>.</p>
-</div>
-<div id="delete-investLogic" class="imageblock">
-<div class="content">
-<img src="../images/DeleteInvestigatorLogic.png" alt="DeleteInvestigatorLogic" width="790">
-</div>
-<div class="title">Figure 11. Delete Investigator Sequence Diagram</div>
-</div>
-<div class="paragraph">
-<p>The <code>ModelManager</code> will then call
-<code>Investigapptor</code> 's <code>deletePerson</code> method which will remove the investigator from the
-<code>persons</code> as show below in <a href="#delete-invest">Delete Investigator Sequence Diagram</a>.</p>
-</div>
-<div id="delete-invest" class="imageblock">
-<div class="content">
-<img src="../images/DeleteInvestigatorSequenceDiagram.png" alt="DeleteInvestigatorSequenceDiagram" width="790">
-</div>
-<div class="title">Figure 12. Delete Investigator Sequence Diagram</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design Consideration</a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="aspect-method-of-removing-investigator"><a class="link" href="#aspect-method-of-removing-investigator">Aspect: Method of removing investigator</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Fully delete the investigator</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement, no further issues after deleting the investigator.</p>
-</li>
-<li>
-<p>Cons: No longer able to retrieve it after deleted, other than undo.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Archive the investigator</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able bring any investigator out of archive.</p>
-</li>
-<li>
-<p>Cons: Complicated to implement, does not actually delete the investigator and may cause build up of unwanted data.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
 <h4 id="edit-investigator"><a class="link" href="#edit-investigator">Edit investigator</a></h4>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> will recreate an instance of the Investigator class that exist and store it in the Investigapptor.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is important as you would want to be able to edit an investigator&#8217;s details in the
 investigapptor rather than having to delete and add a new investigator.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>EditInvestigatorCommand</code> is created when the command word <code>editinvestigator</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to identify which detail is to be changed (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Rank</code>, <code>Set&lt;Tag&gt;</code>). The <code>EditInvestigatorCommand</code>
@@ -937,7 +449,7 @@ Once all the <code>CrimeCases</code> are recreated, they will be added to new <c
 <div class="content">
 <img src="../images/EditInvestigatorSequenceDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 13. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 5. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of how each case is recreated and swapped to ensure that the index is not changed.</p>
@@ -959,7 +471,7 @@ Once all the <code>CrimeCases</code> are recreated, they will be added to new <c
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-4"><a class="link" href="#design-consideration-4">Design Consideration</a></h5>
+<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
@@ -1004,14 +516,14 @@ modify <code>CrimeCase</code>, which result in bad coupling.</p>
 <p>The <code>ListInvestigatorCaseCommand</code> will search and display all the cases belonging to the investigator in the panel list.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">Reason for Implementation</a></h5>
+<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">Reason for Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>ListInvestigatorCaseCommand</code> is important as you would want to be able find all the cases the investigator is in charge of
 easily as compared to search each case one by one.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
+<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>ListInvestigatorCaseCommand</code> is created when the command word <code>listinvestigatorcases</code> is detected in the user input. It will then use the <code>ParserUtil</code>
 to identify which investigator is selected by using the <code>Index</code>. <code>ListInvestigatorCaseCommand</code> will retrieve the selected <code>investigator</code>
@@ -1023,7 +535,7 @@ the selected <code>investigator</code>. An event will be raised to alert the UI 
 <div class="content">
 <img src="../images/ListInvestigatorCaseLogicDiagram.png" alt="edit-invest" width="790">
 </div>
-<div class="title">Figure 14. Editing Investigator Sequence Diagram</div>
+<div class="title">Figure 6. Editing Investigator Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Code snippet of what is being done in the execute method</p>
@@ -1049,7 +561,7 @@ the selected <code>investigator</code>. An event will be raised to alert the UI 
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-5"><a class="link" href="#design-consideration-5">Design Consideration</a></h5>
+<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design Consideration</a></h5>
 
 </div>
 <div class="sect4">
@@ -1094,14 +606,14 @@ type of searches.</p>
 with a new name.</p>
 </div>
 <div class="sect4">
-<h5 id="reason-for-implementation-6"><a class="link" href="#reason-for-implementation-6">Reason for implementation</a></h5>
+<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">Reason for implementation</a></h5>
 <div class="paragraph">
 <p>As investigators may want to save the current state of the Investigapptor before progressing
 or having to create a periodic backup to fall back on.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current implementation</a></h5>
+<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current implementation</a></h5>
 <div class="paragraph">
 <p>The <code>BackupCommand</code> is created when the command word <code>backup</code> is detected in the user input. It will then use the <code>BackupCommandParser</code>
 ensure that the filename is alphanumeric. The <code>BackupCommand</code> will then call the <code>backupInvestigapptor</code> method from the model
@@ -1111,7 +623,7 @@ and pass in the filename as a string.</p>
 <div class="content">
 <img src="../images/backupDiagram.png" alt="backupDiagram" width="790">
 </div>
-<div class="title">Figure 15. Backup Sequence Diagram</div>
+<div class="title">Figure 7. Backup Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>In the <code>Model</code>, the <code>backUpInvestigapptor</code> will raise the event <code>InvestigapptorBackupEvent</code> .The event contains filename which will be passed to
@@ -1145,19 +657,9 @@ xml by using the <code>backupInvestigapptor</code> method.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:18:50 UTC
+Last updated 2018-04-15 13:19:40 UTC
 </div>
 </div>
 </body>
