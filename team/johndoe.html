@@ -366,27 +366,45 @@ There is no need to save manually.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#AddInv">Add an Investigator</a></em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of added investigators</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a new investigator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigators</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigators</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#SelInv">Select an Investigator</a></em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select the investigator based on its index to view its details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the investigator to view its details based on the investigator index given</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>selectinvestigator</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>selectinvestigator 1</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#EditInv">Edit an Investigator</a></em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the investigator&#8217;s details based on the parameters given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit the investigator&#8217;s details based on the parameters given</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>editinvestigator</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>editinvestigator 1 n/Project NewName</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#DelInv">Delete an Investigator</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete an investigator based on the investigator index given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteinvestigator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteinvestigator 2</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#ListInv">List all Investigators</a></em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of added investigators</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all investigators</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigators</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigators</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindInv">Find Investigators by their name</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all investigators whose name matches the keyword(s) given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findinvestigators</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findinvestigators Robert</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindInvTags">Find Investigators by their tags</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all investigators whose tag matches the keyword(s) given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findinvestigatortags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findinvestigatortags Expert TeamA</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -410,10 +428,70 @@ There is no need to save manually.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#ListCases">List Cases</a></em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of added cases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#AddCase">Add a Case</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a new case</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addcase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addcase n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#SelectCase">Select a Case</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the case based on its index to view its details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selectcase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selectcase 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#EditCase">Edit a Case</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit the case&#8217;s details based on the parameters given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editcase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editcase 1 d/new description i/1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#DeleteCase">Delete a Case</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a case based on the case index given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletecase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletecase 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#CloseCase">Closing a case</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes the status of the case from <code>open</code> to <code>close</code> based on the case index given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>close</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>close 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#ListCases">List all Cases</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listcases</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>listcases</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#ListInvCases">List the Cases assigned to an Investigator</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases that has been assigned to the investigator based on the investigator index given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigatorcases</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listinvestigatorcases  2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindCases">Find Cases by their name</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases whose name matches the keyword(s) given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findcases</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findcases Project Murder</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindCaseTags">Find Cases by their tags</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases whose tag matches the keyword(s) given</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findcasetags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findcasetags Homicide Fraud</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindCloseCases">Find Cases with the status 'close'</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases whose status is <code>close</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findclosecases</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findclosecases</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#FindOpenCases">Find Cases with the status 'open'</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the list of all cases whose status is <code>open</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findopencases</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findopencases</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -471,7 +549,7 @@ There is no need to save manually.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:57:23 UTC
+Last updated 2018-04-15 09:57:51 UTC
 </div>
 </div>
 </body>
