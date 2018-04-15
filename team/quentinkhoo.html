@@ -365,7 +365,8 @@ seen in the sequence diagram below:</p>
 <div class="sect5">
 <h6 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h6>
 <div class="paragraph">
-<p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
+<p>When a <code>setpassword</code> command is executed, a
+<a href="{repoUrl}/src/main/java/seedu/investigapptor/logic/commands/SetPasswordCommand.java">SetPasswordCommand</a>
 object gets created if the parsing of the command was successful. This
 will in turn make a call to the <code>updatePassword</code> function in the <code>Model</code>
 component, as shown in the sequence diagram below:</p>
@@ -380,7 +381,8 @@ component, as shown in the sequence diagram below:</p>
 <div class="sect5">
 <h6 id="model-component"><a class="link" href="#model-component">Model Component</a></h6>
 <div class="paragraph">
-<p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
+<p>Upon being called, the <code>updatePassword</code> function in the
+<a href="{repoUrl}/src/main/java/seedu/investigapptor/model/ModelManager.java">ModelManager</a>
 would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
 password has been updated. The entire sequence diagram for the <code>Model</code>
 component as shown below describes this in greater detail.</p>
@@ -392,11 +394,11 @@ component as shown below describes this in greater detail.</p>
 <div class="title">Figure 6. Password Feature&#8217;s Model Component Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>Whenever then <code>Password</code> Object&#8217;s <code>updatePassword</code> function is called,
+<p>Whenever then <a href="{repoUrl}/src/main/java/seedu/investigapptor/model/Password.java">Password</a>
+ Object&#8217;s <code>updatePassword</code> function is called,
 the <a href="#hash">hash</a> of the password is first generated with the <code>generatePasswordHash</code>
 function. This function makes use of the <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a>
-hashing algorithm
-to generate the <a href="#hash">hash</a> of the password as shown below:</p>
+hashing algorithm as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -475,6 +477,41 @@ access control between investigators of different ranks.</p>
 </ul>
 </div>
 </div>
+<div class="sect5">
+<h6 id="aspect-password-related-commands-being-undoable"><a class="link" href="#aspect-password-related-commands-being-undoable">Aspect: Password related commands being undoable</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Password related commands should not be
+undoable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Security becomes tighter.</p>
+</li>
+<li>
+<p>Cons: More effort is required in configuring passwords.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Password related commands should be undoable.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less effort is required in configuring passwords.</p>
+</li>
+<li>
+<p>Cons: Security becomes less tight due to the additional method of
+configuring passwords</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -482,7 +519,7 @@ access control between investigators of different ranks.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:48:06 UTC
+Last updated 2018-04-15 12:53:54 UTC
 </div>
 </div>
 </body>

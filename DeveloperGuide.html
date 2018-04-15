@@ -139,8 +139,22 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#setting-a-password">F.2. Setting a Password</a></li>
-<li><a href="#deleting-an-investigator">F.3. Deleting an investigator</a></li>
-<li><a href="#saving-data">F.4. Saving data</a></li>
+<li><a href="#adding-an-investigator">F.3. Adding an investigator</a></li>
+<li><a href="#deleting-an-investigator">F.4. Deleting an investigator</a></li>
+<li><a href="#unable-to-delete-an-investigator-with-a-case">F.5. Unable to delete an investigator with a case</a></li>
+<li><a href="#edit-an-investigator">F.6. Edit an investigator</a></li>
+<li><a href="#backup-investigapptor">F.7. Backup Investigapptor</a></li>
+<li><a href="#list-investigator-cases">F.8. List Investigator Cases</a></li>
+<li><a href="#adding-a-case">F.9. Adding a case</a></li>
+<li><a href="#deleting-a-case">F.10. Deleting a case</a></li>
+<li><a href="#editing-a-case">F.11. Editing a case</a></li>
+<li><a href="#finding-a-case-by-name">F.12. Finding a case by name</a></li>
+<li><a href="#selecting-a-case">F.13. Selecting a case</a></li>
+<li><a href="#closing-a-case">F.14. Closing a case</a></li>
+<li><a href="#finding-cases-according-to-its-tags">F.15. Finding cases according to its tags</a></li>
+<li><a href="#finding-cases-with-status-code-open-code">F.16. Finding cases with status <code>open</code></a></li>
+<li><a href="#finding-cases-with-status-code-close-code">F.17. Finding cases with status <code>close</code></a></li>
+<li><a href="#finding-investigators-according-to-its-tags">F.18. Finding investigators according to its tags</a></li>
 </ul>
 </li>
 </ul>
@@ -384,17 +398,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect3">
 <h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">3.4.4. Getting started with coding</a></h4>
 <div class="paragraph">
-<p>When you are ready to start coding,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 4.1, &#8220;Architecture&#8221;</a>.</p>
-</li>
-<li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Product Scope</em></a>.</p>
-</li>
-</ol>
+<p>When you are ready to start coding, get some sense of the overall design by reading <a href="#Design-Architecture">Section 4.1, &#8220;Architecture&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -654,6 +658,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
+<p>exposes an unmodifiable <code>ObservableList&lt;CrimeCase&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
@@ -687,7 +694,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">4.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.investigapptorbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.investigapptor.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -1078,7 +1085,8 @@ seen in the sequence diagram below:</p>
 <div class="sect5">
 <h6 id="logic-component"><a class="link" href="#logic-component">5.2.1.1.1. Logic Component</a></h6>
 <div class="paragraph">
-<p>When a <code>setpassword</code> command is executed, a <code>SetPasswordCommand</code>
+<p>When a <code>setpassword</code> command is executed, a
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/logic/commands/SetPasswordCommand.java">SetPasswordCommand</a>
 object gets created if the parsing of the command was successful. This
 will in turn make a call to the <code>updatePassword</code> function in the <code>Model</code>
 component, as shown in the sequence diagram below:</p>
@@ -1093,7 +1101,8 @@ component, as shown in the sequence diagram below:</p>
 <div class="sect5">
 <h6 id="model-component"><a class="link" href="#model-component">5.2.1.1.2. Model Component</a></h6>
 <div class="paragraph">
-<p>Upon being called, the <code>updatePassword</code> function in the <code>ModelManager</code>
+<p>Upon being called, the <code>updatePassword</code> function in the
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/model/ModelManager.java">ModelManager</a>
 would raise a new <code>InvestigapptorChangedEvent</code> to indicate that the
 password has been updated. The entire sequence diagram for the <code>Model</code>
 component as shown below describes this in greater detail.</p>
@@ -1105,11 +1114,11 @@ component as shown below describes this in greater detail.</p>
 <div class="title">Figure 13. Password Feature&#8217;s Model Component Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>Whenever then <code>Password</code> Object&#8217;s <code>updatePassword</code> function is called,
+<p>Whenever then <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/model/Password.java">Password</a>
+ Object&#8217;s <code>updatePassword</code> function is called,
 the <a href="#hash">hash</a> of the password is first generated with the <code>generatePasswordHash</code>
 function. This function makes use of the <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a>
-hashing algorithm
-to generate the <a href="#hash">hash</a> of the password as shown below:</p>
+hashing algorithm as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1181,6 +1190,41 @@ access control between investigators of different ranks.</p>
 </li>
 <li>
 <p>Cons: Requires an additional password attribute for each investigator.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-password-related-commands-being-undoable"><a class="link" href="#aspect-password-related-commands-being-undoable">5.2.1.2.2. Aspect: Password related commands being undoable</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Choice)</strong>: Password related commands should not be
+undoable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Security becomes tighter.</p>
+</li>
+<li>
+<p>Cons: More effort is required in configuring passwords.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 </strong>: Password related commands should be undoable.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less effort is required in configuring passwords.</p>
+</li>
+<li>
+<p>Cons: Security becomes less tight due to the additional method of
+configuring passwords</p>
 </li>
 </ul>
 </div>
@@ -3082,7 +3126,7 @@ The current version of Investigapptor does not provide users with the ability to
 <h2 id="documentation"><a class="link" href="#documentation">6. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We use asciidoc for writing documentation.</p>
+<p>We use <a href="http://www.methods.co.nz/asciidoc/">asciidoc</a> for writing documentation.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3766,9 +3810,6 @@ on his or her expertise.</p>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -4275,7 +4316,7 @@ Status bar remains the same.</p>
 <li>
 <p>Test case: <code>set password pw/password</code><br>
 Expected: Password is set. Upon re-opening of application, a password
-is prompted for, an inputting 'password' would allow you access to the
+is prompted for, and inputting 'password' would allow you access to the
 application.</p>
 </li>
 </ol>
@@ -4285,7 +4326,42 @@ application.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-investigator"><a class="link" href="#deleting-an-investigator">F.3. Deleting an investigator</a></h3>
+<h3 id="adding-an-investigator"><a class="link" href="#adding-an-investigator">F.3. Adding an investigator</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding an investigator into the Investigapptor</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: None</p>
+</li>
+<li>
+<p>Test case: <code>addinvestigator n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/1 t/newcomer</code><br>
+Expected: A new investigator to be added
+Details of the new investigator shown in the status message.
+Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>n/John Doe e/johnd@example.com a/John street, block 123, #01-01 r/1 t/newcomer</code><br>
+Expected: Missing input phone number. Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add &#8230;&#8203;..</code>,<br>
+<code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/newcomer</code><br>
+ ` p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/1 t/newcomer`
+   <br>
+  Expected: Similar to previous due to missing input arguments.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-investigator"><a class="link" href="#deleting-an-investigator">F.4. Deleting an investigator</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4319,23 +4395,486 @@ Status bar remains the same.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
+<h3 id="unable-to-delete-an-investigator-with-a-case"><a class="link" href="#unable-to-delete-an-investigator-with-a-case">F.5. Unable to delete an investigator with a case</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Deleting an investigator while all investigators are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: Investigator at index one has a CrimeCase under him/her
+Multiple investigators in the list.</p>
+</li>
+<li>
+<p>Test case: <code>deleteinvestigator 1</code><br>
+Expected: Investigator cannot be deleted
+Details of why investigator cannot be deleted to be shown in the status message.
+Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deleteinvestigator 0</code><br>
+Expected: No investigator is deleted. Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code>
+(where x is larger than the list size)<br>
+   Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-an-investigator"><a class="link" href="#edit-an-investigator">F.6. Edit an investigator</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing an investigator that exist in the Investigapptor</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all investigators using the <code>listinvestigators</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>editinvestigator 1 n/Detective Conan</code><br>
+Expected: First investigator name is changed to Detective Conan
+Details of the edited investigator shown in the status message. Cases under the
+investigator should reflect the change as well.
+Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deleteinvestigator 1 n/(&amp;$(@#^$(@</code><br>
+Expected: Unable to edit the investigator, name can only be alphanumeric.
+Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>deleteinvestigator 0</code><br>
+Expected: No investigator is deleted. Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code>
+(where x is larger than the list size)<br>
+   Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="backup-investigapptor"><a class="link" href="#backup-investigapptor">F.7. Backup Investigapptor</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creating a backup of the investigapptor state.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Have a investigator in the investigapptor</p>
+</li>
+<li>
+<p>Test case: <code>backup savefile</code><br>
+Expected: A savefile.xml to be created in the root/data folder. The newly created backup should be
+exactly the same as the default Investigapptor.xml file.
+Success message of the backup being created,
+timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>backup <strong>&amp;@#^$</strong></code><br>
+Expected: Unable to backup as filename can only be alphanumeric.
+Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-investigator-cases"><a class="link" href="#list-investigator-cases">F.8. List Investigator Cases</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing all the <code>CrimeCase</code> under the selected investigator.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all investigators using the <code>listinvestigators</code> command.
+Investigator at index 1 has at least one <code>CrimeCase</code>.</p>
+</li>
+<li>
+<p>Test case: <code>listinvestigatorcase 1</code><br>
+Expected: Change to <code>CrimeCase</code> List Panel and only display cases under the investigator and
+index 1.
+Details of how many cases shown in the status message.
+Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>listinvestigatorcase 0</code><br>
+Expected: No investigator is deleted. Error details shown in the status message.
+Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>listinvestigatorcase</code>, <code>listinvestigatorcase x</code>
+(where x is larger than the list size)<br>
+   Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-case"><a class="link" href="#adding-a-case">F.9. Adding a case</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a case while all cases are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one investigator has been added. List all cases using the <code>listcases</code> command. Multiple cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>addcase n/Project Magic d/Kidnapping of 6 year-old John Doe i/1 s/01/04/2018 t/Homicide t/Fraud</code><br>
+Expected: Case is added to the bottom of the list. Details of the added case shown in the status message. Timestamp in the status bar is updated. Added case is reflected in the case list of the corresponding investigator.</p>
+</li>
+<li>
+<p>Test case: <code>addcase n/Project Magic i/1 s/01/04/2018 t/Homicide t/Fraud</code><br>
+Expected: No case is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>addcase</code> commands to try: <code>addcase</code>, <code>addcase n/Project Test i/1 d/Kidnapping of 6 year-old John Doe s/x</code> (where x is an invalid date e.g. greater than today&#8217;s date)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a case while list is filtered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one investigator has been added. List one or more cases using the <code>findcases</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>addcase n/Project Magic d/Kidnapping of 6 year-old John Doe i/1 s/01/04/2018 t/Homicide t/Fraud</code><br>
+Expected: Unfiltered list is displayed. Case is added to the bottom of the list. Details of the added case shown in the status message. Timestamp in the status bar is updated. Added case is reflected in the case list of the corresponding investigator.</p>
+</li>
+<li>
+<p>Test case: <code>addcase n/Project Magic i/1 s/01/04/2018 t/Homicide t/Fraud</code><br>
+Expected: No case is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>addcase</code> commands to try: <code>addcase</code>, <code>addcase n/Project Test i/1 d/Kidnapping of 6 year-old John Doe s/x</code> (where x is an invalid date e.g. greater than today&#8217;s date)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-case"><a class="link" href="#deleting-a-case">F.10. Deleting a case</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a case while all cases are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all cases using the <code>listcases</code> command. Multiple cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>deletecase 1</code><br>
+Expected: First case is deleted from the list. Details of the deleted case shown in the status message. Timestamp in the status bar is updated. Case is removed from the case list of the corresponding investigator.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No case is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>deletecase</code>, <code>delete x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting a case while list is filtered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List some cases using the <code>findcases</code> command. One or more cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>deletecase 1</code><br>
+Expected: View remains on the filtered list. First case is deleted from the filtered list. Details of the deleted case shown in the status message. Case is removed from the case list of the corresponding investigator. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-case"><a class="link" href="#editing-a-case">F.11. Editing a case</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a case while all cases are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one case has been added. List all cases using the <code>listcases</code> command. Multiple cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>editcase 1 d/Another description. s/3/4/2017</code><br>
+Expected: First case is updated accordingly from the list. Details of the edited case shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>editcase 0</code><br>
+Expected: No case is edited. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>editcase</code>, <code>editcase x</code>, <code>editcase 1 i/y</code> (where x is larger than the case list size and y is larger than the investigator list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing a case while list is filtered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one case has been added. List some cases using the <code>findcases</code> command. One or more cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>editcase 1</code><br>
+Expected: First case from the filtered list is edited. The unfiltered list is displayed. Details of the edited case shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-a-case-by-name"><a class="link" href="#finding-a-case-by-name">F.12. Finding a case by name</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding a case while all cases are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all cases using the <code>listcases</code> command. Multiple cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>findcases happy</code><br>
+Expected: List will display all the cases whose name contains the keyword "happy". Number of cases found shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>findcases happy sad</code><br>
+Expected: List will display all the cases whose name contains the keyword "happy" OR "sad". Number of cases found shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>findcases</code><br>
+Expected: View is not changed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Finding a case while list is filtered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List some cases using the <code>findcases</code> command. One or more cases in the list.</p>
+</li>
+<li>
+<p>Test case: <code>findcases test</code><br>
+Expected: The already filtered list is further filtered. List will display all the cases whose name contains the keyword "test". Number of cases found shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-case"><a class="link" href="#selecting-a-case">F.13. Selecting a case</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Selecting a case</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one case has been added.</p>
+</li>
+<li>
+<p>Test case: <code>selectcase 1</code><br>
+Expected: The first case is highlighted in the list. Details of the case is displayed on the panel on the right of the list. Status message displays index of case that has been selected.</p>
+</li>
+<li>
+<p>Test case: <code>selectcase 0</code><br>
+Expected: No case is selected. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>selectcase</code>, <code>selectcase x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-a-case"><a class="link" href="#closing-a-case">F.14. Closing a case</a></h3>
+<div class="paragraph">
+<p>Prerequisites: The target case to be closed has a status of <code>open</code><br></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>close 1</code></p>
+</li>
+<li>
+<p>Expected: First case&#8217;s status will change from <code>open</code> to <code>close</code>.
+Success message stating that the case status has been updated is shown in the result box.
+Its corresponding entry on the calendar will change its colour from red to green, and span from its start date to today&#8217;s date.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+<p>Prerequisites: The target case to be closed has a status of <code>close</code><br></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>close 1</code></p>
+</li>
+<li>
+<p>Expected: No case&#8217;s status will be changed.
+Error details (case is already closed) shown in the result box.
+Its corresponding entry on the calendar remains the same.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Incorrect <code>close</code> commands to try:<br></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>close 0</code>, <code>close x</code> (where x is larger than the list size), <code>close</code></p>
+</li>
+<li>
+<p>Expected: No case&#8217;s status will be changed. Error details shown in the result box. Its corresponding entry on the calendar remains the same.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-cases-according-to-its-tags"><a class="link" href="#finding-cases-according-to-its-tags">F.15. Finding cases according to its tags</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findcasetags homicide fraud</code></p>
+</li>
+<li>
+<p>Expected: Panel list will display all the cases whose tags matches the keyword "homicide" or "fraud".
+Number of cases listed is shown in the result box.
+The calendar view changes by reflecting the cases that is currently listed on the panel list.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Incorrect <code>findcasetags</code> commands to try:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findcasetags</code></p>
+</li>
+<li>
+<p>Expected: No changes will be seen.
+Error details shown in the result box.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-cases-with-status-code-open-code"><a class="link" href="#finding-cases-with-status-code-open-code">F.16. Finding cases with status <code>open</code></a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findopencases</code></p>
+</li>
+<li>
+<p>Expected: Panel list will display all the cases whose status is <code>open</code>.
+Number of cases listed is shown in the result box.
+The calendar view changes by reflecting the cases that is currently listed on the panel list.
+All entries displayed on the calendar is red.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-cases-with-status-code-close-code"><a class="link" href="#finding-cases-with-status-code-close-code">F.17. Finding cases with status <code>close</code></a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findclosecases</code></p>
+</li>
+<li>
+<p>Expected: Panel list will display all the cases whose status is <code>close</code>.
+Number of cases listed is shown in the result box.
+The calendar view changes by reflecting the cases that is currently listed on the panel list.
+All entries displayed on the calendar is green.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-investigators-according-to-its-tags"><a class="link" href="#finding-investigators-according-to-its-tags">F.18. Finding investigators according to its tags</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findinvestigatortags teamA expert</code></p>
+</li>
+<li>
+<p>Expected: Panel list will display all the investigators whose tags matches the keyword "teamA" or "expert".
+Number of investigators listed is shown in the result box.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Incorrect <code>findinvestigatortags</code> commands to try:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>findinvestigatortags</code></p>
+</li>
+<li>
+<p>Expected: No changes will be seen.
+Error details shown in the result box.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -4343,7 +4882,7 @@ Status bar remains the same.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:48:06 UTC
+Last updated 2018-04-15 12:53:54 UTC
 </div>
 </div>
 </body>
