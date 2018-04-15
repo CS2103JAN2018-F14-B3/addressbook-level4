@@ -189,6 +189,62 @@ and language.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Commands"><a class="link" href="#Commands">Commands</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section introduces to you the commands that are available with Investigapptor.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command Format</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upper Case</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameters supplied by User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Square Brackets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/NAME [t/TAG]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[t/TAG]</code> is an optional field</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>…</code>​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be used multiple times</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can have multiple tags: <code>[t/TAG1] [t/TAG2] [t/TAG3]</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="SetPassword"><a class="link" href="#SetPassword">Setting a password : <code>setpassword</code> [Since v1.3]</a></h4>
 <div class="paragraph">
@@ -236,7 +292,7 @@ Alias: <code>sp pw/PASSWORD</code><br></p>
 </div>
 <div class="paragraph">
 <p>The next time you start up Investigapptor, you will be prompted with a password
-input as shown below in <em><a href="#inputpassword">Figure 5</a></em>.</p>
+input as shown below in <em><a href="#inputpassword">Inputting a password</a></em>.</p>
 </div>
 <div id="inputpassword" class="imageblock">
 <div class="content">
@@ -429,7 +485,7 @@ access control between investigators of different ranks.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:15:33 UTC
+Last updated 2018-04-15 11:50:09 UTC
 </div>
 </div>
 </body>
