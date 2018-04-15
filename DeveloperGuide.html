@@ -94,7 +94,7 @@
 </li>
 <li><a href="#ui-enhancements">5.5. UI Enhancements</a>
 <ul class="sectlevel3">
-<li><a href="#UI-DetailsPane">5.5.1. Details pane</a></li>
+<li><a href="#UI-DetailsPane">5.5.1. Details panel</a></li>
 <li><a href="#modify-interface-theme-colour-scheme">5.5.2. Modify interface theme/colour scheme</a></li>
 </ul>
 </li>
@@ -428,14 +428,14 @@ to identify where and how your enhancement should be implemented.</p>
 </td>
 <td class="content">
 The <code>.pptx</code> files used to create diagrams in this document can be found in the
-<a href="https://github.com/CS2103JAN2018-F14-B3/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p><code>Main</code> has only one class called
-<a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/investigapptor/MainApp.java"><code>MainApp</code></a>.
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/MainApp.java"><code>MainApp</code></a>.
 It is responsible for:</p>
 </div>
 <div class="ulist">
@@ -504,13 +504,13 @@ It is responsible for:</p>
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>deletecase 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
+<img src="images/SDforDeleteCase.png" alt="SDforDeleteCase" width="800">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
+<div class="title">Figure 3. Component interactions for <code>deletecase 1</code> command (part 1)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -519,7 +519,7 @@ It is responsible for:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>InvestigapptorChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>InvestigapptorChangedEvent</code> when the Investigapptor data is changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -531,7 +531,7 @@ Note how the <code>Model</code> simply raises a <code>InvestigapptorChangedEvent
 <div class="content">
 <img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
 </div>
-<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
+<div class="title">Figure 4. Component interactions for <code>deletecase1</code> command (part 2)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -558,13 +558,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>CrimeCaseListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -599,7 +599,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -618,13 +618,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("deletecase 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -636,7 +636,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -647,7 +647,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the Investigapptor data.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -667,7 +667,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -678,7 +678,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in xml format and read it back.</p>
+<p>can save the Investigapptor data in xml format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -2893,7 +2893,7 @@ that are extended from parent class <code>FindByStatusCommand</code></p>
 <p><code>loadCrimeCasePage</code> method then takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags), to be processed for viewing on the UI.</p>
 </div>
 <div class="paragraph">
-<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">Section 5.5.1, &#8220;Details pane&#8221;</a>.</p>
+<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">Section 5.5.1, &#8220;Details panel&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -2901,9 +2901,9 @@ that are extended from parent class <code>FindByStatusCommand</code></p>
 <div class="sect2">
 <h3 id="ui-enhancements"><a class="link" href="#ui-enhancements">5.5. UI Enhancements</a></h3>
 <div class="sect3">
-<h4 id="UI-DetailsPane"><a class="link" href="#UI-DetailsPane">5.5.1. Details pane</a></h4>
+<h4 id="UI-DetailsPane"><a class="link" href="#UI-DetailsPane">5.5.1. Details panel</a></h4>
 <div class="paragraph">
-<p>This component is used by the <code>selectinvestigator</code> and <code>selectcase</code>(<a href="#case-select">Section 5.4.7, &#8220;Select case&#8221;</a>) commands. The details pane makes use of JavaFx&#8217;s <code>WebView</code> (an embedded browser) to render the data onto the display. The implementation for this can be found in <a href="https://github.com/CS2103JAN2018-F14-B3/main/java/seedu/investigapptor/ui/BrowserPanel.java">BrowserPanel</a>.</p>
+<p>This component is used by the <code>selectinvestigator</code> and <code>selectcase</code>(<a href="#case-select">Section 5.4.7, &#8220;Select case&#8221;</a>) commands. The details pane makes use of JavaFx&#8217;s <code>WebView</code> (an embedded browser) to render the data onto the display. The implementation for this can be found in <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/ui/BrowserPanel.java">BrowserPanel</a>.</p>
 </div>
 <div class="paragraph">
 <p>Two HTML files, <code>/docs/InvestigatorDetailsPage.html</code> and <code>/docs/CaseDetailsPage.html</code> are created as templates for displaying the details of a single investigator and case respectively. <code>WebView</code> provides utility methods that can be used to load and display the HTML files.</p>
@@ -3003,7 +3003,7 @@ loadPage(caseDetailsPage)</code></pre>
 <p>It&#8217;s easy to customize the look and feel of Investigapptor just by using CSS!</p>
 </div>
 <div class="paragraph">
-<p>The default style of the interface is generated by <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/LightTheme.css">LightTheme.css</a>. To start personalising it, you can create a new CSS file in the <code>/resources/view/</code> directory and replace the name of the file in the following line in <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/MainWindow.fxml">MainWindow.fxml</a>  with the name of your CSS file:</p>
+<p>The default style of the interface is generated by <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/resources/view/LightTheme.css">LightTheme.css</a>. To start personalising it, you can create a new CSS file in the <code>/resources/view/</code> directory and replace the name of the file in the following line in <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/resources/view/MainWindow.fxml">MainWindow.fxml</a>  with the name of your CSS file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3017,7 +3017,7 @@ loadPage(caseDetailsPage)</code></pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You can take a look at <a href="https://github.com/CS2103JAN2018-F14-B3/main/blob/master/src/main/resources/view/DarkTheme.css">DarkTheme.css</a> for reference on what elements you can change.
+You can take a look at <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/resources/view/DarkTheme.css">DarkTheme.css</a> for reference on what elements you can change.
 </td>
 </tr>
 </table>
@@ -3262,7 +3262,7 @@ e.g. <code>seedu.investigapptor.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2103JAN2018-F14-B3/main/src/main/java/seedu/investigapptor/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2103JAN2018-F14-B3/main/tree/master/src/main/java/seedu/investigapptor/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -4278,7 +4278,7 @@ Status bar remains the same.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:55:51 UTC
+Last updated 2018-04-15 09:57:23 UTC
 </div>
 </div>
 </body>
