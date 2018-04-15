@@ -25,10 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Investigapptor is a desktop application used for investigators to manage cases as simple, straightforward and efficient as possible.</p>
-</div>
-<div class="paragraph">
-<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Investigapptor is a desktop application used for investigators to manage cases as simple, straightforward and efficient as possible. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -84,7 +81,7 @@
 <p>Restructured the Developer Guide and changed language style of existing content to make it more reader-focused <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/252">#252</a></p>
 </li>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide</p>
+<p>Did cosmetic tweaks and modified language to existing contents of the User Guide <a href="https://github.com/CS2103JAN2018-F14-B3/main/pull/273">#273</a></p>
 </li>
 </ul>
 </div>
@@ -159,89 +156,13 @@ Tags are optional, but you can add as many as you like to a case to help you org
 <p><code>addcase n/Bedok Riot i/3 s/12/05/2017 d/Riot at bedok 85 t/Rape t/prostitution</code></p>
 </li>
 <li>
-<p><code>ac n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code>
-==== Editing a case: <code>editcase</code> [Since v1.4]</p>
+<p><code>ac n/Geylang Rape d/Rape at geylang i/1 s/12/05/1994</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>You can use this command to update case details or to re-assign a case to another investigator. Edit an existing case in the application by specifying the <code>CASE_INDEX</code> and entering the attributes that you wish to modify.<br>
-<strong>Format:</strong> <code>editcase CASE_INDEX [n/NAME] [d/DESCRIPTION] [i/INVESTIGATOR_INDEX] [s/STARTDATE] [t/TAG]&#8230;&#8203;</code><br>
-<strong>Alias:</strong> <code>ec</code></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>CASE_INDEX</code> refers to the index number shown in the last listing of cases.<br>
-The <code>INVESTIGATOR_INDEX</code> refers to the index number shown in the last listing of investigators.<br>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-At least one of the optional fields must be provided.<br>
-The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;<br>
-When editing tags, the existing tags of the case will be replaced by the new tags entered i.e adding of tags is not cumulative.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-To help you find the index of the case that you want to edit, you can use the <code>findcases</code> command before using the <code>editcase</code> command to narrow the number of cases displayed in the listing.<br>
-You can remove all the investigator&#8217;s tags by typing <code>t/</code> without specifying any tags after it.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You can refer to the screenshots below for an example.</p>
-</div>
-<div id="editcase1" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/ec-command1.png" alt="ec command1" width="450">
-</div>
-<div class="title">Figure 2. Editing Case</div>
-</div>
-<div id="editcase2" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/ec-command2.png" alt="ec command2" width="450">
-</div>
-<div class="title">Figure 3. Result</div>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editcase 1 d/some description i/1</code><br>
-Edits the description and investigator of the 1st case to be <code>some description</code> and the 1st investigator in the most recent listing of investigators respectively.</p>
-</li>
-<li>
-<p><code>ec 2 i/3 t/</code><br>
-Changes the investigator of the 2nd case to the 3rd investigator in the most recent listing of investigators, and clears all existing tags.</p>
-<div id="FindCases" class="paragraph">
-<p>==== Locating cases by name: <code>findcases</code> [Since v1.3]</p>
-</div>
-</li>
-</ul>
-</div>
+<div class="sect3">
+<h4 id="FindCases"><a class="link" href="#FindCases">Locating cases by name: <code>findcases</code> [Since v1.3]</a></h4>
 <div class="paragraph">
 <p>To help you get the details you need faster, you can use this command. You can find cases whose names contain any of your given keywords.<br>
 Format: <code>findcases KEYWORD [MORE_KEYWORDS]</code><br>
@@ -279,15 +200,15 @@ Only full words will be matched e.g. You cannot type <code>Danger</code> to sear
 </div>
 <div id="findcases" class="imageblock">
 <div class="content">
-<img src="../images/userguide-images/fc-command.png" alt="fc command" width="450">
+<img src="../images/userguide-images/fc-command.png" alt="fc command" width="350">
 </div>
-<div class="title">Figure 4. Finding cases by its name (Panel List)</div>
+<div class="title">Figure 2. Finding cases by its name (Panel List)</div>
 </div>
 <div id="findcases-calendar" class="imageblock">
 <div class="content">
-<img src="../images/userguide-images/fc-command-calendar.png" alt="fc command calendar" width="450">
+<img src="../images/userguide-images/fc-command-calendar.png" alt="fc command calendar" width="350">
 </div>
-<div class="title">Figure 5. Finding cases by its name (Calendar View)</div>
+<div class="title">Figure 3. Finding cases by its name (Calendar View)</div>
 </div>
 <div class="paragraph">
 <p>The following provides an explanation of some command examples:</p>
@@ -310,83 +231,7 @@ should you require more information about it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="DeleteCase"><a class="link" href="#DeleteCase">Deleting a case : <code>deletecase</code> [Since v1.3]</a></h4>
-<div class="paragraph">
-<p>You can remove cases by specifying the <code>CASE_INDEX</code>. The index refers to the index number shown in the most recent listing of cases.<br>
-<strong>Format:</strong> <code>deletecase CASE_INDEX</code><br>
-<strong>Alias:</strong> <code>dc</code></p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-To help you find the index of the case that you want to remove, you can use the <code>findcases</code> command before using the <code>deletecase</code> command to narrow the number of cases displayed in the listing.<br>
-If a case is no longer active, consider using the <code>close</code> command instead so that you can continue to view details of the case.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You can identify and delete the case by looking at their
-INDEX at the top left of their card as show in the diagram <a href="#deletecase-index">below</a>.</p>
-</div>
-<div id="deletecase-index" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/dc-index.png" alt="dc index" width="320">
-</div>
-<div class="title">Figure 6. Case Index</div>
-</div>
-<div class="paragraph">
-<p>You can refer to the screenshots below for an example of how the Investigapptor
-will look like after you&#8217;ve executed the <code>deletecase</code> command.</p>
-</div>
-<div id="deletecase-before" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/before-dc-command.png" alt="before dc command" width="800">
-</div>
-<div class="title">Figure 7. Before executing <code>deletecase 1</code> command</div>
-</div>
-<div id="deletecase-command" class="imageblock">
-<div class="content">
-<img src="../images/userguide-images/dc-command.png" alt="dc command" width="800">
-</div>
-<div class="title">Figure 8. After executing <code>deletecase 1</code> command</div>
-</div>
-<div class="paragraph">
-<p>The following provides an explanation of some command examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listcases</code><br>
-<code>deletecase 2</code><br>
-Deletes the 2nd case in the list of all cases.</p>
-</li>
-<li>
-<p><code>findcases Arson</code><br>
-<code>dc 1</code><br>
-Deletes the 1st case in the results of the <code>findcases</code> command.</p>
-<div id="SelectCase" class="paragraph">
-<p>==== Selecting a case : <code>selectcase</code> [Since v1.5]</p>
-</div>
-</li>
-</ul>
-</div>
+<h4 id="SelectCase"><a class="link" href="#SelectCase">Selecting a case : <code>selectcase</code> [Since v1.5]</a></h4>
 <div class="paragraph">
 <p>To view more details about a case, you can select the case identified by the index number used in the last case listing.<br>
 <strong>Format:</strong> <code>selectcase CASE_INDEX</code><br>
@@ -421,9 +266,9 @@ The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
 </div>
 <div id="selectcase-img" class="imageblock">
 <div class="content">
-<img src="../images/userguide-images/sc-command.png" alt="sc command" width="450">
+<img src="../images/userguide-images/sc-command.png" alt="sc command" width="400">
 </div>
-<div class="title">Figure 9. <code>selectcase 1</code> command</div>
+<div class="title">Figure 4. <code>selectcase 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The following provides an explanation of some command examples:</p>
@@ -463,236 +308,17 @@ Selects the 3rd case in the most recent list of cases.</p>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="code-crimecase-code-package"><a class="link" href="#code-crimecase-code-package"><code>crimecase</code> Package</a></h4>
-<div class="sect4">
-<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h5>
-<div class="paragraph">
-<p>As Investigapptor is a tool for managing investigations, the ability to store information about a case is essential.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h5>
-<div class="paragraph">
-<p>Each attribute of a case, such as the case name, description, status, etc. are classes in the <code>crimecase</code> package. Each of the classes provide utility methods to check the validity of the string to be stored, retrieve the string that is stored, and obtain the hash code of the object.</p>
-</div>
-<div class="paragraph">
-<p>The following classes have been introduced in the package as of v1.1:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Class</th>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CaseName</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new CaseName(“Project Zero”)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the name of the case.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Description(“Abduction and murder of a Chicago greeting card executive.”)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the description of the case.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">StartDate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new StartDate(“01/01/2015”)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the start date of the case.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EndDate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EndDate(LARGEST_DATE)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the end date of the case.</p>
-<p class="tableblock">The class contains a static string <code>LARGEST_DATE</code> that is often used as the default argument when instantiating the <code>EndDate</code> class to indicate a newly created case whose <code>Status</code> is “open”.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new Status()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores a <code>String</code> that represents the status of the case. The class only stores strings of value "open" or "close", with the default value set to "open" when the constructor is called.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>The <code>crimecase</code> package includes the <code>CrimeCase</code> class which is used to keep information about a case. The <code>CrimeCase</code> class provides utility methods to retrieve the different objects (e.g. <code>CaseName</code>), delete a tag, and obtain the hash code of the <code>CrimeCase</code> object.</p>
-</div>
-<div class="paragraph">
-<p>A <code>CrimeCase</code> class is created with one constructor.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Class</th>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CrimeCase</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new CrimeCase(name, description, investigatorToAdd, startDate, endDate, status, tagList)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stores <code>CaseName</code>, <code>Description</code>, <code>Investigator</code>, <code>StartDate</code>, <code>Status</code>, and <code>UniqueTagList</code> objects to represent information of the case.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><code>CrimeCase</code> objects are considered "duplicates" when they share at least the same <code>CaseName</code>, <code>Description</code>, and <code>StartDate</code>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="reasons-for-how-it-is-implemented"><a class="link" href="#reasons-for-how-it-is-implemented">Reasons for how it is implemented</a></h5>
-<div class="paragraph">
-<p>The <code>crimecase</code> package follows the model of the <code>person</code> package, whereby each attribute is represented by a class. This allows for better organization and a modular design which follows the single responsibility principle.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="add-case"><a class="link" href="#add-case">Add case</a></h4>
-<div class="sect4">
-<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h5>
-<div class="paragraph">
-<p>To be able to manage cases, investigators should have the ability to add case details into the application.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h5>
-<div class="sect5">
-<h6 id="logic-component"><a class="link" href="#logic-component">Logic component</a></h6>
-<div class="paragraph">
-<p>The <code>AddCaseCommandParser</code> parses the string of arguments provided by the user and splits the <code>String</code> into its separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) to be used in the context of the <code>AddCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
-</div>
-<div class="paragraph">
-<p>The <code>AddCaseCommand</code> that extends the <code>UndoableCommand</code> class is implemented with constructor overloading, where either constructor can be used depending on the developer’s needs.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new AddCaseCommand(crimeCase)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts a <code>CrimeCase</code> object as parameter.</p>
-<p class="tableblock">Useful in testing where <code>CrimeCaseBuilder</code> is used to create the <code>CrimeCase</code> object first.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new AddCaseCommand(name, description, investigatorIndex, startDate, tagList)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code> objects as parameters.</p>
-<p class="tableblock">Called by <code>AddCaseCommandParser</code> when a user inputs the command and details of a case.</p>
-<p class="tableblock">When this constructor is used, the <code>Index</code> object is processed to retrieve the <code>Investigator</code> object at the specified index on the most recent list of investigators displayed by the model. A <code>CrimeCase</code> object is created using the parameters and the retrieved <code>Investigator</code> object.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>The <code>CrimeCase</code> object is then added to the model and throws a <code>DuplicateCrimeCaseException</code> if there exists a similar object already in Investigapptor. The following snippet shows the execution code.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
-    requireNonNull(model);
-    <span class="keyword">try</span> {
-        model.addCrimeCase(toAdd);
-        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, toAdd));
-    } <span class="keyword">catch</span> (DuplicateCrimeCaseException e) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_CASE);
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="model-component"><a class="link" href="#model-component">Model component</a></h6>
-<div class="paragraph">
-<p>In the <code>Model</code> component, the new <code>CrimeCase</code> object gets added to the case list of the assigned investigator as well (i.e. <code>UniqueCrimeCaseList</code> within the <code>Investigator</code> object) via the <code>addCrimeCaseToInvestigator</code> method. This method traverses through the entire list of investigators to find the correct <code>Investigator</code> object to add the new <code>CrimeCase</code> object to. The code is shown below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> addCrimeCase(CrimeCase c) <span class="directive">throws</span> DuplicateCrimeCaseException {
-    CrimeCase crimeCase = syncWithMasterTagList(c);
-    <span class="keyword">if</span> (cases.add(crimeCase)) {
-        addCrimeCaseToInvestigator(crimeCase);
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram illustrates what happens in the <code>Model</code> component when a case is added.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SD_AddCaseCommand_Model.png" alt="SD AddCaseCommand Model" width="800">
-</div>
-<div class="title">Figure 10. Interactions Inside the Model Component for the <code>addcase</code> Command</div>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-parsing-the-investigator-to-be-assigned"><a class="link" href="#aspect-parsing-the-investigator-to-be-assigned">Aspect: Parsing the investigator-to-be-assigned</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1:</strong> User inputs an investigator&#8217;s name after the <code>i/</code> prefix to indicate who to assign the case to</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More intuitive for the user.</p>
-</li>
-<li>
-<p>Cons: More difficult to implement - need a way to decide which investigator to assign if they share identical names.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2 (current choice):</strong> User inputs the index of the investigator based on the case list after the <code>i/</code> prefix to indicate who to assign the case to</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement and more straightforward. Index provided is the investigator to be assigned - don&#8217;t have to worry about identical names.</p>
-</li>
-<li>
-<p>Cons: User would have to switch between lists to refer to the investigator index. For example, the user types the command to add the case but then realises that they needed the investigator index. They would have to either use the interface to switch the tabs or type the <code>listinvestigators</code> command. This disrupts the flow and hinders efficiency.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
 <h4 id="delete-case"><a class="link" href="#delete-case">Delete case</a></h4>
 <div class="sect4">
-<h5 id="reason-for-implementation-3"><a class="link" href="#reason-for-implementation-3">Reason for implementation</a></h5>
+<h5 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for implementation</a></h5>
 <div class="paragraph">
 <p>Sometimes, cases are added by error or there is no need to continue management of a case. Investigators should have a method to remove a case from the application.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current implementation</a></h5>
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h5>
 <div class="sect5">
-<h6 id="logic-component-2"><a class="link" href="#logic-component-2">Logic component</a></h6>
+<h6 id="logic-component"><a class="link" href="#logic-component">Logic component</a></h6>
 <div class="paragraph">
 <p>The <code>DeleteCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>DeleteCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -742,11 +368,11 @@ Selects the 3rd case in the most recent list of cases.</p>
 <div class="content">
 <img src="../images/SD_DeleteCaseCommand_Logic.png" alt="SD DeleteCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 11. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
+<div class="title">Figure 5. Interactions Inside the Logic Component for the <code>deletecase 1</code> Command</div>
 </div>
 </div>
 <div class="sect5">
-<h6 id="model-component-2"><a class="link" href="#model-component-2">Model component</a></h6>
+<h6 id="model-component"><a class="link" href="#model-component">Model component</a></h6>
 <div class="paragraph">
 <p>The new <code>CrimeCase</code> object gets removed from the case list of the assigned investigator as well (i.e. <code>UniqueCrimeCaseList</code> within the <code>Investigator</code> object) via the <code>removeCrimeCaseFromInvestigator</code> method. This method traverses through the entire list of investigators to find the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from. The code is shown below.</p>
 </div>
@@ -767,98 +393,9 @@ Selects the 3rd case in the most recent list of cases.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="500">
+<img src="../images/SD_DeleteCaseCommand_Model.png" alt="SD DeleteCaseCommand Model" width="400">
 </div>
-<div class="title">Figure 12. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-case"><a class="link" href="#edit-case">Edit case</a></h4>
-<div class="sect4">
-<h5 id="reason-for-implementation-4"><a class="link" href="#reason-for-implementation-4">Reason for implementation</a></h5>
-<div class="paragraph">
-<p>Typos can be made when in a haste. The ability to edit cases would give investigators a chance to rectify these mistakes easily. This feature will also enable re-assignment of cases to other investigators, which is useful when an investigator can no longer work on a case.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current implementation</a></h5>
-<div class="sect5">
-<h6 id="logic-component-3"><a class="link" href="#logic-component-3">Logic component</a></h6>
-<div class="paragraph">
-<p>The EditCaseCommandParser parses the String of arguments provided by the user and splits the <code>String</code> into the case index (<code>Index</code>) and the separate components (i.e. <code>CaseName</code>, <code>Description</code>, <code>Index</code>, <code>StartDate</code>, <code>Set&lt;Tag&gt;</code>) and directs it into a <code>EditCrimeCaseDescriptor</code> object  to be used in the context of the <code>EditCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
-</div>
-<div class="paragraph">
-<p>The <code>EditCrimeCaseDescriptor</code> is a class containing information that describes the case (i.e. case name, description, investigator, start date, tags). The descriptor is used because the user is not required to input all the fields except the case index. When the user specifies the field they wish to edit, it sets the field in the <code>EditCrimeCaseDescriptor</code> to that value. If any field is not specified, the field is set to <code>null</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>EditCaseCommand</code> that extends the <code>UndoableCommand</code> has one constructor.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Constructor</th>
-<th class="tableblock halign-left valign-top">Remark</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new EditCaseCommand(caseIndex, editCrimeCaseDescriptor)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accepts an <code>Index</code> object and <code>EditCrimeCaseDescriptor</code> as parameters.</p>
-<p class="tableblock">The <code>caseIndex</code> is processed to retrieve the <code>CrimeCase</code> object at the specified index on the most recent list of cases displayed by the model.</p>
-<p class="tableblock">A new <code>CrimeCase</code> object is created using the retrieved case-to-be-edited and the descriptor.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect5">
-<h6 id="model-component-3"><a class="link" href="#model-component-3">Model component</a></h6>
-<div class="paragraph">
-<p>When the <code>EditCaseCommand</code> is executed, note that the original <code>CrimeCase</code> object is not modified, but rather, replaced by a new <code>CrimeCase</code> object. When the <code>CrimeCase</code> constructor is called, a new <code>Investigator</code> object without its <code>UniqueCrimeCaseList</code> is created within the <code>CrimeCase</code> (i.e. only the personal details are stored). This is to simplify the data to be recorded in storage. The list of cases within the original <code>Investigator</code> object remains untouched. The snippet of code below shows the implementation.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> CrimeCase syncWithMasterTagList(CrimeCase crimeCase) {
-    <span class="comment">// … logic for handling and rebuilding tags …</span>
-
-    <span class="keyword">return</span> <span class="keyword">new</span> CrimeCase(
-        crimeCase.getCaseName(), crimeCase.getDescription(), crimeCase.getCurrentInvestigator(),,
-        crimeCase.getStartDate(), crimeCase.getEndDate(), crimeCase.getStatus(), correctTagReferences);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Remember that each <code>Investigator</code> object has their own <code>UniqueCrimeCaseList</code> that holds <code>CrimeCase</code> objects that they&#8217;ve been assigned.</p>
-</div>
-<div class="paragraph">
-<p>Since the <code>CrimeCase</code> object is replaced rather than modified, we need to remove the old <code>CrimeCase</code> object stored in the <code>UniqueCrimeCaseList</code> of the <code>Investigator</code> and reference the new, modified <code>CrimeCase</code> object instead. This is done by traversing the entire list of investigators and finding the correct <code>Investigator</code> object to remove the <code>CrimeCase</code> object from using the <code>removeCrimeCaseFromInvestigator</code> method. Next, after replacing the old <code>CrimeCase</code> object with the edited one in master list of all cases, it traverses the entire list of investigators again to add the case back to the correct <code>Investigator</code> object using the <code>addCrimeCaseFromInvestigator</code> method. The code below shows its implementation.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> updateCrimeCase(CrimeCase target, CrimeCase editedCase)
-<span class="directive">throws</span> DuplicateCrimeCaseException, CrimeCaseNotFoundException {
-    requireNonNull(editedCase);
-
-    CrimeCase syncedEditedCrimeCase = syncWithMasterTagList(editedCase);
-    removeCrimeCaseFromInvestigator(target);
-    cases.setCrimeCase(target, syncedEditedCrimeCase);
-    addCrimeCaseToInvestigator(syncedEditedCrimeCase);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram below illustrates how the Model component works when a case is edited.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SD_EditCaseCommand_Model.png" alt="SD EditCaseCommand Model" width="800">
-</div>
-<div class="title">Figure 13. Interactions Inside the Model Component for the <code>editcase</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Model Component for the <code>deletecase 1</code> Command</div>
 </div>
 </div>
 </div>
@@ -866,15 +403,15 @@ Selects the 3rd case in the most recent list of cases.</p>
 <div class="sect3">
 <h4 id="select-case"><a class="link" href="#select-case">Select case</a></h4>
 <div class="sect4">
-<h5 id="reason-for-implementation-5"><a class="link" href="#reason-for-implementation-5">Reason for implementation</a></h5>
+<h5 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">Reason for implementation</a></h5>
 <div class="paragraph">
 <p>An investigator should be able to retrieve and view information about a case after adding them into the application.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current implementation</a></h5>
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h5>
 <div class="sect5">
-<h6 id="logic-component-4"><a class="link" href="#logic-component-4">Logic component</a></h6>
+<h6 id="logic-component-2"><a class="link" href="#logic-component-2">Logic component</a></h6>
 <div class="paragraph">
 <p>Similar to <code>DeleteCaseCommandParser</code>, the <code>SelectCaseCommandParser</code> parses the string of arguments provided by the user to retrieve the index (i.e. <code>Index</code>) to be used in the context of the <code>SelectCaseCommand</code>. A <code>ParseException</code> is thrown if the user input does not conform to the expected format.</p>
 </div>
@@ -925,7 +462,7 @@ Selects the 3rd case in the most recent list of cases.</p>
 <div class="content">
 <img src="../images/SD_SelectCaseCommand_Logic.png" alt="SD SelectCaseCommand Logic" width="800">
 </div>
-<div class="title">Figure 14. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>selectcase 1</code> Command</div>
 </div>
 </div>
 <div class="sect5">
@@ -959,34 +496,163 @@ Selects the 3rd case in the most recent list of cases.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SD_SelectCaseCommand_EventsCenter.png" alt="SD SelectCaseCommand EventsCenter" width="800">
+<img src="../images/SD_SelectCaseCommand_EventsCenter.png" alt="SD SelectCaseCommand EventsCenter" width="600">
 </div>
-<div class="title">Figure 15. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the EventsCenter and UI Component for the <code>selectcase 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p><code>loadCrimeCasePage</code> method then takes the <code>CrimeCase</code> object contained within the event and splits it up into its various components (i.e. case name, description, investigator, start date, end date, status, and tags), to be processed for viewing on the UI.</p>
 </div>
 <div class="paragraph">
-<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">[UI-DetailsPane]</a>.</p>
+<p>To learn more about how the data is reflected onto the UI, you can take a look at <a href="#UI-DetailsPane">Details panel</a>.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect2">
+<h3 id="ui-enhancements"><a class="link" href="#ui-enhancements">UI Enhancements</a></h3>
+<div class="sect3">
+<h4 id="UI-DetailsPane"><a class="link" href="#UI-DetailsPane">Details panel</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>This component is used by the <code>selectinvestigator</code> and <code>selectcase</code>(<a href="#case-select">[case-select]</a>) commands. The details pane makes use of JavaFx&#8217;s <code>WebView</code> (an embedded browser) to render the data onto the display. The implementation for this can be found in <a href="{repoURL}/src/main/java/seedu/investigapptor/ui/BrowserPanel.java">BrowserPanel</a>.</p>
+</div>
+<div class="paragraph">
+<p>Two HTML files, <code>/docs/InvestigatorDetailsPage.html</code> and <code>/docs/CaseDetailsPage.html</code> are created as templates for displaying the details of a single investigator and case respectively. <code>WebView</code> provides utility methods that can be used to load and display the HTML files.</p>
+</div>
+<div class="paragraph">
+<p>A <code>String</code> containing the URL or file path is passed to the <code>load</code> method with a query string appended to the back (e.g. “https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=John%20Doe”). This method can be used to load pages from third-party services (e.g. Google Search).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> loadPage(<span class="predefined-type">String</span> url) {
+    Platform.runLater(() - &gt; browser.getEngine().load(url));
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example-displaying-case-information"><a class="link" href="#example-displaying-case-information">Example: Displaying case information</a></h5>
+<div class="paragraph">
+<p>The following sub-section shows how the query string is generated for the <code>CrimeCase</code> object.</p>
+</div>
+<div class="paragraph">
+<p>A URL query string is generated by deconstructing the <code>CrimeCase</code> object into its components (i.e. case name, description, investigator, start date, end date, status, and tags) as <code>String</code>. Components that might contain symbols such as “#” are encoded first before appending to the query string to prevent parsing error by the browser.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">encDescription = <span class="predefined-type">URLEncoder</span>.encode(description, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encInvEmail = <span class="predefined-type">URLEncoder</span>.encode(currentInvestigator.getEmail().value, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encInvAddress = <span class="predefined-type">URLEncoder</span>.encode(currentInvestigator.getAddress().value, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encStartDate = <span class="predefined-type">URLEncoder</span>.encode(startDate, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+encEndDate = <span class="predefined-type">URLEncoder</span>.encode(endDate, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> caseDetailsPage = CASE_DETAILS_PAGE +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">?caseName=</span><span class="delimiter">&quot;</span></span> + caseName +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;description=</span><span class="delimiter">&quot;</span></span> + encDescription +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;tags=</span><span class="delimiter">&quot;</span></span> + tagList +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invName=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getName().fullName +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invRank=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getRank().toString() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invPhone=</span><span class="delimiter">&quot;</span></span> + currentInvestigator.getPhone().value +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invEmail=</span><span class="delimiter">&quot;</span></span> + encInvEmail +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;invAddress=</span><span class="delimiter">&quot;</span></span> + encInvAddress +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;startDate=</span><span class="delimiter">&quot;</span></span> + encStartDate +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;endDate=</span><span class="delimiter">&quot;</span></span> + encEndDate +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;status=</span><span class="delimiter">&quot;</span></span> + status;
+
+loadPage(caseDetailsPage)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Javascript code is included in the HTML file to parse the URL request string and populate the HTML file with the corresponding case details.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-implementation-to-view-case-details"><a class="link" href="#aspect-implementation-to-view-case-details">Aspect: Implementation to view case details</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use HTML and Javascript with JavaFX <code>WebView</code> (embedded browser)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and design with basic HTML knowledge.</p>
+</li>
+<li>
+<p>Cons: Passing of data to the HTML file has to be done with a request string, which can get a messy if the data is complex in structure. Loading data is not as efficient.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use only JavaFX</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The view integrates more seamlessly with the application.</p>
+</li>
+<li>
+<p>Cons: More troublesome to implement and requires JavaFX knowledge.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Reason for current choice:</strong> As the data we have is simple, implementing and styling with HTML is easier.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="modify-interface-theme-colour-scheme"><a class="link" href="#modify-interface-theme-colour-scheme">Modify interface theme/colour scheme</a></h4>
+<div class="paragraph">
+<p>It&#8217;s easy to customize the look and feel of Investigapptor just by using CSS!</p>
+</div>
+<div class="paragraph">
+<p>The default style of the interface is generated by <a href="{repoURL}/src/main/resources/view/LightTheme.css">LightTheme.css</a>. To start personalising it, you can create a new CSS file in the <code>/resources/view/</code> directory and replace the name of the file in the following line in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml">MainWindow.fxml</a>  with the name of your CSS file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;URL value="@LightTheme.css" /&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can take a look at <a href="{repoURL}/src/main/resources/view/DarkTheme.css">DarkTheme.css</a> for reference on what elements you can change.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The current version of Investigapptor does not provide users with the ability to set the theme from within the application. This is a feature that we wish to implement in future versions.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:30:22 UTC
+Last updated 2018-04-15 15:36:42 UTC
 </div>
 </div>
 </body>
